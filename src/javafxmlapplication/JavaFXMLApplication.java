@@ -18,11 +18,15 @@ public class JavaFXMLApplication extends Application {
     public void start(Stage stage) throws Exception {
         //======================================================================
         // 1- creación del grafo de escena a partir del fichero FXML
-        FXMLLoader loader= new  FXMLLoader(getClass().getResource("FXML_IniciarSesion.fxml"));
-        Parent root = loader.load();
+        FXMLLoader loaderIniciarSesion= new  FXMLLoader(getClass().getResource("FXML_IniciarSesion.fxml"));
+        FXMLLoader loaderRegistrarUsuario= new  FXMLLoader(getClass().getResource("FXML_RegistrarUsuario.fxml"));
+        Parent root = loaderIniciarSesion.load();
+        Parent root2 = loaderRegistrarUsuario.load();
         //======================================================================
         // 2- creación de la escena con el nodo raiz del grafo de escena
         Scene scene = new Scene(root);
+        Scene scene2 = new Scene(root2);
+        
         //======================================================================
         // 3- asiganación de la escena al Stage que recibe el metodo 
         //     - configuracion del stage
@@ -32,6 +36,14 @@ public class JavaFXMLApplication extends Application {
         stage.setMinWidth(650);
         stage.setMinHeight(450);
         stage.show();
+        
+        // Prueba
+        Stage stage2 = new Stage();
+        stage2.setScene(scene2);
+        stage2.setTitle("Registrar usuario");
+        stage2.setMinWidth(650);
+        stage2.setMinHeight(450);
+        stage2.show();
     }
 
     /**

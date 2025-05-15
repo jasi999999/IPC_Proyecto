@@ -56,7 +56,7 @@
                                           <Image url="@../icons/logo_usuario.jpg" />
                                        </image>
                                     </ImageView>
-                                    <TextField fx:id="userNameTextFiled" prefHeight="30.0" prefWidth="220.0" promptText="Usuario" />
+                                    <TextField fx:id="usernameMenuInicial" prefHeight="30.0" prefWidth="220.0" promptText="Usuario" />
                                  </children>
                                  <GridPane.margin>
                                     <Insets left="30.0" />
@@ -72,7 +72,7 @@
                                           <Insets left="5.0" right="5.0" />
                                        </HBox.margin>
                                     </ImageView>
-                                    <PasswordField fx:id="passwordField" prefHeight="30.0" prefWidth="220.0" promptText="Contraseña">
+                                    <PasswordField fx:id="passwordMenuInicial" prefHeight="30.0" prefWidth="220.0" promptText="Contraseña">
                                        <HBox.margin>
                                           <Insets />
                                        </HBox.margin></PasswordField>
@@ -83,7 +83,7 @@
                               </HBox>
                               <HBox alignment="CENTER_RIGHT" spacing="10.0" GridPane.columnSpan="2" GridPane.rowIndex="4">
                                  <children>
-                                    <Button fx:id="registrarseButton" alignment="CENTER" contentDisplay="CENTER" defaultButton="true" mnemonicParsing="false" onAction="#handleRegistrarseButton" prefHeight="35.0" prefWidth="120.0" style="-fx-background-color: #5f84A2;" text="Registrarse" textFill="WHITE">
+                                    <Button fx:id="registrarseButton" alignment="CENTER" contentDisplay="CENTER" defaultButton="true" mnemonicParsing="false" onAction="#menuRegistrarse" prefHeight="35.0" prefWidth="120.0" style="-fx-background-color: #5f84A2;" text="Registrarse" textFill="WHITE">
                                        <font>
                                           <Font name="Times New Roman Bold" size="15.0" />
                                        </font>
@@ -91,7 +91,7 @@
                                           <DropShadow blurType="ONE_PASS_BOX" />
                                        </effect>
                                     </Button>
-                                    <Button fx:id="iniciarSesionButton" alignment="CENTER" contentDisplay="CENTER" defaultButton="true" mnemonicParsing="false" onAction="#handleIniciarSesionButton" prefHeight="35.0" prefWidth="120.0" style="-fx-background-color: #5f84A2;" styleClass="shad" text="Iniciar sesión" textFill="WHITE">
+                                    <Button fx:id="iniciarSesionButton" alignment="CENTER" contentDisplay="CENTER" defaultButton="true" mnemonicParsing="false" onAction="#iniciarSesionButton" prefHeight="35.0" prefWidth="120.0" style="-fx-background-color: #5f84A2;" styleClass="shad" text="Iniciar sesión" textFill="WHITE">
                                        <font>
                                           <Font name="Times New Roman Bold" size="15.0" />
                                        </font>
