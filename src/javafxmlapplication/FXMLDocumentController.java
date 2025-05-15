@@ -12,23 +12,33 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.PasswordField;
+import javafx.scene.control.TextField;
+import javafx.scene.layout.BorderPane;
 
 /**
  *
  * @author jsoler
  */
 public class FXMLDocumentController implements Initializable {
-    //========================================================
-    // objects defined into FXML file with fx:id 
-    @FXML
-    private Button buttonClick;
-    @FXML
+    
     private Label labelMessage;
+    @FXML
+    private BorderPane rootPane;
+    @FXML
+    private TextField userNameTextFiled;
+    @FXML
+    private PasswordField passwordField;
+    @FXML
+    private Button registrarseButton;
+    @FXML
+    private Button iniciarSesionButton;
+    @FXML
+    private Label errorLogin;
     
     //=========================================================
     // event handler, fired when button is clicked or 
     //                      when the button has the focus and enter is pressed
-    @FXML
     private void handleButtonAction(ActionEvent event) {
         labelMessage.setText("Hello, this is your first JavaFX project - IPC");
     }
@@ -38,7 +48,23 @@ public class FXMLDocumentController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+        
+        registrarseButton.setOnMouseReleased(event -> {
+        rootPane.requestFocus();  // quitar focus del botón al soltar
+        });
+        iniciarSesionButton.setOnMouseReleased(event -> {
+        rootPane.requestFocus();  // quitar focus del botón al soltar
+        });
+
         System.out.println("Hello 3");
     }    
+
+    @FXML
+    private void handleRegistrarseButton(ActionEvent event) {
+    }
+
+    @FXML
+    private void handleIniciarSesionButton(ActionEvent event) {
+    }
     
 }
