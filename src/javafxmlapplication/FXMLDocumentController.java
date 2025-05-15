@@ -38,7 +38,7 @@ public class FXMLDocumentController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-        System.out.println("Hello 2");
+        System.out.println("Hello 3");
     }    
     
 }
