@@ -5,6 +5,7 @@
  */
 package javafxmlapplication;
 
+import com.gluonhq.charm.glisten.control.Avatar;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -35,6 +36,10 @@ public class FXMLDocumentController implements Initializable {
     private Button iniciarSesionButton;
     @FXML
     private Label errorLogin;
+    @FXML
+    private Avatar avatarUsuario;
+    @FXML
+    private Avatar avatarContraseña;
     
     //=========================================================
     // event handler, fired when button is clicked or 
