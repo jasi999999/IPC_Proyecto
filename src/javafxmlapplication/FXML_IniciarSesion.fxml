@@ -18,7 +18,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane fx:id="rootPane" style="-fx-background-color: #5f84A2;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javafxmlapplication.FXMLDocumentController">
+<BorderPane fx:id="rootPane" style="-fx-background-color: #5f84A2;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javafxmlapplication.FXML_IniciarSesionController">
    <center>
       <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="260.0" minWidth="360.0" style="-fx-background-color: #5f84A2; -fx-border-color: #5f84A2;">
          <children>

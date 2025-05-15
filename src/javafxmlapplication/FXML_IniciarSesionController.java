@@ -21,7 +21,7 @@ import javafx.scene.layout.BorderPane;
  *
  * @author jsoler
  */
-public class FXMLDocumentController implements Initializable {
+public class FXML_IniciarSesionController implements Initializable {
     
     private Label labelMessage;
     @FXML
@@ -36,10 +36,6 @@ public class FXMLDocumentController implements Initializable {
     private Button iniciarSesionButton;
     @FXML
     private Label errorLogin;
-    @FXML
-    private Avatar avatarUsuario;
-    @FXML
-    private Avatar avatarContraseña;
     
     //=========================================================
     // event handler, fired when button is clicked or 
