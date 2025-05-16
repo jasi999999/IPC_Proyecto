@@ -101,7 +101,7 @@
                                  <children>
                                     <Button fx:id="registrarseButton" alignment="CENTER" contentDisplay="CENTER" defaultButton="true" mnemonicParsing="false" onAction="#menuRegistrarse" prefHeight="35.0" prefWidth="120.0" style="-fx-background-color: #5f84A2;" text="Registrarse" textFill="WHITE" wrapText="true">
                                        <font>
-                                          <Font name="Times New Roman Bold" size="15.0" />
+                                          <Font name="Times New Roman" size="15.0" />
                                        </font>
                                        <effect>
                                           <DropShadow blurType="ONE_PASS_BOX" />
@@ -109,7 +109,7 @@
                                     </Button>
                                     <Button fx:id="iniciarSesionButton" alignment="CENTER" contentDisplay="CENTER" defaultButton="true" mnemonicParsing="false" onAction="#iniciarSesionButton" prefHeight="35.0" prefWidth="120.0" style="-fx-background-color: #5f84A2;" styleClass="shad" text="Iniciar sesión" textFill="WHITE">
                                        <font>
-                                          <Font name="Times New Roman Bold" size="15.0" />
+                                          <Font name="Times New Roman" size="15.0" />
                                        </font>
                                        <effect>
                                           <DropShadow blurType="ONE_PASS_BOX" />

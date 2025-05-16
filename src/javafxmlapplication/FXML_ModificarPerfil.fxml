@@ -142,7 +142,7 @@
                                  <children>
                                     <Button fx:id="continuarButton" alignment="CENTER" contentDisplay="CENTER" defaultButton="true" mnemonicParsing="false" onAction="#handleContinuarButton" prefHeight="35.0" prefWidth="120.0" style="-fx-background-color: #5f84A2;" text="Continuar" textFill="WHITE">
                                        <font>
-                                          <Font name="Times New Roman Bold" size="15.0" />
+                                          <Font name="Times New Roman" size="15.0" />
                                        </font>
                                        <effect>
                                           <DropShadow blurType="ONE_PASS_BOX" />
@@ -150,7 +150,7 @@
                                     </Button>
                                     <Button fx:id="cancelarButtonPerfil" alignment="CENTER" contentDisplay="CENTER" defaultButton="true" mnemonicParsing="false" onAction="#volverMenuUsuario" prefHeight="35.0" prefWidth="120.0" style="-fx-background-color: #5f84A2;" styleClass="shad" text="Cancelar" textFill="WHITE">
                                        <font>
-                                          <Font name="Times New Roman Bold" size="15.0" />
+                                          <Font name="Times New Roman" size="15.0" />
                                        </font>
                                        <effect>
                                           <DropShadow blurType="ONE_PASS_BOX" />
@@ -193,7 +193,7 @@
                                  <children>
                                     <Button fx:id="subirFotoPerfil" alignment="CENTER" contentDisplay="CENTER" defaultButton="true" mnemonicParsing="false" onAction="#handleSubirFotoRegistro" prefHeight="35.0" prefWidth="80.0" style="-fx-background-color: #5f84A2;" text="Subir" textFill="WHITE">
                                        <font>
-                                          <Font name="Times New Roman Bold" size="15.0" />
+                                          <Font name="Times New Roman" size="15.0" />
                                        </font>
                                        <effect>
                                           <DropShadow blurType="ONE_PASS_BOX" />
@@ -201,7 +201,7 @@
                                     </Button>
                                     <Button fx:id="eliminarFotoPerfil" alignment="CENTER" contentDisplay="CENTER" defaultButton="true" mnemonicParsing="false" onAction="#handleEliminarFotoRegistro" prefHeight="35.0" prefWidth="80.0" style="-fx-background-color: #5f84A2;" styleClass="shad" text="Eliminar" textFill="WHITE">
                                        <font>
-                                          <Font name="Times New Roman Bold" size="15.0" />
+                                          <Font name="Times New Roman" size="15.0" />
                                        </font>
                                        <effect>
                                           <DropShadow blurType="ONE_PASS_BOX" />
