@@ -13,7 +13,9 @@ import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.text.Text;
 
 /**
  * FXML Controller class
@@ -31,7 +33,15 @@ public class FXML_RegistrarUsuarioController implements Initializable {
     }
     
     @FXML
-    private Button validarButton;
+    private Text mensajeErrorRegistro;
+    @FXML
+    private Button continuarButton;
+    @FXML
+    private ImageView imagenPerfilRegistro;
+    @FXML
+    private Button subirFotoRegistro;
+    @FXML
+    private Button eliminarFotoRegistro;
     @FXML
     private BorderPane rootPane;
     @FXML
@@ -54,6 +64,9 @@ public class FXML_RegistrarUsuarioController implements Initializable {
         // Evita que el focus se centre en el TextField de nickname, el cual
         // impide que se vea el cambo predeterminado "jpgarcia"
         javafx.application.Platform.runLater(() -> rootPane.requestFocus());
+        
+        // Al hacer clic en el panel, darle el foco
+        rootPane.setOnMouseClicked(event -> rootPane.requestFocus());
     }    
 
     @FXML
@@ -66,7 +79,26 @@ public class FXML_RegistrarUsuarioController implements Initializable {
     }
 
     @FXML
-    private void handleValidarButton(ActionEvent event) {
+    private void handleContinuarButton(ActionEvent event) {
+        // Registrar user y volver al Iniciar Sesión
+        // Checkear que los formatos de datos son correctos y guardar en BD
+        
+        // Si se cumple lo anterior do:
+        try {
+            mainApp.startIniciarSesion();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
+    private void handleSubirFotoRegistro(ActionEvent event) {
+        // Subir una foto al Imagen View y guardarla en BD
+    }
+
+    @FXML
+    private void handleEliminarFotoRegistro(ActionEvent event) {
+        // Eliminar la foto del ImagenView y de la BD.
     }
     
 }

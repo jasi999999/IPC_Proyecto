@@ -13,7 +13,9 @@ import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.text.Text;
 
 /**
  * FXML Controller class
@@ -34,15 +36,23 @@ public class FXML_ModificarPerfilController implements Initializable {
     @FXML
     private TextField usernameRegistro;
     @FXML
-    private PasswordField passwordFieldRegistro;
+    private Text mensajeErrorRegistro;
     @FXML
-    private Button cancelarButton;
+    private Button continuarButton;
     @FXML
-    private TextField correoElectronicoRegistro;
+    private TextField correoElectronicoPerfil;
     @FXML
-    private DatePicker fechaNacimiento;
+    private PasswordField passwordFieldPerfil;
     @FXML
-    private Button validarButton;
+    private DatePicker fechaNacimientoPerfil;
+    @FXML
+    private Button cancelarButtonPerfil;
+    @FXML
+    private ImageView imagenPerfil;
+    @FXML
+    private Button subirFotoPerfil;
+    @FXML
+    private Button eliminarFotoPerfil;
 
     /**
      * Initializes the controller class.
@@ -53,12 +63,23 @@ public class FXML_ModificarPerfilController implements Initializable {
     }    
 
 
+
     @FXML
-    private void volverMenuInicial(ActionEvent event) {
+    private void handleContinuarButton(ActionEvent event) {
+        // Checkear que los formatos de datos son correctos y guardar en BD
+        // Si se cumple lo anterior volver al Menú Usuario
     }
 
     @FXML
-    private void handleValidarButton(ActionEvent event) {
+    private void handleSubirFotoRegistro(ActionEvent event) {
+    }
+
+    @FXML
+    private void handleEliminarFotoRegistro(ActionEvent event) {
+    }
+
+    @FXML
+    private void volverMenuUsuario(ActionEvent event) {
     }
     
 }

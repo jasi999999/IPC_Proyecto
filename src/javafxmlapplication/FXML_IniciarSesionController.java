@@ -11,14 +11,12 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
-import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
-import javafxmlapplication.JavaFXMLApplication;
 
 /**
  *
@@ -36,7 +34,6 @@ public class FXML_IniciarSesionController implements Initializable {
     
     @FXML
     private ImageView mostrarContraseña;
-    private Label labelMessage;
     @FXML
     private BorderPane rootPane;
     @FXML
@@ -65,8 +62,6 @@ public class FXML_IniciarSesionController implements Initializable {
         iniciarSesionButton.setOnMouseReleased(event -> {
             rootPane.requestFocus();  // quitar focus del botón al soltar
         });
-
-        System.out.println("Hello 3");
     }    
 
     @FXML
@@ -81,10 +76,14 @@ public class FXML_IniciarSesionController implements Initializable {
 
     @FXML
     private void iniciarSesionButton(ActionEvent event) {
+        // Checkear con la BD que los datos username vs. contraseña son
+        // correctos, en caso contrario mostrar "errorLogin".
+        // If (correcto) desplegar el menu usuario.
     }
 
     @FXML
     private void handleMostrarContraseña(MouseEvent event) {
+        // Hacer desaparecer la ImageView del ojo y mostrar la contraseña
     }
     
 }
