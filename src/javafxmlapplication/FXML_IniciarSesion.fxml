@@ -72,13 +72,13 @@
                                           <Insets left="5.0" right="5.0" />
                                        </HBox.margin>
                                     </ImageView>
-                                    <StackPane>
+                                    <StackPane alignment="CENTER_RIGHT">
                                        <HBox.margin>
                                           <Insets />
                                        </HBox.margin>
                                        <children>
                                           <PasswordField fx:id="passwordMenuInicial" prefHeight="30.0" prefWidth="220.0" promptText="Contraseña" />
-                                          <HBox alignment="CENTER_RIGHT">
+                                          <HBox alignment="CENTER" maxHeight="25.0" maxWidth="25.0" minHeight="25.0" minWidth="25.0" prefHeight="25.0" prefWidth="25.0">
                                              <children>
                                                 <ImageView fx:id="mostrarContraseña" fitHeight="25.0" fitWidth="25.0" onDragDetected="#handleMostrarContraseña" opacity="0.33" pickOnBounds="true" preserveRatio="true">
                                                    <image>
