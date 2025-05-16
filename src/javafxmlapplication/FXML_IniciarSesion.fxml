@@ -72,10 +72,26 @@
                                           <Insets left="5.0" right="5.0" />
                                        </HBox.margin>
                                     </ImageView>
-                                    <PasswordField fx:id="passwordMenuInicial" prefHeight="30.0" prefWidth="220.0" promptText="Contraseña">
+                                    <StackPane>
                                        <HBox.margin>
                                           <Insets />
-                                       </HBox.margin></PasswordField>
+                                       </HBox.margin>
+                                       <children>
+                                          <PasswordField fx:id="passwordMenuInicial" prefHeight="30.0" prefWidth="220.0" promptText="Contraseña" />
+                                          <HBox alignment="CENTER_RIGHT">
+                                             <children>
+                                                <ImageView fx:id="mostrarContraseña" fitHeight="25.0" fitWidth="25.0" onDragDetected="#handleMostrarContraseña" opacity="0.33" pickOnBounds="true" preserveRatio="true">
+                                                   <image>
+                                                      <Image url="@../icons/logo_ojo.jpg" />
+                                                   </image>
+                                                </ImageView>
+                                             </children>
+                                             <StackPane.margin>
+                                                <Insets right="5.0" />
+                                             </StackPane.margin>
+                                          </HBox>
+                                       </children>
+                                    </StackPane>
                                  </children>
                                  <GridPane.margin>
                                     <Insets left="30.0" />

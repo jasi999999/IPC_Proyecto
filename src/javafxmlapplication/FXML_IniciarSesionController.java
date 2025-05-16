@@ -15,6 +15,8 @@ import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafxmlapplication.JavaFXMLApplication;
 
@@ -32,6 +34,8 @@ public class FXML_IniciarSesionController implements Initializable {
         this.mainApp = mainApp;
     }
     
+    @FXML
+    private ImageView mostrarContraseña;
     private Label labelMessage;
     @FXML
     private BorderPane rootPane;
@@ -77,6 +81,10 @@ public class FXML_IniciarSesionController implements Initializable {
 
     @FXML
     private void iniciarSesionButton(ActionEvent event) {
+    }
+
+    @FXML
+    private void handleMostrarContraseña(MouseEvent event) {
     }
     
 }

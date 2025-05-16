@@ -24,14 +24,14 @@ public class FXML_RegistrarUsuarioController implements Initializable {
 
     // Referencia a la instancia principal de aplicación
     private JavaFXMLApplication mainApp;
-    @FXML
-    private Button validarButton;
     
     // Método para establecer la referencia a la clase principal
     public void setMainApp(JavaFXMLApplication mainApp) {
         this.mainApp = mainApp;
     }
     
+    @FXML
+    private Button validarButton;
     @FXML
     private BorderPane rootPane;
     @FXML
