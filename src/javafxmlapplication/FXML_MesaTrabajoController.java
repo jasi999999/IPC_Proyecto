@@ -11,6 +11,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
+import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
@@ -25,17 +26,15 @@ public class FXML_MesaTrabajoController implements Initializable {
     @FXML
     private BorderPane rootPane;
     @FXML
-    private TextField usernameRegistro;
+    private TextField usernameMenuInicial;
     @FXML
-    private PasswordField passwordFieldRegistro;
+    private PasswordField passwordMenuInicial;
     @FXML
-    private Button registrarUsuario;
+    private Button registrarseButton;
     @FXML
-    private Button cancelarButton;
+    private Button iniciarSesionButton;
     @FXML
-    private TextField correoElectronicoRegistro;
-    @FXML
-    private DatePicker fechaNacimiento;
+    private Label errorLogin;
 
     /**
      * Initializes the controller class.
@@ -46,11 +45,11 @@ public class FXML_MesaTrabajoController implements Initializable {
     }    
 
     @FXML
-    private void handleResgistrarUsuario(ActionEvent event) {
+    private void menuRegistrarse(ActionEvent event) {
     }
 
     @FXML
-    private void volverMenuInicial(ActionEvent event) {
+    private void iniciarSesionButton(ActionEvent event) {
     }
     
 }

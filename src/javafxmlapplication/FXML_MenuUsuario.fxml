@@ -2,7 +2,6 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
@@ -16,21 +15,19 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.StackPane?>
-<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
-<?import javafx.scene.text.Text?>
 
 <BorderPane fx:id="rootPane" style="-fx-background-color: #5f84A2;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javafxmlapplication.FXML_MenuUsuarioController">
    <center>
-      <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="260.0" minWidth="360.0" style="-fx-background-color: #5f84A2; -fx-border-color: #5f84A2;">
+      <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="260.0" minWidth="360.0" style="-fx-background-color: #5f84A2; -fx-border-color: #5f84A2;" BorderPane.alignment="CENTER">
          <children>
-            <StackPane prefHeight="380.0" prefWidth="580.0">
+            <StackPane>
                <children>
-                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#91aec4" height="350.0" stroke="#91aec4" strokeType="INSIDE" width="550.0" />
-                  <HBox prefHeight="360.0" prefWidth="560.0">
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#91aec4" height="260.0" stroke="#91aec4" strokeType="INSIDE" width="360.0" />
+                  <HBox>
                      <children>
-                        <GridPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: white;">
+                        <GridPane prefHeight="250.0" prefWidth="350.0" style="-fx-background-color: white;">
                           <columnConstraints>
                             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -38,59 +35,55 @@
                           <rowConstraints>
                             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                               <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                               <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                           </rowConstraints>
                            <children>
                               <HBox prefHeight="100.0" prefWidth="200.0" GridPane.columnSpan="2">
                                  <children>
-                                    <Label alignment="CENTER" prefHeight="50.0" prefWidth="600.0" text="Registrar un nuevo usuario" textFill="#8fadc2">
+                                    <Label alignment="CENTER" prefHeight="50.0" prefWidth="350.0" text="Iniciar sesión" textFill="#8fadc2">
                                        <font>
                                           <Font name="Times New Roman Bold" size="18.0" />
                                        </font>
                                     </Label>
                                  </children>
                               </HBox>
-                              <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="10.0" GridPane.rowIndex="1">
+                              <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="10.0" GridPane.columnSpan="2" GridPane.rowIndex="1">
                                  <children>
-                                    <VBox>
-                                       <children>
-                                          <Text fill="#5f84a2" strokeType="OUTSIDE" strokeWidth="0.0" text="Nombre de usuario:">
-                                             <font>
-                                                <Font name="Times New Roman" size="14.0" />
-                                             </font>
-                                          </Text>
-                                          <TextField fx:id="usernameRegistro" editable="false" prefHeight="30.0" prefWidth="220.0" promptText="jpgarcia" />
-                                       </children>
-                                    </VBox>
+                                    <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../icons/logo_usuario.jpg" />
+                                       </image>
+                                    </ImageView>
+                                    <TextField fx:id="usernameMenuInicial" prefHeight="30.0" prefWidth="220.0" promptText="Usuario" />
                                  </children>
                                  <GridPane.margin>
                                     <Insets left="30.0" />
                                  </GridPane.margin>
                               </HBox>
-                              <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="10.0" GridPane.rowIndex="3">
+                              <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="10.0" GridPane.columnSpan="2" GridPane.rowIndex="2">
                                  <children>
-                                    <VBox>
-                                       <children>
-                                          <Text fill="#5f84a2" strokeType="OUTSIDE" strokeWidth="0.0" text="Contraseña">
-                                             <font>
-                                                <Font name="Times New Roman" size="14.0" />
-                                             </font>
-                                          </Text>
-                                          <PasswordField fx:id="passwordFieldRegistro" prefHeight="30.0" prefWidth="220.0" promptText="passPER21!" />
-                                       </children>
-                                    </VBox>
+                                    <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../icons/logo_passwd.jpg" />
+                                       </image>
+                                       <HBox.margin>
+                                          <Insets left="5.0" right="5.0" />
+                                       </HBox.margin>
+                                    </ImageView>
+                                    <PasswordField fx:id="passwordMenuInicial" prefHeight="30.0" prefWidth="220.0" promptText="Contraseña">
+                                       <HBox.margin>
+                                          <Insets />
+                                       </HBox.margin></PasswordField>
                                  </children>
                                  <GridPane.margin>
                                     <Insets left="30.0" />
                                  </GridPane.margin>
                               </HBox>
-                              <HBox alignment="CENTER_RIGHT" spacing="10.0" GridPane.columnSpan="2" GridPane.rowIndex="6">
+                              <HBox alignment="CENTER_RIGHT" spacing="10.0" GridPane.columnSpan="2" GridPane.rowIndex="4">
                                  <children>
-                                    <Button fx:id="registrarUsuario" alignment="CENTER" contentDisplay="CENTER" defaultButton="true" mnemonicParsing="false" onAction="#handleResgistrarUsuario" prefHeight="35.0" prefWidth="120.0" style="-fx-background-color: #5f84A2;" text="Validar" textFill="WHITE">
+                                    <Button fx:id="registrarseButton" alignment="CENTER" contentDisplay="CENTER" defaultButton="true" mnemonicParsing="false" onAction="#menuRegistrarse" prefHeight="35.0" prefWidth="120.0" style="-fx-background-color: #5f84A2;" text="Registrarse" textFill="WHITE">
                                        <font>
                                           <Font name="Times New Roman Bold" size="15.0" />
                                        </font>
@@ -98,7 +91,7 @@
                                           <DropShadow blurType="ONE_PASS_BOX" />
                                        </effect>
                                     </Button>
-                                    <Button fx:id="cancelarButton" alignment="CENTER" contentDisplay="CENTER" defaultButton="true" mnemonicParsing="false" onAction="#volverMenuInicial" prefHeight="35.0" prefWidth="120.0" style="-fx-background-color: #5f84A2;" styleClass="shad" text="Cancelar" textFill="WHITE">
+                                    <Button fx:id="iniciarSesionButton" alignment="CENTER" contentDisplay="CENTER" defaultButton="true" mnemonicParsing="false" onAction="#iniciarSesionButton" prefHeight="35.0" prefWidth="120.0" style="-fx-background-color: #5f84A2;" styleClass="shad" text="Iniciar sesión" textFill="WHITE">
                                        <font>
                                           <Font name="Times New Roman Bold" size="15.0" />
                                        </font>
@@ -111,62 +104,20 @@
                                     <Insets bottom="5.0" right="10.0" />
                                  </GridPane.margin>
                               </HBox>
-                              <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="10.0" GridPane.columnSpan="2" GridPane.rowIndex="5">
-                                 <GridPane.margin>
-                                    <Insets left="30.0" />
-                                 </GridPane.margin>
-                              </HBox>
-                              <HBox prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="2">
+                              <HBox prefHeight="100.0" prefWidth="200.0" GridPane.columnSpan="2" GridPane.rowIndex="3">
                                  <children>
-                                    <VBox>
-                                       <children>
-                                          <Text fill="#5f84a2" strokeType="OUTSIDE" strokeWidth="0.0" text="Correo electrónico:">
-                                             <font>
-                                                <Font name="Times New Roman" size="14.0" />
-                                             </font>
-                                          </Text>
-                                          <TextField fx:id="correoElectronicoRegistro" prefHeight="30.0" prefWidth="220.0" promptText="jgarcia@gmail.com" />
-                                       </children>
-                                    </VBox>
+                                    <Label fx:id="errorLogin" alignment="CENTER" contentDisplay="CENTER" prefHeight="50.0" prefWidth="350.0" text="Usuario y/o contraseña incorrectos" textFill="RED">
+                                       <padding>
+                                          <Insets bottom="10.0" />
+                                       </padding>
+                                    </Label>
                                  </children>
-                                 <GridPane.margin>
-                                    <Insets left="30.0" />
-                                 </GridPane.margin>
                               </HBox>
-                              <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="10.0" GridPane.rowIndex="4">
-                                 <children>
-                                    <VBox>
-                                       <children>
-                                          <Text fill="#5f84a2" strokeType="OUTSIDE" strokeWidth="0.0" text="Fecha de nacimiento:">
-                                             <font>
-                                                <Font name="Times New Roman" size="14.0" />
-                                             </font>
-                                          </Text>
-                                          <DatePicker fx:id="fechaNacimiento" promptText="2025-04-09" />
-                                       </children>
-                                    </VBox>
-                                 </children>
-                                 <GridPane.margin>
-                                    <Insets left="30.0" />
-                                 </GridPane.margin>
-                              </HBox>
-                              <StackPane prefHeight="160.0" prefWidth="160.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
-                                 <GridPane.margin>
-                                    <Insets left="50.0" />
-                                 </GridPane.margin>
-                                 <children>
-                                    <ImageView fitHeight="150.0" fitWidth="169.0" pickOnBounds="true" preserveRatio="true">
-                                       <image>
-                                          <Image url="@../icons/avatar_usuario.jpg" />
-                                       </image>
-                                    </ImageView>
-                                 </children>
-                              </StackPane>
                            </children>
                         </GridPane>
                      </children>
                      <StackPane.margin>
-                        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                      </StackPane.margin>
                   </HBox>
                </children>
@@ -175,15 +126,15 @@
       </Pane>
    </center>
    <top>
-      <Pane minHeight="0.0" prefHeight="10.0" prefWidth="200.0" style="-fx-background-color: #5f84A2;" BorderPane.alignment="CENTER" />
+      <Pane minHeight="0.0" prefHeight="130.0" prefWidth="200.0" style="-fx-background-color: #5f84A2;" BorderPane.alignment="CENTER" />
    </top>
    <left>
-      <Pane minWidth="0.0" prefWidth="10.0" style="-fx-background-color: #5f84A2;" BorderPane.alignment="CENTER" />
+      <Pane minWidth="0.0" prefWidth="120.0" style="-fx-background-color: #5f84A2;" BorderPane.alignment="CENTER" />
    </left>
    <right>
-      <Pane prefWidth="10.0" style="-fx-background-color: #5f84A2;" BorderPane.alignment="CENTER" />
+      <Pane prefWidth="120.0" style="-fx-background-color: #5f84A2;" BorderPane.alignment="CENTER" />
    </right>
    <bottom>
-      <Pane minHeight="0.0" prefHeight="10.0" style="-fx-background-color: #5f84A2;" BorderPane.alignment="CENTER" />
+      <Pane minHeight="0.0" prefHeight="130.0" style="-fx-background-color: #5f84A2;" BorderPane.alignment="CENTER" />
    </bottom>
 </BorderPane>

@@ -36,13 +36,13 @@ public class FXML_ModificarPerfilController implements Initializable {
     @FXML
     private PasswordField passwordFieldRegistro;
     @FXML
-    private Button registrarUsuario;
-    @FXML
     private Button cancelarButton;
     @FXML
     private TextField correoElectronicoRegistro;
     @FXML
     private DatePicker fechaNacimiento;
+    @FXML
+    private Button validarButton;
 
     /**
      * Initializes the controller class.
@@ -52,12 +52,13 @@ public class FXML_ModificarPerfilController implements Initializable {
         // TODO
     }    
 
-    @FXML
-    private void handleResgistrarUsuario(ActionEvent event) {
-    }
 
     @FXML
     private void volverMenuInicial(ActionEvent event) {
+    }
+
+    @FXML
+    private void handleValidarButton(ActionEvent event) {
     }
     
 }

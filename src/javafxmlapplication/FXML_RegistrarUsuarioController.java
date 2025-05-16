@@ -24,6 +24,8 @@ public class FXML_RegistrarUsuarioController implements Initializable {
 
     // Referencia a la instancia principal de aplicación
     private JavaFXMLApplication mainApp;
+    @FXML
+    private Button validarButton;
     
     // Método para establecer la referencia a la clase principal
     public void setMainApp(JavaFXMLApplication mainApp) {
@@ -33,17 +35,15 @@ public class FXML_RegistrarUsuarioController implements Initializable {
     @FXML
     private BorderPane rootPane;
     @FXML
-    private TextField usernameRegistro;
+    private TextField usernameRegistro;             // no repetido, 6-15, no espacios, sí "-" o "_"
     @FXML
-    private PasswordField passwordFieldRegistro;
-    @FXML
-    private Button registrarUsuario;
+    private PasswordField passwordFieldRegistro;    // 8-20, 1 may, 1 mín, 1 díg, 1 char (!@#$%&*()-+=)
     @FXML
     private Button cancelarButton;
     @FXML
-    private TextField correoElectronicoRegistro;
+    private TextField correoElectronicoRegistro;    // Formato válido
     @FXML
-    private DatePicker fechaNacimiento;
+    private DatePicker fechaNacimiento;             // +16 años
 
     /**
      * Initializes the controller class.
@@ -57,16 +57,16 @@ public class FXML_RegistrarUsuarioController implements Initializable {
     }    
 
     @FXML
-    private void handleResgistrarUsuario(ActionEvent event) {
-    }
-
-    @FXML
     private void volverMenuInicial(ActionEvent event) {
         try {
             mainApp.startIniciarSesion();
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    @FXML
+    private void handleValidarButton(ActionEvent event) {
     }
     
 }

@@ -40,9 +40,9 @@ public class FXML_IniciarSesionController implements Initializable {
     @FXML
     private Button iniciarSesionButton;
     @FXML
-    private TextField usernameMenuInicial;
+    private TextField usernameMenuInicial;      
     @FXML
-    private PasswordField passwordMenuInicial;
+    private PasswordField passwordMenuInicial;  
     @FXML
     private Label errorLogin;
     

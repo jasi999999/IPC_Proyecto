@@ -36,7 +36,7 @@ public class JavaFXMLApplication extends Application {
         ventanaPrincipal.setScene(sceneIniciarSesion);
         ventanaPrincipal.setTitle("Menu principal");
         ventanaPrincipal.setMinWidth(650);
-        ventanaPrincipal.setMinHeight(450);
+        ventanaPrincipal.setMinHeight(520);
         ventanaPrincipal.show();
     }
     
@@ -126,8 +126,8 @@ public class JavaFXMLApplication extends Application {
         Scene sceneRegistrarUsuario = new Scene(root2);
         ventanaPrincipal.setScene(sceneRegistrarUsuario);
         ventanaPrincipal.setTitle("Registrar usuario");
-        ventanaPrincipal.setMinWidth(650);
-        ventanaPrincipal.setMinHeight(450);
+        ventanaPrincipal.setMinWidth(600);
+        ventanaPrincipal.setMinHeight(520);
         ventanaPrincipal.show();
     }
     
