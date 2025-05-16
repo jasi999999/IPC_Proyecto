@@ -62,6 +62,8 @@ public class FXML_IniciarSesionController implements Initializable {
         iniciarSesionButton.setOnMouseReleased(event -> {
             rootPane.requestFocus();  // quitar focus del botón al soltar
         });
+        
+        rootPane.setOnMouseClicked(event -> rootPane.requestFocus());
     }    
 
     @FXML
