@@ -14,57 +14,61 @@ import javafx.stage.Stage;
 
 public class JavaFXMLApplication extends Application {
     
+    private Stage ventanaPrincipal;
+    
     @Override
-    public void start(Stage ventanaPrincipal) throws Exception {
-        //======================================================================
-        // 1- creación del grafo de escena a partir del fichero FXML
+    public void start(Stage stage) throws Exception {
+        this.ventanaPrincipal = stage;
+        
+        startIniciarSesion();
+    }
+    
+    public void startIniciarSesion() throws Exception {
         FXMLLoader loaderIniciarSesion = new  FXMLLoader(getClass().getResource("FXML_IniciarSesion.fxml"));
         Parent root = loaderIniciarSesion.load();
         
-        //======================================================================
-        // 2- creación de la escena con el nodo raiz del grafo de escena
-        Scene sceneIniciarSesion = new Scene(root);
+        // Obtienes la instancia del controlador asociado al FXML cargado
+        FXML_IniciarSesionController controller = loaderIniciarSesion.getController();
+        // Le pasas al controlador la referencia a la clase principal de la aplicación
+        controller.setMainApp(this);
         
-        //======================================================================
-        // 3- asiganación de la escena al Stage que recibe el metodo 
-        //     - configuracion del ventanaPrincipal
-        //     - se muestra el ventanaPrincipal de manera no modal mediante el metodo show()
+        Scene sceneIniciarSesion = new Scene(root);
         ventanaPrincipal.setScene(sceneIniciarSesion);
-        ventanaPrincipal.setTitle("PROJECT - IPC:");
+        ventanaPrincipal.setTitle("Menu principal");
         ventanaPrincipal.setMinWidth(650);
         ventanaPrincipal.setMinHeight(450);
         ventanaPrincipal.show();
-        
-        startIniciarSesion();
-        startMenuEstadisticas();
     }
     
-    private void startIniciarSesion() throws Exception {
+    public void startRegistrarUsuario() throws Exception {
         // Prueba (se podría lanzar todo esto en un metodo para llamar a estos menus) 
         FXMLLoader loaderRegistrarUsuario = new  FXMLLoader(getClass().getResource("FXML_RegistrarUsuario.fxml"));
         Parent root2 = loaderRegistrarUsuario.load();
-        Scene sceneRegistrarUsuario = new Scene(root2);
         
-        Stage stage2 = new Stage();
-        stage2.setScene(sceneRegistrarUsuario);
-        stage2.setTitle("Registrar usuario");
-        stage2.setMinWidth(650);
-        stage2.setMinHeight(450);
-        stage2.show();
+        FXML_RegistrarUsuarioController controller = loaderRegistrarUsuario.getController();
+        controller.setMainApp(this);
+        
+        Scene sceneRegistrarUsuario = new Scene(root2);
+        ventanaPrincipal.setScene(sceneRegistrarUsuario);
+        ventanaPrincipal.setTitle("Registrar usuario");
+        ventanaPrincipal.setMinWidth(650);
+        ventanaPrincipal.setMinHeight(450);
+        ventanaPrincipal.show();
     }
     
-    private void startMenuEstadisticas() throws Exception {
-        // Prueba (se podría lanzar todo esto en un metodo para llamar a estos menus) 
+    public void startMenuEstadisticas(Stage stage) throws Exception {
         FXMLLoader loaderMenuEstadisticas = new  FXMLLoader(getClass().getResource("FXML_MenuEstadisticas.fxml"));
         Parent root3 = loaderMenuEstadisticas.load();
-        Scene sceneMenuEstadisticas = new Scene(root3);
         
-        Stage stage3 = new Stage();
-        stage3.setScene(sceneMenuEstadisticas);
-        stage3.setTitle("Estadisticas Usuario");
-        stage3.setMinWidth(650);
-        stage3.setMinHeight(450);
-        stage3.show();
+        FXML_RegistrarUsuarioController controller = loaderMenuEstadisticas.getController();
+        controller.setMainApp(this);
+        
+        Scene sceneMenuEstadisticas = new Scene(root3);
+        ventanaPrincipal.setScene(sceneMenuEstadisticas);
+        ventanaPrincipal.setTitle("Estadisticas Usuario");
+        ventanaPrincipal.setMinWidth(650);
+        ventanaPrincipal.setMinHeight(450);
+        ventanaPrincipal.show();
     }
     
     /**

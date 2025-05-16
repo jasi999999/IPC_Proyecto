@@ -5,7 +5,6 @@
  */
 package javafxmlapplication;
 
-import com.gluonhq.charm.glisten.control.Avatar;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -17,12 +16,21 @@ import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
+import javafxmlapplication.JavaFXMLApplication;
 
 /**
  *
  * @author jsoler
  */
 public class FXML_IniciarSesionController implements Initializable {
+    
+    // Referencia a la instancia principal de aplicación
+    private JavaFXMLApplication mainApp;
+    
+    // Método para establecer la referencia a la clase principal
+    public void setMainApp(JavaFXMLApplication mainApp) {
+        this.mainApp = mainApp;
+    }
     
     private Label labelMessage;
     @FXML
@@ -39,23 +47,19 @@ public class FXML_IniciarSesionController implements Initializable {
     private Label errorLogin;
     
     //=========================================================
-    // event handler, fired when button is clicked or 
-    //                      when the button has the focus and enter is pressed
-    private void handleButtonAction(ActionEvent event) {
-        labelMessage.setText("Hello, this is your first JavaFX project - IPC");
-    }
-    
-    //=========================================================
     // you must initialize here all related with the object 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-        
+        // Evita que el focus se centre en el TextField de nickname, el cual
+        // impide que se vea el cambo predeterminado "Usuario"
+        javafx.application.Platform.runLater(() -> rootPane.requestFocus());
+        // Para evitar que el botón se quede pulsado
         registrarseButton.setOnMouseReleased(event -> {
-        rootPane.requestFocus();  // quitar focus del botón al soltar
+            rootPane.requestFocus();  // quitar focus del botón al soltar
         });
         iniciarSesionButton.setOnMouseReleased(event -> {
-        rootPane.requestFocus();  // quitar focus del botón al soltar
+            rootPane.requestFocus();  // quitar focus del botón al soltar
         });
 
         System.out.println("Hello 3");
@@ -63,6 +67,12 @@ public class FXML_IniciarSesionController implements Initializable {
 
     @FXML
     private void menuRegistrarse(ActionEvent event) {
+        // Dispara el menú de Registro de mainApp 
+        try {
+            mainApp.startRegistrarUsuario();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     @FXML

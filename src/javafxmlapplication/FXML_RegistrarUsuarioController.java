@@ -22,6 +22,14 @@ import javafx.scene.layout.BorderPane;
  */
 public class FXML_RegistrarUsuarioController implements Initializable {
 
+    // Referencia a la instancia principal de aplicación
+    private JavaFXMLApplication mainApp;
+    
+    // Método para establecer la referencia a la clase principal
+    public void setMainApp(JavaFXMLApplication mainApp) {
+        this.mainApp = mainApp;
+    }
+    
     @FXML
     private BorderPane rootPane;
     @FXML
@@ -43,6 +51,9 @@ public class FXML_RegistrarUsuarioController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+        // Evita que el focus se centre en el TextField de nickname, el cual
+        // impide que se vea el cambo predeterminado "jpgarcia"
+        javafx.application.Platform.runLater(() -> rootPane.requestFocus());
     }    
 
     @FXML
@@ -51,6 +62,11 @@ public class FXML_RegistrarUsuarioController implements Initializable {
 
     @FXML
     private void volverMenuInicial(ActionEvent event) {
+        try {
+            mainApp.startIniciarSesion();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
     
 }
