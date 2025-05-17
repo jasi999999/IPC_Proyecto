@@ -1,11 +1,10 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/javafx/FXMLController.java to edit this template
- */
 package javafxmlapplication;
 
 import java.net.URL;
+import java.time.LocalDate;
+import java.time.Period;
 import java.util.ResourceBundle;
+import java.util.regex.Pattern;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -17,21 +16,14 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.text.Text;
 
-/**
- * FXML Controller class
- *
- * @author Pablo
- */
 public class FXML_RegistrarUsuarioController implements Initializable {
 
-    // Referencia a la instancia principal de aplicación
     private JavaFXMLApplication mainApp;
-    
-    // Método para establecer la referencia a la clase principal
+
     public void setMainApp(JavaFXMLApplication mainApp) {
         this.mainApp = mainApp;
     }
-    
+
     @FXML
     private Text mensajeErrorRegistro;
     @FXML
@@ -45,29 +37,22 @@ public class FXML_RegistrarUsuarioController implements Initializable {
     @FXML
     private BorderPane rootPane;
     @FXML
-    private TextField usernameRegistro;             // no repetido, 6-15, no espacios, sí "-" o "_"
+    private TextField usernameRegistro;
     @FXML
-    private PasswordField passwordFieldRegistro;    // 8-20, 1 may, 1 mín, 1 díg, 1 char (!@#$%&*()-+=)
+    private PasswordField passwordFieldRegistro;
     @FXML
     private Button cancelarButton;
     @FXML
-    private TextField correoElectronicoRegistro;    // Formato válido
+    private TextField correoElectronicoRegistro;
     @FXML
-    private DatePicker fechaNacimiento;             // +16 años
+    private DatePicker fechaNacimiento;
 
-    /**
-     * Initializes the controller class.
-     */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
-        // Evita que el focus se centre en el TextField de nickname, el cual
-        // impide que se vea el cambo predeterminado "jpgarcia"
         javafx.application.Platform.runLater(() -> rootPane.requestFocus());
-        
-        // Al hacer clic en el panel, darle el foco
         rootPane.setOnMouseClicked(event -> rootPane.requestFocus());
-    }    
+        mensajeErrorRegistro.setVisible(false);
+    }
 
     @FXML
     private void volverMenuInicial(ActionEvent event) {
@@ -80,25 +65,85 @@ public class FXML_RegistrarUsuarioController implements Initializable {
 
     @FXML
     private void handleContinuarButton(ActionEvent event) {
-        // Registrar user y volver al Iniciar Sesión
-        // Checkear que los formatos de datos son correctos y guardar en BD
-        
-        // Si se cumple lo anterior do:
+        String nick = usernameRegistro.getText();
+        String email = correoElectronicoRegistro.getText();
+        String pass = passwordFieldRegistro.getText();
+        LocalDate birthDate = fechaNacimiento.getValue();
+
+        if (nick.isEmpty() || email.isEmpty() || pass.isEmpty() || birthDate == null) {
+            mostrarError("Todos los campos son obligatorios.");
+            return;
+        }
+
+        if (!validarNickname(nick)) {
+            mostrarError("Nombre de usuario inválido (6-15 caracteres, sin espacios).");
+            return;
+        }
+
+        if (!validarCorreo(email)) {
+            mostrarError("Correo electrónico inválido.");
+            return;
+        }
+
+        if (!validarPassword(pass)) {
+            mostrarError("Contraseña inválida. 8-20 caracteres,\nmayús., minús., número y símbolo.");
+            return;
+        }
+
+        if (!mayorDe16Anios(birthDate)) {
+            mostrarError("Debes tener al menos 16 años.");
+            return;
+        }
+
+        if (UsuarioManager.existeNick(nick)) {
+            mostrarError("El nombre de usuario ya está registrado.");
+            return;
+        }
+
+        UsuarioSimulado nuevo = new UsuarioSimulado(nick, email, pass);
+        UsuarioManager.registrarUsuario(nuevo);
+
+        ocultarError();
         try {
             mainApp.startIniciarSesion();
         } catch (Exception e) {
-            e.printStackTrace();
+            mostrarError("Error al volver al login.");
         }
+    }
+
+    private void mostrarError(String msg) {
+        mensajeErrorRegistro.setText(msg);
+        mensajeErrorRegistro.setVisible(true);
+    }
+
+    private void ocultarError() {
+        mensajeErrorRegistro.setText("");
+        mensajeErrorRegistro.setVisible(false);
+    }
+
+    private boolean validarNickname(String nick) {
+        return nick.length() >= 6 && nick.length() <= 15 && !nick.contains(" ");
+    }
+
+    private boolean validarCorreo(String email) {
+        return Pattern.matches("^[\\w-.]+@([\\w-]+\\.)+[\\w-]{2,4}$", email);
+    }
+
+    private boolean validarPassword(String pass) {
+        return Pattern.matches("^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[!@#$%&*()\\-+=]).{8,20}$", pass);
+    }
+
+    private boolean mayorDe16Anios(LocalDate fechaNacimiento) {
+        return Period.between(fechaNacimiento, LocalDate.now()).getYears() >= 16;
     }
 
     @FXML
     private void handleSubirFotoRegistro(ActionEvent event) {
-        // Subir una foto al Imagen View y guardarla en BD
+        // pendiente
     }
 
     @FXML
     private void handleEliminarFotoRegistro(ActionEvent event) {
-        // Eliminar la foto del ImagenView y de la BD.
+        imagenPerfilRegistro.setImage(null);
     }
-    
 }

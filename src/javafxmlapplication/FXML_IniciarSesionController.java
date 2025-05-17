@@ -1,12 +1,8 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package javafxmlapplication;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.regex.Pattern;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -18,20 +14,14 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 
-/**
- *
- * @author jsoler
- */
 public class FXML_IniciarSesionController implements Initializable {
-    
-    // Referencia a la instancia principal de aplicación
+
     private JavaFXMLApplication mainApp;
-    
-    // Método para establecer la referencia a la clase principal
+
     public void setMainApp(JavaFXMLApplication mainApp) {
         this.mainApp = mainApp;
     }
-    
+
     @FXML
     private ImageView mostrarContraseña;
     @FXML
@@ -41,34 +31,25 @@ public class FXML_IniciarSesionController implements Initializable {
     @FXML
     private Button iniciarSesionButton;
     @FXML
-    private TextField usernameMenuInicial;      
+    private TextField usernameMenuInicial;
     @FXML
-    private PasswordField passwordMenuInicial;  
+    private PasswordField passwordMenuInicial;
+    @FXML
+    private TextField passwordVisible;
     @FXML
     private Label errorLogin;
-    
-    //=========================================================
-    // you must initialize here all related with the object 
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
-        // Evita que el focus se centre en el TextField de nickname, el cual
-        // impide que se vea el cambo predeterminado "Usuario"
         javafx.application.Platform.runLater(() -> rootPane.requestFocus());
-        // Para evitar que el botón se quede pulsado
-        registrarseButton.setOnMouseReleased(event -> {
-            rootPane.requestFocus();  // quitar focus del botón al soltar
-        });
-        iniciarSesionButton.setOnMouseReleased(event -> {
-            rootPane.requestFocus();  // quitar focus del botón al soltar
-        });
-        
+        registrarseButton.setOnMouseReleased(event -> rootPane.requestFocus());
+        iniciarSesionButton.setOnMouseReleased(event -> rootPane.requestFocus());
         rootPane.setOnMouseClicked(event -> rootPane.requestFocus());
-    }    
+        errorLogin.setVisible(false);
+    }
 
     @FXML
     private void menuRegistrarse(ActionEvent event) {
-        // Dispara el menú de Registro de mainApp 
         try {
             mainApp.startRegistrarUsuario();
         } catch (Exception e) {
@@ -78,14 +59,52 @@ public class FXML_IniciarSesionController implements Initializable {
 
     @FXML
     private void iniciarSesionButton(ActionEvent event) {
-        // Checkear con la BD que los datos username vs. contraseña son
-        // correctos, en caso contrario mostrar "errorLogin".
-        // If (correcto) desplegar el menu usuario.
+        String nick = usernameMenuInicial.getText();
+        String pass = passwordMenuInicial.isVisible() ? passwordMenuInicial.getText() : passwordVisible.getText();
+
+        if (nick.isEmpty() || pass.isEmpty()) {
+            mostrarError("Debe rellenar todos los campos.");
+            return;
+        }
+
+        UsuarioSimulado u = UsuarioManager.autenticar(nick, pass);
+        if (u != null) {
+            ocultarError();
+            try {
+                mainApp.startMenuUsuario();
+            } catch (Exception e) {
+                mostrarError("Error al cargar el menú.");
+            }
+        } else {
+            mostrarError("Usuario y/o contraseña incorrectos.");
+        }
+    }
+
+    private void mostrarError(String mensaje) {
+        errorLogin.setText(mensaje);
+        errorLogin.setVisible(true);
+    }
+
+    private void ocultarError() {
+        errorLogin.setText("");
+        errorLogin.setVisible(false);
     }
 
     @FXML
     private void handleMostrarContraseña(MouseEvent event) {
-        // Hacer desaparecer la ImageView del ojo y mostrar la contraseña
+        boolean oculto = passwordMenuInicial.isVisible();
+        if (oculto) {
+            passwordVisible.setText(passwordMenuInicial.getText());
+            passwordMenuInicial.setVisible(false);
+            passwordMenuInicial.setManaged(false);
+            passwordVisible.setVisible(true);
+            passwordVisible.setManaged(true);
+        } else {
+            passwordMenuInicial.setText(passwordVisible.getText());
+            passwordVisible.setVisible(false);
+            passwordVisible.setManaged(false);
+            passwordMenuInicial.setVisible(true);
+            passwordMenuInicial.setManaged(true);
+        }
     }
-    
 }
