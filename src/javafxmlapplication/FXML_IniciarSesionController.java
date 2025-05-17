@@ -67,8 +67,8 @@ public class FXML_IniciarSesionController implements Initializable {
             return;
         }
 
-        UsuarioSimulado u = UsuarioManager.autenticar(nick, pass);
-        if (u != null) {
+        boolean valido = DatabaseManager.autenticarUsuario(nick, pass);
+        if (valido) {
             ocultarError();
             try {
                 mainApp.startMenuUsuario();

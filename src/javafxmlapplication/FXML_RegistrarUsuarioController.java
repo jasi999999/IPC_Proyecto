@@ -76,17 +76,17 @@ public class FXML_RegistrarUsuarioController implements Initializable {
         }
 
         if (!validarNickname(nick)) {
-            mostrarError("Nombre de usuario inválido (6-15 caracteres, sin espacios).");
+            mostrarError("Nombre de usuario inválido.");
             return;
         }
 
         if (!validarCorreo(email)) {
-            mostrarError("Correo electrónico inválido.");
+            mostrarError("Correo inválido.");
             return;
         }
 
         if (!validarPassword(pass)) {
-            mostrarError("Contraseña inválida. 8-20 caracteres,\nmayús., minús., número y símbolo.");
+            mostrarError("Contraseña insegura.");
             return;
         }
 
@@ -95,13 +95,11 @@ public class FXML_RegistrarUsuarioController implements Initializable {
             return;
         }
 
-        if (UsuarioManager.existeNick(nick)) {
-            mostrarError("El nombre de usuario ya está registrado.");
+        boolean exito = DatabaseManager.registrarUsuario(nick, email, pass);
+        if (!exito) {
+            mostrarError("El nombre de usuario ya existe.");
             return;
         }
-
-        UsuarioSimulado nuevo = new UsuarioSimulado(nick, email, pass);
-        UsuarioManager.registrarUsuario(nuevo);
 
         ocultarError();
         try {
