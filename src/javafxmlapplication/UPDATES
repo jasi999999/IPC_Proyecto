@@ -8,5 +8,10 @@ Faltan:
                 Cerrar sesión)
 - Menú Problema (Enunciado aleatorio, respuestas, selección, comprobar, continuar,
                 vuelta al Menú Usuario, Mesa Trabajo)
-- Mesa Trabajo  (carta náutica + herramientas)
+- Mesa Trabajo  (carta náutica + herramientas, ¿en un Stage nuevo?)
 - Menú Estadísticas
+
+- Permitir que el suuario introduzca - o _ en el username
+- Modificar los errores de registro para que se vea QUE error hacen
+- ¿Añadir listeners al registro? (si sobra tiempo para hacerlo bonito, rollo como
+    en la práctica)
