@@ -3,9 +3,6 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.PasswordField?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
@@ -15,19 +12,17 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.StackPane?>
-<?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane fx:id="rootPane" style="-fx-background-color: #5f84A2;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javafxmlapplication.FXML_MenuUsuarioController">
+<BorderPane fx:id="rootPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" style="-fx-background-color: #5f84A2;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javafxmlapplication.FXML_MenuUsuarioController">
    <center>
-      <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="260.0" minWidth="360.0" style="-fx-background-color: #5f84A2; -fx-border-color: #5f84A2;" BorderPane.alignment="CENTER">
+      <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="400.0" minWidth="360.0" prefWidth="362.0" style="-fx-background-color: #5f84A2; -fx-border-color: #5f84A2;" BorderPane.alignment="CENTER">
          <children>
             <StackPane>
                <children>
-                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#91aec4" height="260.0" stroke="#91aec4" strokeType="INSIDE" width="360.0" />
                   <HBox>
                      <children>
-                        <GridPane prefHeight="250.0" prefWidth="350.0" style="-fx-background-color: white;">
+                        <GridPane prefHeight="390.0" prefWidth="350.0" style="-fx-background-color: white;">
                           <columnConstraints>
                             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -42,77 +37,35 @@
                            <children>
                               <HBox prefHeight="100.0" prefWidth="200.0" GridPane.columnSpan="2">
                                  <children>
-                                    <Label alignment="CENTER" prefHeight="50.0" prefWidth="350.0" text="Iniciar sesión" textFill="#8fadc2">
+                                    <Label prefHeight="19.0" prefWidth="306.0" text="¡Bienvenido, [nombre]!">
+                                       <HBox.margin>
+                                          <Insets left="5.0" top="10.0" />
+                                       </HBox.margin>
                                        <font>
-                                          <Font name="Times New Roman Bold" size="18.0" />
+                                          <Font name="System Bold" size="13.0" />
                                        </font>
                                     </Label>
-                                 </children>
-                              </HBox>
+                                 </children></HBox>
                               <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="10.0" GridPane.columnSpan="2" GridPane.rowIndex="1">
-                                 <children>
-                                    <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
-                                       <image>
-                                          <Image url="@../icons/logo_usuario.jpg" />
-                                       </image>
-                                    </ImageView>
-                                    <TextField fx:id="usernameMenuInicial" prefHeight="30.0" prefWidth="220.0" promptText="Usuario" />
-                                 </children>
                                  <GridPane.margin>
                                     <Insets left="30.0" />
                                  </GridPane.margin>
                               </HBox>
-                              <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="10.0" GridPane.columnSpan="2" GridPane.rowIndex="2">
-                                 <children>
-                                    <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
-                                       <image>
-                                          <Image url="@../icons/logo_passwd.jpg" />
-                                       </image>
-                                       <HBox.margin>
-                                          <Insets left="5.0" right="5.0" />
-                                       </HBox.margin>
-                                    </ImageView>
-                                    <PasswordField fx:id="passwordMenuInicial" prefHeight="30.0" prefWidth="220.0" promptText="Contraseña">
-                                       <HBox.margin>
-                                          <Insets />
-                                       </HBox.margin></PasswordField>
-                                 </children>
+                              <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="90.0" GridPane.columnSpan="2" GridPane.rowIndex="2">
                                  <GridPane.margin>
                                     <Insets left="30.0" />
                                  </GridPane.margin>
+                                 <children>
+                                    <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="100.0" style="-fx-background-color: #5f84A2;" text="Modo examen" textFill="WHITE" />
+                                    <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="100.0" style="-fx-background-color: #5f84A2;" text="Elegir problema" textFill="WHITE" />
+                                 </children>
                               </HBox>
                               <HBox alignment="CENTER_RIGHT" spacing="10.0" GridPane.columnSpan="2" GridPane.rowIndex="4">
-                                 <children>
-                                    <Button fx:id="registrarseButton" alignment="CENTER" contentDisplay="CENTER" defaultButton="true" mnemonicParsing="false" onAction="#menuRegistrarse" prefHeight="35.0" prefWidth="120.0" style="-fx-background-color: #5f84A2;" text="Registrarse" textFill="WHITE">
-                                       <font>
-                                          <Font name="Times New Roman Bold" size="15.0" />
-                                       </font>
-                                       <effect>
-                                          <DropShadow blurType="ONE_PASS_BOX" />
-                                       </effect>
-                                    </Button>
-                                    <Button fx:id="iniciarSesionButton" alignment="CENTER" contentDisplay="CENTER" defaultButton="true" mnemonicParsing="false" onAction="#iniciarSesionButton" prefHeight="35.0" prefWidth="120.0" style="-fx-background-color: #5f84A2;" styleClass="shad" text="Iniciar sesión" textFill="WHITE">
-                                       <font>
-                                          <Font name="Times New Roman Bold" size="15.0" />
-                                       </font>
-                                       <effect>
-                                          <DropShadow blurType="ONE_PASS_BOX" />
-                                       </effect>
-                                    </Button>
-                                 </children>
                                  <GridPane.margin>
                                     <Insets bottom="5.0" right="10.0" />
                                  </GridPane.margin>
                               </HBox>
-                              <HBox prefHeight="100.0" prefWidth="200.0" GridPane.columnSpan="2" GridPane.rowIndex="3">
-                                 <children>
-                                    <Label fx:id="errorLogin" alignment="CENTER" contentDisplay="CENTER" prefHeight="50.0" prefWidth="350.0" text="Usuario y/o contraseña incorrectos" textFill="RED">
-                                       <padding>
-                                          <Insets bottom="10.0" />
-                                       </padding>
-                                    </Label>
-                                 </children>
-                              </HBox>
+                              <HBox prefHeight="100.0" prefWidth="200.0" GridPane.columnSpan="2" GridPane.rowIndex="3" />
                            </children>
                         </GridPane>
                      </children>
@@ -125,16 +78,60 @@
          </children>
       </Pane>
    </center>
-   <top>
-      <Pane minHeight="0.0" prefHeight="130.0" prefWidth="200.0" style="-fx-background-color: #5f84A2;" BorderPane.alignment="CENTER" />
-   </top>
-   <left>
-      <Pane minWidth="0.0" prefWidth="120.0" style="-fx-background-color: #5f84A2;" BorderPane.alignment="CENTER" />
-   </left>
    <right>
-      <Pane prefWidth="120.0" style="-fx-background-color: #5f84A2;" BorderPane.alignment="CENTER" />
+      <Pane prefWidth="120.0" style="-fx-background-color: #5f84A2;" BorderPane.alignment="CENTER">
+         <children>
+            <GridPane alignment="CENTER" prefHeight="400.0" prefWidth="120.0">
+              <columnConstraints>
+                <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+              </columnConstraints>
+              <rowConstraints>
+                  <RowConstraints maxHeight="144.60000610351562" minHeight="10.0" prefHeight="100.0" valignment="CENTER" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="227.0" minHeight="10.0" prefHeight="100.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="115.40000305175784" minHeight="1.5999877929687614" prefHeight="100.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="99.19996337890626" minHeight="0.0" prefHeight="100.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="10.0" GridPane.rowIndex="1">
+                     <children>
+                        <ImageView fitHeight="50.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../icons/editar.png" />
+                           </image>
+                        </ImageView>
+                        <Button mnemonicParsing="false" style="-fx-background-color: #5f84A2;" text="Editar perfil" textFill="WHITE" />
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="10.0" GridPane.rowIndex="2">
+                     <children>
+                        <ImageView fitHeight="50.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../icons/estadistica.png" />
+                           </image>
+                        </ImageView>
+                        <Button mnemonicParsing="false" style="-fx-background-color: #5f84A2;" text="Estadísticas" textFill="WHITE" />
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="5.0" GridPane.rowIndex="3">
+                     <children>
+                        <ImageView fitHeight="50.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../icons/cerrar%20sesión.png" />
+                           </image>
+                        </ImageView>
+                        <Button mnemonicParsing="false" style="-fx-background-color: #5f84A2;" text="Cerrar sesión" textFill="WHITE" />
+                     </children>
+                  </HBox>
+                  <ImageView fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../icons/avatar_usuario.jpg" />
+                     </image>
+                     <GridPane.margin>
+                        <Insets top="10.0" />
+                     </GridPane.margin>
+                  </ImageView>
+               </children>
+            </GridPane>
+         </children></Pane>
    </right>
-   <bottom>
-      <Pane minHeight="0.0" prefHeight="130.0" style="-fx-background-color: #5f84A2;" BorderPane.alignment="CENTER" />
-   </bottom>
 </BorderPane>
