@@ -25,16 +25,6 @@ public class FXML_MenuUsuarioController implements Initializable {
 
     @FXML
     private BorderPane rootPane;
-    @FXML
-    private TextField usernameMenuInicial;
-    @FXML
-    private PasswordField passwordMenuInicial;
-    @FXML
-    private Button registrarseButton;
-    @FXML
-    private Button iniciarSesionButton;
-    @FXML
-    private Label errorLogin;
 
     /**
      * Initializes the controller class.
@@ -44,12 +34,5 @@ public class FXML_MenuUsuarioController implements Initializable {
         // TODO
     }    
 
-    @FXML
-    private void menuRegistrarse(ActionEvent event) {
-    }
-
-    @FXML
-    private void iniciarSesionButton(ActionEvent event) {
-    }
     
 }
