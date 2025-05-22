@@ -18,9 +18,9 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane fx:id="rootPane" style="-fx-background-color: #5f84A2;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javafxmlapplication.FXML_IniciarSesionController">
+<BorderPane fx:id="rootPane" minHeight="520.0" minWidth="600.0" prefHeight="520.0" prefWidth="600.0" style="-fx-background-color: #5f84A2;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javafxmlapplication.FXML_IniciarSesionController">
    <center>
-      <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="260.0" minWidth="360.0" style="-fx-background-color: #5f84A2; -fx-border-color: #5f84A2;" BorderPane.alignment="CENTER">
+      <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="260.0" minWidth="360.0" prefHeight="260.0" prefWidth="360.0" style="-fx-background-color: #5f84A2; -fx-border-color: #5f84A2;" BorderPane.alignment="CENTER">
          <children>
             <StackPane>
                <children>
@@ -78,7 +78,7 @@
                                     </HBox.margin>
                                     <children>
                                        <PasswordField fx:id="passwordMenuInicial" prefHeight="30.0" prefWidth="220.0" promptText="Contraseña" />
-                                       <TextField fx:id="passwordVisible" prefHeight="30.0" prefWidth="220.0" promptText="Contraseña" visible="false" managed="false" />
+                                       <TextField fx:id="passwordVisible" managed="false" prefHeight="30.0" prefWidth="220.0" promptText="Contraseña" visible="false" />
                                        <HBox alignment="CENTER" maxHeight="25.0" maxWidth="25.0" minHeight="25.0" minWidth="25.0" prefHeight="25.0" prefWidth="25.0">
                                           <children>
                                              <ImageView fx:id="mostrarContraseña" fitHeight="25.0" fitWidth="25.0" onMouseClicked="#handleMostrarContraseña" opacity="0.33" pickOnBounds="true" preserveRatio="true">
@@ -146,10 +146,10 @@
       <Pane minHeight="130.0" prefHeight="130.0" style="-fx-background-color: #5f84A2;" BorderPane.alignment="CENTER" />
    </top>
    <left>
-      <Pane minWidth="0.0" prefWidth="120.0" style="-fx-background-color: #5f84A2;" BorderPane.alignment="CENTER" />
+      <Pane minWidth="120.0" prefWidth="120.0" style="-fx-background-color: #5f84A2;" BorderPane.alignment="CENTER" />
    </left>
    <right>
-      <Pane prefWidth="120.0" style="-fx-background-color: #5f84A2;" BorderPane.alignment="CENTER" />
+      <Pane minWidth="120.0" prefWidth="120.0" style="-fx-background-color: #5f84A2;" BorderPane.alignment="CENTER" />
    </right>
    <bottom>
       <Pane minHeight="130.0" prefHeight="130.0" style="-fx-background-color: #5f84A2;" BorderPane.alignment="CENTER" />
