@@ -2,10 +2,10 @@ Interfaces listas para ir emplementando el código:
 - Iniciar Sesión
 - Registrar Usuario (Añadir los listeners de la práctica 4")
 - Modificar Perfil
+- Menú Usuario
+
 
 Faltan:
-- Menú Usuario  (Problemas, Estadísticas, Foto perfil, Modificar Perfil,
-                Cerrar sesión)
 - Menú Problema (Enunciado aleatorio, respuestas, selección, comprobar, continuar,
                 vuelta al Menú Usuario, Mesa Trabajo)
 - Mesa Trabajo  (carta náutica + herramientas)
