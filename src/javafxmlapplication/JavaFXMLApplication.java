@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package javafxmlapplication;
 
 import javafx.application.Application;
@@ -11,35 +6,81 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-
 public class JavaFXMLApplication extends Application {
+
+    private Stage ventanaPrincipal;
+    // Medidas de VENTANA m´nimas y predeterminadas:
+    private double anchoVentana = 620;
+    private double altoVentana = 560;
+    // Medidas de los PANE: 600, 520.
+    // Los 20 extra de ancho: ventana
+    // Los 40 extra de alto: menú + ventana
     
     @Override
     public void start(Stage stage) throws Exception {
-        //======================================================================
-        // 1- creación del grafo de escena a partir del fichero FXML
-        FXMLLoader loader= new  FXMLLoader(getClass().getResource("FXMLDocument.fxml"));
-        Parent root = loader.load();
-        //======================================================================
-        // 2- creación de la escena con el nodo raiz del grafo de escena
-        Scene scene = new Scene(root);
-        //======================================================================
-        // 3- asiganación de la escena al Stage que recibe el metodo 
-        //     - configuracion del stage
-        //     - se muestra el stage de manera no modal mediante el metodo show()
-        stage.setScene(scene);
-        stage.setTitle("start PROJECT - IPC:");
-        stage.show();
+        this.ventanaPrincipal = stage;
+        
+        // Inicializar con valores mínimos
+        ventanaPrincipal.setMinWidth(anchoVentana);
+        ventanaPrincipal.setMinHeight(altoVentana);
+        
+        // Listeners para guardar tamaño cuando cambia la ventana
+        ventanaPrincipal.widthProperty().addListener((obs, viejoVal, nuevoVal) -> {
+            if (nuevoVal.doubleValue() >= ventanaPrincipal.getMinWidth()) {
+                anchoVentana = nuevoVal.doubleValue();
+            }
+        });
+        ventanaPrincipal.heightProperty().addListener((obs, viejoVal, nuevoVal) -> {
+            if (nuevoVal.doubleValue() >= ventanaPrincipal.getMinHeight()) {
+                altoVentana = nuevoVal.doubleValue();
+            }
+        });
+        
+        startIniciarSesion();
     }
 
-    /**
-     * @param args the command line arguments
-     */
+    public void startIniciarSesion() throws Exception {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("FXML_IniciarSesion.fxml"));
+        Parent root = loader.load();
+        FXML_IniciarSesionController controller = loader.getController();
+        controller.setMainApp(this);
+        ventanaPrincipal.setScene(new Scene(root));
+        ventanaPrincipal.setTitle("Iniciar sesión");
+        ventanaPrincipal.setMinWidth(620);
+        ventanaPrincipal.setMinHeight(560);
+        ventanaPrincipal.setWidth(Math.max(anchoVentana, 620));
+        ventanaPrincipal.setHeight(Math.max(altoVentana, 560));
+        ventanaPrincipal.show();
+    }
+
+    public void startRegistrarUsuario() throws Exception {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("FXML_RegistrarUsuario.fxml"));
+        Parent root = loader.load();
+        FXML_RegistrarUsuarioController controller = loader.getController();
+        controller.setMainApp(this);
+        ventanaPrincipal.setScene(new Scene(root));
+        ventanaPrincipal.setTitle("Registrar usuario");
+        ventanaPrincipal.setMinWidth(620);
+        ventanaPrincipal.setMinHeight(560);
+        ventanaPrincipal.setWidth(Math.max(anchoVentana, 620));
+        ventanaPrincipal.setHeight(Math.max(altoVentana, 560));
+        ventanaPrincipal.show();
+    }
+
+    public void startMenuUsuario() throws Exception {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("FXML_MenuUsuario.fxml"));
+        Parent root = loader.load();
+        FXML_MenuUsuarioController controller = loader.getController();
+        ventanaPrincipal.setScene(new Scene(root));
+        ventanaPrincipal.setTitle("Menú Usuario");
+        ventanaPrincipal.setMinWidth(620);
+        ventanaPrincipal.setMinHeight(560);
+        ventanaPrincipal.setWidth(Math.max(anchoVentana, 620));
+        ventanaPrincipal.setHeight(Math.max(altoVentana, 560));
+        ventanaPrincipal.show();
+    }
+
     public static void main(String[] args) {
         launch(args);
-        
     }
-
-
-    
 }
