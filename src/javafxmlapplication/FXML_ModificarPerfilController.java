@@ -51,6 +51,7 @@ public class FXML_ModificarPerfilController implements Initializable {
     private ImageView imagenPerfil;
     
     private JavaFXMLApplication mainApp;
+    private Usuario usuario;
     @FXML
     private Button continuarButton;
     @FXML
@@ -64,6 +65,21 @@ public class FXML_ModificarPerfilController implements Initializable {
         this.mainApp = mainApp;
     }
     
+    public void setUsuario (Usuario usuario) {
+        this.usuario = usuario;
+        cargarDatosUsuario();
+    }
+    
+    private void cargarDatosUsuario() {
+        if (usuario != null) {
+            usernameRegistro.setText(usuario.getNick());
+            correoElectronicoPerfil.setText(usuario.getEmail());
+            passwordFieldPerfil.setText(usuario.getPassword());
+            fechaNacimientoPerfil.setValue(usuario.getFechaNacimiento());
+            // Aquí podrías cargar la imagen si tienes una ruta o blob guardado
+        }
+    }
+    
     /**
      * Initializes the controller class.
      */
@@ -72,6 +88,11 @@ public class FXML_ModificarPerfilController implements Initializable {
         // TODO
         javafx.application.Platform.runLater(() -> rootPane.requestFocus());
         rootPane.setOnMouseClicked(event -> rootPane.requestFocus());
+        // Para el campo de username
+        usernameRegistro.setEditable(false);      // No permite modificar el texto
+        usernameRegistro.setFocusTraversable(false); // Evita que reciba foco al hacer clic
+        usernameRegistro.setMouseTransparent(true);  // Ignora eventos de mouse (clic)
+
         mensajeErrorRegistro.setVisible(false);
     }
 
@@ -85,6 +106,7 @@ public class FXML_ModificarPerfilController implements Initializable {
             mostrarError("Todos los campos son obligatorios.");
             return;
         }
+        
         String errorEmail = validarEmail(email);
         if (errorEmail != null) {
             mostrarError("Correo inválido: " + errorEmail);
@@ -122,7 +144,7 @@ public class FXML_ModificarPerfilController implements Initializable {
     @FXML
     private void volverMenuUsuario(ActionEvent event) {
         try {
-            mainApp.startMenuUsuario(); // o como sea que se navega
+            mainApp.startMenuUsuario(usuario); // o como sea que se navega
         } catch (Exception e) {
             mostrarError("No se pudo volver al menú del usuario.");
         }

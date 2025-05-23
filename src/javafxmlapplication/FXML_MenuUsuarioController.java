@@ -25,9 +25,15 @@ import javafx.scene.layout.BorderPane;
 public class FXML_MenuUsuarioController implements Initializable {
 
     private JavaFXMLApplication mainApp;
-
+    private Usuario usuario;
+    
     public void setMainApp(JavaFXMLApplication mainApp) {
         this.mainApp = mainApp;
+    }
+    
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
+        bienvenidaName.setText(usuario.getNick() + "!");
     }
     
     @FXML
@@ -44,6 +50,8 @@ public class FXML_MenuUsuarioController implements Initializable {
     private Button cerrarSesionB;
     @FXML
     private ImageView imagenUser;
+    @FXML
+    private Label bienvenidaName;
 
     /**
      * Initializes the controller class.
@@ -65,7 +73,7 @@ public class FXML_MenuUsuarioController implements Initializable {
     @FXML
     private void handleModificarPerfil(ActionEvent event) {
         try {
-            mainApp.startModificarPerfil();
+            mainApp.startModificarPerfil(usuario);
         } catch (Exception e) {
             e.printStackTrace();
         }

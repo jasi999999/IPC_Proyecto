@@ -10,7 +10,6 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
-import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
@@ -21,7 +20,7 @@ import javafx.scene.layout.BorderPane;
  *
  * @author Pablo
  */
-public class FXML_MenuProblemaController implements Initializable {
+public class FXML_MenuExamenController implements Initializable {
 
     @FXML
     private BorderPane rootPane;

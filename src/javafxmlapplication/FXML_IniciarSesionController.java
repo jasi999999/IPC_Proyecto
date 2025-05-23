@@ -71,7 +71,10 @@ public class FXML_IniciarSesionController implements Initializable {
         if (valido) {
             ocultarError();
             try {
-                mainApp.startMenuUsuario();
+                Usuario usuario = DatabaseManager.obtenerUsuario(valido, nick, pass);
+                if (usuario != null) {
+                    mainApp.startMenuUsuario(usuario);
+                }
             } catch (Exception e) {
                 mostrarError("Error al cargar el menú.");
             }
