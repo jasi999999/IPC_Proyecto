@@ -7,6 +7,9 @@ public class DatabaseManager {
 
     private static final String DB_URL = "jdbc:sqlite:usuarios.db";
 
+    private static String usuarioLogueadoNick = null;
+    private static String usuarioLogueadoPassword = null;
+
     static {
         crearTablaSiNoExiste();
     }
@@ -84,10 +87,39 @@ public class DatabaseManager {
             pstmt.setString(1, nick);
             pstmt.setString(2, password);
             ResultSet rs = pstmt.executeQuery();
-            return rs.next();
+
+            if (rs.next()) {
+                usuarioLogueadoNick = nick;
+                usuarioLogueadoPassword = password;
+                return true;
+            }
         } catch (SQLException e) {
             System.err.println("Error autenticando: " + e.getMessage());
-            return false;
         }
+        return false;
+    }
+    
+    public static Usuario obtenerUsuario(boolean valido, String nick, String password) {
+        if (!valido || usuarioLogueadoNick == null || !usuarioLogueadoNick.equals(nick) || !usuarioLogueadoPassword.equals(password)) {
+            return null;
+        }
+
+        String sql = "SELECT * FROM usuarios WHERE nick = ? AND password = ?";
+        try (Connection conn = DriverManager.getConnection(DB_URL);
+            PreparedStatement pstmt = conn.prepareStatement(sql)) {
+            pstmt.setString(1, nick);
+            pstmt.setString(2, usuarioLogueadoPassword);
+            ResultSet rs = pstmt.executeQuery();
+
+            if (rs.next()) {
+                String email = rs.getString("email");
+                String pass = rs.getString("password");
+                LocalDate fechaNacimiento = LocalDate.parse(rs.getString("fecha_nacimiento"));
+                return new Usuario(nick, email, pass, fechaNacimiento);
+            }
+        } catch (SQLException e) {
+            System.err.println("Error obteniendo usuario: " + e.getMessage());
+        }
+        return null;
     }
 }

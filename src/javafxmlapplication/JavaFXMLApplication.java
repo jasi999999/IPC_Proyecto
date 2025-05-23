@@ -42,8 +42,10 @@ public class JavaFXMLApplication extends Application {
     public void startIniciarSesion() throws Exception {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("FXML_IniciarSesion.fxml"));
         Parent root = loader.load();
+        
         FXML_IniciarSesionController controller = loader.getController();
         controller.setMainApp(this);
+        
         ventanaPrincipal.setScene(new Scene(root));
         ventanaPrincipal.setTitle("Iniciar sesión");
         ventanaPrincipal.setMinWidth(620);
@@ -56,8 +58,10 @@ public class JavaFXMLApplication extends Application {
     public void startRegistrarUsuario() throws Exception {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("FXML_RegistrarUsuario.fxml"));
         Parent root = loader.load();
+        
         FXML_RegistrarUsuarioController controller = loader.getController();
         controller.setMainApp(this);
+        
         ventanaPrincipal.setScene(new Scene(root));
         ventanaPrincipal.setTitle("Registrar usuario");
         ventanaPrincipal.setMinWidth(620);
@@ -67,12 +71,49 @@ public class JavaFXMLApplication extends Application {
         ventanaPrincipal.show();
     }
 
-    public void startMenuUsuario() throws Exception {
+    public void startMenuUsuario(Usuario usuario) throws Exception {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("FXML_MenuUsuario.fxml"));
         Parent root = loader.load();
+        
         FXML_MenuUsuarioController controller = loader.getController();
+        controller.setMainApp(this);
+        controller.setUsuario(usuario);
+        
         ventanaPrincipal.setScene(new Scene(root));
         ventanaPrincipal.setTitle("Menú Usuario");
+        ventanaPrincipal.setMinWidth(620);
+        ventanaPrincipal.setMinHeight(560);
+        ventanaPrincipal.setWidth(Math.max(anchoVentana, 620));
+        ventanaPrincipal.setHeight(Math.max(altoVentana, 560));
+        ventanaPrincipal.show();
+    }
+    
+    public void startMenuEstadisticas() throws Exception {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("FXML_MenuEstadisticas.fxml"));
+        Parent root = loader.load();
+        
+        FXML_MenuEstadisticasController controller = loader.getController();
+        
+        // controller.setMainApp(this);
+        ventanaPrincipal.setScene(new Scene(root));
+        ventanaPrincipal.setTitle("Menú Estadísticas");
+        ventanaPrincipal.setMinWidth(620);
+        ventanaPrincipal.setMinHeight(560);
+        ventanaPrincipal.setWidth(Math.max(anchoVentana, 620));
+        ventanaPrincipal.setHeight(Math.max(altoVentana, 560));
+        ventanaPrincipal.show();
+    }
+    
+    public void startModificarPerfil(Usuario usuario) throws Exception {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("FXML_ModificarPerfil.fxml"));
+        Parent root = loader.load();
+        
+        FXML_ModificarPerfilController controller = loader.getController();
+        controller.setMainApp(this);
+        controller.setUsuario(usuario);
+        
+        ventanaPrincipal.setScene(new Scene(root));
+        ventanaPrincipal.setTitle("Modificar Perfil");
         ventanaPrincipal.setMinWidth(620);
         ventanaPrincipal.setMinHeight(560);
         ventanaPrincipal.setWidth(Math.max(anchoVentana, 620));

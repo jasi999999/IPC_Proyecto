@@ -14,6 +14,7 @@ import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 
 /**
@@ -23,18 +24,34 @@ import javafx.scene.layout.BorderPane;
  */
 public class FXML_MenuUsuarioController implements Initializable {
 
+    private JavaFXMLApplication mainApp;
+    private Usuario usuario;
+    
+    public void setMainApp(JavaFXMLApplication mainApp) {
+        this.mainApp = mainApp;
+    }
+    
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
+        bienvenidaName.setText(usuario.getNick() + "!");
+    }
+    
     @FXML
     private BorderPane rootPane;
     @FXML
-    private TextField usernameMenuInicial;
+    private Button modoExamenB;
     @FXML
-    private PasswordField passwordMenuInicial;
+    private Button elegirProblemaB;
     @FXML
-    private Button registrarseButton;
+    private Button modificarPerfilB;
     @FXML
-    private Button iniciarSesionButton;
+    private Button estadisticasB;
     @FXML
-    private Label errorLogin;
+    private Button cerrarSesionB;
+    @FXML
+    private ImageView imagenUser;
+    @FXML
+    private Label bienvenidaName;
 
     /**
      * Initializes the controller class.
@@ -42,14 +59,43 @@ public class FXML_MenuUsuarioController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+        javafx.application.Platform.runLater(() -> rootPane.requestFocus());
     }    
 
     @FXML
-    private void menuRegistrarse(ActionEvent event) {
+    private void handleModoExamen(ActionEvent event) {
     }
 
     @FXML
-    private void iniciarSesionButton(ActionEvent event) {
+    private void handleElegirProblema(ActionEvent event) {
     }
+
+    @FXML
+    private void handleModificarPerfil(ActionEvent event) {
+        try {
+            mainApp.startModificarPerfil(usuario);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
+    private void handleEstadisticas(ActionEvent event) {
+        try {
+            mainApp.startMenuEstadisticas();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
+    private void handleCerrarSesion(ActionEvent event) {
+        try {
+            mainApp.startIniciarSesion();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
     
 }

@@ -63,7 +63,7 @@
                                                 <Font name="Times New Roman" size="14.0" />
                                              </font>
                                           </Text>
-                                          <TextField fx:id="usernameRegistro" editable="false" prefHeight="30.0" prefWidth="220.0" promptText="jpgarcia" />
+                                          <TextField fx:id="usernameRegistro" editable="false" focusTraversable="false" prefHeight="30.0" prefWidth="220.0" />
                                           <Text fill="GREY" strokeType="OUTSIDE" strokeWidth="0.0" text="*No puede contener espacios">
                                              <font>
                                                 <Font size="11.0" />
