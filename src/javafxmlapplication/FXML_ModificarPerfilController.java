@@ -49,9 +49,6 @@ public class FXML_ModificarPerfilController implements Initializable {
     private DatePicker fechaNacimientoPerfil;
     @FXML
     private ImageView imagenPerfil;
-    
-    private JavaFXMLApplication mainApp;
-    private Usuario usuario;
     @FXML
     private Button continuarButton;
     @FXML
@@ -60,11 +57,14 @@ public class FXML_ModificarPerfilController implements Initializable {
     private Button subirFotoPerfil;
     @FXML
     private Button eliminarFotoPerfil;
+    
+    private JavaFXMLApplication mainApp;
+    private Usuario usuario;
 
     public void setMainApp(JavaFXMLApplication mainApp) {
         this.mainApp = mainApp;
     }
-    
+
     public void setUsuario (Usuario usuario) {
         this.usuario = usuario;
         cargarDatosUsuario();
@@ -79,7 +79,7 @@ public class FXML_ModificarPerfilController implements Initializable {
             // Aquí podrías cargar la imagen si tienes una ruta o blob guardado
         }
     }
-    
+
     /**
      * Initializes the controller class.
      */
@@ -88,6 +88,7 @@ public class FXML_ModificarPerfilController implements Initializable {
         // TODO
         javafx.application.Platform.runLater(() -> rootPane.requestFocus());
         rootPane.setOnMouseClicked(event -> rootPane.requestFocus());
+
         // Para el campo de username
         usernameRegistro.setEditable(false);      // No permite modificar el texto
         usernameRegistro.setFocusTraversable(false); // Evita que reciba foco al hacer clic
@@ -106,7 +107,7 @@ public class FXML_ModificarPerfilController implements Initializable {
             mostrarError("Todos los campos son obligatorios.");
             return;
         }
-        
+
         String errorEmail = validarEmail(email);
         if (errorEmail != null) {
             mostrarError("Correo inválido: " + errorEmail);
@@ -134,7 +135,6 @@ public class FXML_ModificarPerfilController implements Initializable {
         ocultarError();
         volverMenuUsuario(event);
     }
-
 
     @FXML
     private void handleEliminarFotoRegistro(ActionEvent event) {
@@ -192,5 +192,6 @@ public class FXML_ModificarPerfilController implements Initializable {
 
     @FXML
     private void handleSubirFotoRegistro(ActionEvent event) {
+        // Pendiente
     }
 }

@@ -6,13 +6,14 @@ import java.time.LocalDate;
 public class DatabaseManager {
 
     private static final String DB_URL = "jdbc:sqlite:usuarios.db";
+
     private static String usuarioLogueadoNick = null;
     private static String usuarioLogueadoPassword = null;
 
     static {
         crearTablaSiNoExiste();
     }
-    
+
     public static void crearTablaSiNoExiste() {
         String sql = "CREATE TABLE IF NOT EXISTS usuarios (" +
                      "nick TEXT PRIMARY KEY, " +
@@ -86,6 +87,7 @@ public class DatabaseManager {
             pstmt.setString(1, nick);
             pstmt.setString(2, password);
             ResultSet rs = pstmt.executeQuery();
+
             if (rs.next()) {
                 usuarioLogueadoNick = nick;
                 usuarioLogueadoPassword = password;
