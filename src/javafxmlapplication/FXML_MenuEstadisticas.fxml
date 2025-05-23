@@ -9,13 +9,13 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Circle?>
 <?import javafx.scene.text.Font?>
 
-
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="520.0" minWidth="600.0" prefHeight="520.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javafxmlapplication.FXML_MenuEstadisticasController">
    <top>
       <AnchorPane maxHeight="30.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #5f84A2;" BorderPane.alignment="CENTER">
          <children>
@@ -36,43 +36,46 @@
          </children>
       </AnchorPane>
    </top>
-   <left>
-      <Pane prefHeight="370.0" prefWidth="0.0" BorderPane.alignment="CENTER" />
-   </left>
    <center>
-      <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+      <AnchorPane minHeight="500.0" minWidth="580.0" prefHeight="500.0" prefWidth="580.0" BorderPane.alignment="CENTER">
          <children>
-            <ProgressBar layoutX="102.0" layoutY="67.0" prefHeight="166.0" prefWidth="164.0" progress="0.0" AnchorPane.leftAnchor="102.0" AnchorPane.topAnchor="67.0" />
-            <Circle fill="DODGERBLUE" layoutX="184.0" layoutY="149.0" radius="116.0" stroke="BLACK" strokeType="INSIDE" style="-fx-fill: null; -fx-stroke: #5f84A2; -fx-stroke-width: 35;" AnchorPane.leftAnchor="68.0" AnchorPane.topAnchor="33.0" />
-            <Label layoutX="102.0" layoutY="265.0" prefHeight="59.0" prefWidth="243.0" text="0% de ejercicios completados" AnchorPane.leftAnchor="102.0">
-               <font>
-                  <Font size="13.0" />
-               </font>
-            </Label>
+            <HBox alignment="CENTER" layoutX="102.0" layoutY="67.33333587646484" AnchorPane.leftAnchor="102.0" AnchorPane.topAnchor="67.0">
+               <children>
+                  <VBox alignment="CENTER">
+                     <children>
+                        <StackPane>
+                           <children>
+                              <ProgressBar prefHeight="166.0" prefWidth="164.0" progress="0.0" />
+                              <Circle fill="DODGERBLUE" radius="116.0" stroke="BLACK" strokeType="INSIDE" style="-fx-fill: null; -fx-stroke: #5f84A2; -fx-stroke-width: 35;" />
+                           </children>
+                        </StackPane>
+                        <Label prefHeight="59.0" prefWidth="243.0" text="0% de ejercicios completados">
+                           <font>
+                              <Font size="13.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </VBox>
+                  <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="5.0" style="-fx-border-color: #5f84A2;">
+                     <children>
+                        <Button mnemonicParsing="false" text="Filtrar">
+                           <graphic>
+                              <ImageView fitHeight="50.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../icons/filtrar.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                           <VBox.margin>
+                              <Insets left="110.0" top="5.0" />
+                           </VBox.margin>
+                        </Button>
+                        <ScrollPane hbarPolicy="NEVER" prefHeight="1000.0" prefWidth="0.0" vbarPolicy="ALWAYS" />
+                     </children>
+                  </VBox>
+               </children>
+            </HBox>
          </children>
       </AnchorPane>
    </center>
-   <right>
-      <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
-         <children>
-            <VBox prefHeight="200.0" prefWidth="100.0" spacing="5.0" style="-fx-border-color: #5f84A2;" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
-               <children>
-                  <Button mnemonicParsing="false" text="Filtrar">
-                     <graphic>
-                        <ImageView fitHeight="50.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../icons/filtrar.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                     <VBox.margin>
-                        <Insets left="110.0" top="5.0" />
-                     </VBox.margin>
-                  </Button>
-                  <ScrollPane hbarPolicy="NEVER" prefHeight="1000.0" prefWidth="0.0" vbarPolicy="ALWAYS" />
-               </children>
-            </VBox>
-         </children>
-      </AnchorPane>
-   </right>
 </BorderPane>

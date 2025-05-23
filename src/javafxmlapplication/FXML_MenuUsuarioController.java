@@ -14,6 +14,7 @@ import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 
 /**
@@ -23,8 +24,26 @@ import javafx.scene.layout.BorderPane;
  */
 public class FXML_MenuUsuarioController implements Initializable {
 
+    private JavaFXMLApplication mainApp;
+
+    public void setMainApp(JavaFXMLApplication mainApp) {
+        this.mainApp = mainApp;
+    }
+    
     @FXML
     private BorderPane rootPane;
+    @FXML
+    private Button modoExamenB;
+    @FXML
+    private Button elegirProblemaB;
+    @FXML
+    private Button modificarPerfilB;
+    @FXML
+    private Button estadisticasB;
+    @FXML
+    private Button cerrarSesionB;
+    @FXML
+    private ImageView imagenUser;
 
     /**
      * Initializes the controller class.
@@ -32,7 +51,43 @@ public class FXML_MenuUsuarioController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+        javafx.application.Platform.runLater(() -> rootPane.requestFocus());
     }    
+
+    @FXML
+    private void handleModoExamen(ActionEvent event) {
+    }
+
+    @FXML
+    private void handleElegirProblema(ActionEvent event) {
+    }
+
+    @FXML
+    private void handleModificarPerfil(ActionEvent event) {
+        try {
+            mainApp.startModificarPerfil();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
+    private void handleEstadisticas(ActionEvent event) {
+        try {
+            mainApp.startMenuEstadisticas();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
+    private void handleCerrarSesion(ActionEvent event) {
+        try {
+            mainApp.startIniciarSesion();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
     
 }

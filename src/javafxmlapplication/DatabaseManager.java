@@ -1,6 +1,7 @@
 package javafxmlapplication;
 
 import java.sql.*;
+import java.time.LocalDate;
 
 public class DatabaseManager {
 
@@ -14,7 +15,9 @@ public class DatabaseManager {
         String sql = "CREATE TABLE IF NOT EXISTS usuarios (" +
                      "nick TEXT PRIMARY KEY, " +
                      "email TEXT NOT NULL, " +
-                     "password TEXT NOT NULL)";
+                     "password TEXT NOT NULL," +
+                     "fecha_nacimiento TEXT NOT NULL" +
+                     ")";
         try (Connection conn = DriverManager.getConnection(DB_URL);
              Statement stmt = conn.createStatement()) {
             stmt.execute(sql);
@@ -23,14 +26,16 @@ public class DatabaseManager {
         }
     }
 
-    public static boolean registrarUsuario(String nick, String email, String password) {
+    public static boolean registrarUsuario(String nick, String email, String password, LocalDate birthDate) {
         if (usuarioExiste(nick)) return false;
-        String sql = "INSERT INTO usuarios(nick, email, password) VALUES (?, ?, ?)";
+        
+        String sql = "INSERT INTO usuarios(nick, email, password, fecha_nacimiento) VALUES (?, ?, ?, ?)";
         try (Connection conn = DriverManager.getConnection(DB_URL);
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
             pstmt.setString(1, nick);
             pstmt.setString(2, email);
             pstmt.setString(3, password);
+            pstmt.setString(4, birthDate.toString());
             pstmt.executeUpdate();
             return true;
         } catch (SQLException e) {
@@ -38,11 +43,31 @@ public class DatabaseManager {
             return false;
         }
     }
+    
+    public static boolean modificarPerfil(String nick, String email, String password, LocalDate birthDate) {
+        if (!usuarioExiste(nick)) return false;
+        
+        String sql = "UPDATE usuarios SET email = ?, password = ?, fecha_nacimiento = ? WHERE nick = ?";
+        try (Connection conn = DriverManager.getConnection(DB_URL);
+            PreparedStatement pstmt = conn.prepareStatement(sql)) {
+            
+            pstmt.setString(1, email);
+            pstmt.setString(2, password);
+            pstmt.setString(3, birthDate.toString());
+            pstmt.setString(4, nick);
+            
+            int filasAfectadas = pstmt.executeUpdate();
+            return filasAfectadas > 0;
+        } catch (SQLException e) {
+            System.err.println("Error modificando perfil: " + e.getMessage());
+            return false;
+        }
+    }
 
     public static boolean usuarioExiste(String nick) {
         String sql = "SELECT nick FROM usuarios WHERE nick = ?";
         try (Connection conn = DriverManager.getConnection(DB_URL);
-             PreparedStatement pstmt = conn.prepareStatement(sql)) {
+            PreparedStatement pstmt = conn.prepareStatement(sql)) {
             pstmt.setString(1, nick);
             ResultSet rs = pstmt.executeQuery();
             return rs.next();

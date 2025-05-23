@@ -5,6 +5,7 @@
 package javafxmlapplication;
 
 import java.net.URL;
+import java.util.regex.Pattern;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -16,6 +17,9 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.text.Text;
+import java.time.LocalDate;
+import java.time.Period;
+
 
 /**
  * FXML Controller class
@@ -34,11 +38,9 @@ public class FXML_ModificarPerfilController implements Initializable {
     @FXML
     private BorderPane rootPane;
     @FXML
-    private TextField usernameRegistro;
+    private TextField usernameRegistro; // No editable
     @FXML
     private Text mensajeErrorRegistro;
-    @FXML
-    private Button continuarButton;
     @FXML
     private TextField correoElectronicoPerfil;
     @FXML
@@ -46,40 +48,127 @@ public class FXML_ModificarPerfilController implements Initializable {
     @FXML
     private DatePicker fechaNacimientoPerfil;
     @FXML
-    private Button cancelarButtonPerfil;
-    @FXML
     private ImageView imagenPerfil;
+    
+    private JavaFXMLApplication mainApp;
+    @FXML
+    private Button continuarButton;
+    @FXML
+    private Button cancelarButtonPerfil;
     @FXML
     private Button subirFotoPerfil;
     @FXML
     private Button eliminarFotoPerfil;
 
+    public void setMainApp(JavaFXMLApplication mainApp) {
+        this.mainApp = mainApp;
+    }
+    
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-    }    
-
-
+        javafx.application.Platform.runLater(() -> rootPane.requestFocus());
+        rootPane.setOnMouseClicked(event -> rootPane.requestFocus());
+        mensajeErrorRegistro.setVisible(false);
+    }
 
     @FXML
     private void handleContinuarButton(ActionEvent event) {
-        // Checkear que los formatos de datos son correctos y guardar en BD
-        // Si se cumple lo anterior volver al Menú Usuario
+        String email = correoElectronicoPerfil.getText();
+        String pass = passwordFieldPerfil.getText();
+        LocalDate birthDate = fechaNacimientoPerfil.getValue();
+
+        if (email.isEmpty() || pass.isEmpty() || birthDate == null) {
+            mostrarError("Todos los campos son obligatorios.");
+            return;
+        }
+        String errorEmail = validarEmail(email);
+        if (errorEmail != null) {
+            mostrarError("Correo inválido: " + errorEmail);
+            return;
+        }
+
+        String errorPass = validarPassword(pass);
+        if (errorPass != null) {
+            mostrarError("Contraseña insegura: " + errorPass);
+            return;
+        }
+
+        if (!mayorDe16Anios(birthDate)) {
+            mostrarError("Debes tener al menos 16 años.");
+            return;
+        }
+
+        // Guardar cambios en la base de datos
+        boolean exito = DatabaseManager.modificarPerfil(usernameRegistro.getText(), email, pass, birthDate);
+        if (!exito) {
+            mostrarError("Error al actualizar el perfil.");
+            return;
+        }
+
+        ocultarError();
+        volverMenuUsuario(event);
+    }
+
+
+    @FXML
+    private void handleEliminarFotoRegistro(ActionEvent event) {
+        imagenPerfil.setImage(null);
+    }
+
+    @FXML
+    private void volverMenuUsuario(ActionEvent event) {
+        try {
+            mainApp.startMenuUsuario(); // o como sea que se navega
+        } catch (Exception e) {
+            mostrarError("No se pudo volver al menú del usuario.");
+        }
+    }
+    
+    private void mostrarError(String msg) {
+        mensajeErrorRegistro.setText(msg);
+        mensajeErrorRegistro.setVisible(true);
+    }
+
+    private void ocultarError() {
+        mensajeErrorRegistro.setText("");
+        mensajeErrorRegistro.setVisible(false);
+    }
+    
+    private String validarEmail(String email) {
+        if (!Pattern.matches("^[\\w.-]+@[\\w-]+\\.[\\w]{2,}$", email)) {
+            return "Formato incorrecto. Ejemplo: usuario@dominio.com";
+        }
+        return null;
+    }
+
+    private String validarPassword(String pass) {
+        if (pass.length() < 8 || pass.length() > 20) {
+            return "Debe tener entre 8 y 20 caracteres.";
+        }
+        if (!pass.matches(".*[a-z].*")) {
+            return "Debe incluir al menos una letra minúscula.";
+        }
+        if (!pass.matches(".*[A-Z].*")) {
+            return "Debe incluir al menos una letra mayúscula.";
+        }
+        if (!pass.matches(".*\\d.*")) {
+            return "Debe incluir al menos un número.";
+        }
+        if (!pass.matches(".*[!@#$%&*()\\-+=].*")) {
+            return "Debe incluir al menos un carácter especial (!@#$%&*()-+=).";
+        }
+        return null;
+    }
+
+    private boolean mayorDe16Anios(LocalDate fechaNacimiento) {
+        return Period.between(fechaNacimiento, LocalDate.now()).getYears() >= 16;
     }
 
     @FXML
     private void handleSubirFotoRegistro(ActionEvent event) {
     }
-
-    @FXML
-    private void handleEliminarFotoRegistro(ActionEvent event) {
-    }
-
-    @FXML
-    private void volverMenuUsuario(ActionEvent event) {
-    }
-    
 }
