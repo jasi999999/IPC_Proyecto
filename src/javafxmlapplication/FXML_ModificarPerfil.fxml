@@ -175,7 +175,7 @@
                                                       <Image url="@../icons/avatar_usuario.jpg" />
                                                    </image>
                                                 </ImageView>
-                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Insertar imagen">
+                                                <Text fx:id="textoFoto" strokeType="OUTSIDE" strokeWidth="0.0" text="Insertar imagen">
                                                    <font>
                                                       <Font name="Times New Roman" size="14.0" />
                                                    </font>
@@ -191,7 +191,7 @@
                               </HBox>
                               <HBox alignment="TOP_RIGHT" spacing="10.0" GridPane.columnIndex="1" GridPane.rowIndex="4">
                                  <children>
-                                    <Button fx:id="subirFotoPerfil" alignment="CENTER" contentDisplay="CENTER" defaultButton="true" mnemonicParsing="false" onAction="#handleSubirFotoRegistro" prefHeight="35.0" prefWidth="80.0" style="-fx-background-color: #5f84A2;" text="Subir" textFill="WHITE">
+                                    <Button fx:id="subirFoto" alignment="CENTER" contentDisplay="CENTER" defaultButton="true" mnemonicParsing="false" onAction="#handleSubirFoto" prefHeight="35.0" prefWidth="80.0" style="-fx-background-color: #5f84A2;" text="Subir" textFill="WHITE">
                                        <font>
                                           <Font name="Times New Roman" size="15.0" />
                                        </font>
@@ -199,7 +199,7 @@
                                           <DropShadow blurType="ONE_PASS_BOX" />
                                        </effect>
                                     </Button>
-                                    <Button fx:id="eliminarFotoPerfil" alignment="CENTER" contentDisplay="CENTER" defaultButton="true" mnemonicParsing="false" onAction="#handleEliminarFotoRegistro" prefHeight="35.0" prefWidth="80.0" style="-fx-background-color: #5f84A2;" styleClass="shad" text="Eliminar" textFill="WHITE">
+                                    <Button fx:id="eliminarFoto" alignment="CENTER" contentDisplay="CENTER" defaultButton="true" disable="true" mnemonicParsing="false" onAction="#handleEliminarFoto" prefHeight="35.0" prefWidth="80.0" style="-fx-background-color: #5f84A2;" styleClass="shad" text="Eliminar" textFill="WHITE">
                                        <font>
                                           <Font name="Times New Roman" size="15.0" />
                                        </font>

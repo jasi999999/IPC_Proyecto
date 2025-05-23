@@ -19,6 +19,8 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.text.Text;
 import java.time.LocalDate;
 import java.time.Period;
+import java.io.ByteArrayInputStream;
+
 
 
 /**
@@ -54,13 +56,16 @@ public class FXML_ModificarPerfilController implements Initializable {
     @FXML
     private Button cancelarButtonPerfil;
     @FXML
-    private Button subirFotoPerfil;
+    private Button subirFoto;
     @FXML
-    private Button eliminarFotoPerfil;
-    
+    private Button eliminarFoto;
+    @FXML
+    private Text textoFoto;
+
     private JavaFXMLApplication mainApp;
     private Usuario usuario;
-
+    private byte[] imagenBytes;
+ 
     public void setMainApp(JavaFXMLApplication mainApp) {
         this.mainApp = mainApp;
     }
@@ -76,7 +81,20 @@ public class FXML_ModificarPerfilController implements Initializable {
             correoElectronicoPerfil.setText(usuario.getEmail());
             passwordFieldPerfil.setText(usuario.getPassword());
             fechaNacimientoPerfil.setValue(usuario.getFechaNacimiento());
-            // Aquí podrías cargar la imagen si tienes una ruta o blob guardado
+
+            if (usuario.getImagen() != null) {
+                imagenBytes = usuario.getImagen();  // sincronizar bytes
+                javafx.scene.image.Image imagen = new javafx.scene.image.Image(new ByteArrayInputStream(imagenBytes));
+                imagenPerfil.setImage(imagen);
+                textoFoto.setText("");
+                
+            } else {
+                javafx.scene.image.Image defaultImage = new javafx.scene.image.Image(
+                    getClass().getResource("/icons/avatar_usuario.jpg").toExternalForm()
+                );
+                imagenPerfil.setImage(defaultImage);
+                textoFoto.setText("Insertar imagen");
+            }
         }
     }
 
@@ -88,7 +106,8 @@ public class FXML_ModificarPerfilController implements Initializable {
         // TODO
         javafx.application.Platform.runLater(() -> rootPane.requestFocus());
         rootPane.setOnMouseClicked(event -> rootPane.requestFocus());
-
+        actualizarEstadoBotonEliminarFoto();
+        
         // Para el campo de username
         usernameRegistro.setEditable(false);      // No permite modificar el texto
         usernameRegistro.setFocusTraversable(false); // Evita que reciba foco al hacer clic
@@ -126,19 +145,15 @@ public class FXML_ModificarPerfilController implements Initializable {
         }
 
         // Guardar cambios en la base de datos
-        boolean exito = DatabaseManager.modificarPerfil(usernameRegistro.getText(), email, pass, birthDate);
+        boolean exito = DatabaseManager.modificarPerfil(usernameRegistro.getText(), email, pass, birthDate, imagenBytes);
         if (!exito) {
             mostrarError("Error al actualizar el perfil.");
             return;
         }
-
+        
+        usuario.setImagen(imagenBytes);
         ocultarError();
         volverMenuUsuario(event);
-    }
-
-    @FXML
-    private void handleEliminarFotoRegistro(ActionEvent event) {
-        imagenPerfil.setImage(null);
     }
 
     @FXML
@@ -191,7 +206,50 @@ public class FXML_ModificarPerfilController implements Initializable {
     }
 
     @FXML
-    private void handleSubirFotoRegistro(ActionEvent event) {
-        // Pendiente
+    private void handleSubirFoto(ActionEvent event) {
+        javafx.stage.FileChooser fileChooser = new javafx.stage.FileChooser();
+        fileChooser.setTitle("Seleccionar imagen de perfil");
+        fileChooser.getExtensionFilters().addAll(
+            new javafx.stage.FileChooser.ExtensionFilter("Imágenes", "*.png", "*.jpg", "*.jpeg", "*.gif")
+        );
+
+        java.io.File file = fileChooser.showOpenDialog(rootPane.getScene().getWindow());
+        if (file != null) {
+            try {
+                // Leer archivo en bytes
+                byte[] imageBytes = java.nio.file.Files.readAllBytes(file.toPath());
+
+                // Guardar en un atributo para luego enviar a registrarUsuario
+                this.imagenBytes = imageBytes;
+
+                // Mostrar imagen en ImageView
+                javafx.scene.image.Image image = new javafx.scene.image.Image(file.toURI().toString());
+                imagenPerfil.setImage(image);
+                textoFoto.setText("");
+            } catch (java.io.IOException e) {
+                mostrarError("Error al cargar la imagen: " + e.getMessage());
+            }
+        }
+    }
+    
+    @FXML
+    private void handleEliminarFoto(ActionEvent event) {
+        imagenBytes = null;
+        
+        javafx.scene.image.Image defaultImage = new javafx.scene.image.Image(
+            getClass().getResource("/icons/avatar_usuario.jpg").toExternalForm()
+        );
+        
+        imagenPerfil.setImage(defaultImage);
+        textoFoto.setText("Insertar imagen");
+        actualizarEstadoBotonEliminarFoto();
+    }
+    
+    private void actualizarEstadoBotonEliminarFoto() {
+        if (imagenBytes == null) {
+            eliminarFoto.setDisable(true);  
+        } else {
+            eliminarFoto.setDisable(false); 
+        }
     }
 }

@@ -19,7 +19,8 @@ public class DatabaseManager {
                      "nick TEXT PRIMARY KEY, " +
                      "email TEXT NOT NULL, " +
                      "password TEXT NOT NULL," +
-                     "fecha_nacimiento TEXT NOT NULL" +
+                     "fecha_nacimiento TEXT NOT NULL," +
+                     "imagen BLOB" +
                      ")";
         try (Connection conn = DriverManager.getConnection(DB_URL);
              Statement stmt = conn.createStatement()) {
@@ -29,16 +30,21 @@ public class DatabaseManager {
         }
     }
 
-    public static boolean registrarUsuario(String nick, String email, String password, LocalDate birthDate) {
+    public static boolean registrarUsuario(String nick, String email, String password, LocalDate birthDate, byte[] imagen) {
         if (usuarioExiste(nick)) return false;
         
-        String sql = "INSERT INTO usuarios(nick, email, password, fecha_nacimiento) VALUES (?, ?, ?, ?)";
+        String sql = "INSERT INTO usuarios(nick, email, password, fecha_nacimiento, imagen) VALUES (?, ?, ?, ?, ?)";
         try (Connection conn = DriverManager.getConnection(DB_URL);
-             PreparedStatement pstmt = conn.prepareStatement(sql)) {
+            PreparedStatement pstmt = conn.prepareStatement(sql)) {
             pstmt.setString(1, nick);
             pstmt.setString(2, email);
             pstmt.setString(3, password);
             pstmt.setString(4, birthDate.toString());
+            if (imagen != null){
+                pstmt.setBytes(5, imagen);
+            } else {
+                pstmt.setNull(5, Types.BLOB);
+            }
             pstmt.executeUpdate();
             return true;
         } catch (SQLException e) {
@@ -47,10 +53,10 @@ public class DatabaseManager {
         }
     }
     
-    public static boolean modificarPerfil(String nick, String email, String password, LocalDate birthDate) {
+    public static boolean modificarPerfil(String nick, String email, String password, LocalDate birthDate, byte[] imagen) {
         if (!usuarioExiste(nick)) return false;
         
-        String sql = "UPDATE usuarios SET email = ?, password = ?, fecha_nacimiento = ? WHERE nick = ?";
+        String sql = "UPDATE usuarios SET email = ?, password = ?, fecha_nacimiento = ?, imagen = ? WHERE nick = ?";
         try (Connection conn = DriverManager.getConnection(DB_URL);
             PreparedStatement pstmt = conn.prepareStatement(sql)) {
             
@@ -58,6 +64,12 @@ public class DatabaseManager {
             pstmt.setString(2, password);
             pstmt.setString(3, birthDate.toString());
             pstmt.setString(4, nick);
+            if (imagen != null) {
+            pstmt.setBytes(4, imagen);
+            } else {
+                pstmt.setNull(4, Types.BLOB);
+            }
+            pstmt.setString(5, nick);
             
             int filasAfectadas = pstmt.executeUpdate();
             return filasAfectadas > 0;
@@ -84,10 +96,11 @@ public class DatabaseManager {
         String sql = "SELECT nick FROM usuarios WHERE nick = ? AND password = ?";
         try (Connection conn = DriverManager.getConnection(DB_URL);
             PreparedStatement pstmt = conn.prepareStatement(sql)) {
-            pstmt.setString(1, nick);
-            pstmt.setString(2, password);
+            pstmt.setString(1, nick.trim());
+            pstmt.setString(2, password.trim());
+            
             ResultSet rs = pstmt.executeQuery();
-
+            
             if (rs.next()) {
                 usuarioLogueadoNick = nick;
                 usuarioLogueadoPassword = password;
@@ -115,7 +128,8 @@ public class DatabaseManager {
                 String email = rs.getString("email");
                 String pass = rs.getString("password");
                 LocalDate fechaNacimiento = LocalDate.parse(rs.getString("fecha_nacimiento"));
-                return new Usuario(nick, email, pass, fechaNacimiento);
+                byte[] imagen = rs.getBytes("imagen"); 
+                return new Usuario(nick, email, pass, fechaNacimiento, imagen);
             }
         } catch (SQLException e) {
             System.err.println("Error obteniendo usuario: " + e.getMessage());

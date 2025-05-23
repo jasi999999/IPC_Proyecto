@@ -14,6 +14,8 @@ import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 
 /**
@@ -23,6 +25,22 @@ import javafx.scene.layout.BorderPane;
  */
 public class FXML_MenuEstadisticasController implements Initializable {
 
+    private JavaFXMLApplication mainApp;
+    private Usuario usuario;
+    
+    public void setMainApp(JavaFXMLApplication mainApp) {
+        this.mainApp = mainApp;
+    }
+    
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
+    }
+    
+    @FXML
+    private ImageView volverB;
+    @FXML
+    private BorderPane rootPane;
+
 
     /**
      * Initializes the controller class.
@@ -30,7 +48,17 @@ public class FXML_MenuEstadisticasController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+        javafx.application.Platform.runLater(() -> rootPane.requestFocus());
     }    
+
+    @FXML
+    private void handleVolverMenuUsuario(MouseEvent event) {
+        try {
+            mainApp.startIniciarSesion();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
     
 }

@@ -19,7 +19,8 @@ import javafx.scene.text.Text;
 public class FXML_RegistrarUsuarioController implements Initializable {
 
     private JavaFXMLApplication mainApp;
-
+    private byte[] imagenBytes;
+    
     public void setMainApp(JavaFXMLApplication mainApp) {
         this.mainApp = mainApp;
     }
@@ -46,12 +47,15 @@ public class FXML_RegistrarUsuarioController implements Initializable {
     private TextField correoElectronicoRegistro;
     @FXML
     private DatePicker fechaNacimiento;
+    @FXML
+    private Text textoFoto;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         javafx.application.Platform.runLater(() -> rootPane.requestFocus());
         rootPane.setOnMouseClicked(event -> rootPane.requestFocus());
         mensajeErrorRegistro.setVisible(false);
+        actualizarEstadoBotonEliminarFoto();
     }
 
     @FXML
@@ -98,9 +102,15 @@ public class FXML_RegistrarUsuarioController implements Initializable {
             return;
         }
 
-        boolean exito = DatabaseManager.registrarUsuario(nick, email, pass, birthDate);
-        if (!exito) {
+        boolean exito = DatabaseManager.usuarioExiste(nick);
+        if (exito) {
             mostrarError("El nombre de usuario ya existe.");
+            return;
+        }
+        
+        boolean registrado = DatabaseManager.registrarUsuario(nick, email, pass, birthDate, imagenBytes);
+            if (!registrado) {
+            mostrarError("No se pudo registrar el usuario. Intente con otro nombre.");
             return;
         }
 
@@ -165,11 +175,47 @@ public class FXML_RegistrarUsuarioController implements Initializable {
 
     @FXML
     private void handleSubirFotoRegistro(ActionEvent event) {
-        // pendiente
-    }
+        javafx.stage.FileChooser fileChooser = new javafx.stage.FileChooser();
+        fileChooser.setTitle("Seleccionar imagen de perfil");
+        fileChooser.getExtensionFilters().addAll(
+            new javafx.stage.FileChooser.ExtensionFilter("Imágenes", "*.png", "*.jpg", "*.jpeg", "*.gif")
+        );
 
+        java.io.File file = fileChooser.showOpenDialog(rootPane.getScene().getWindow());
+        if (file != null) {
+            try {
+                // Leer archivo en bytes
+                byte[] imageBytes = java.nio.file.Files.readAllBytes(file.toPath());
+
+                // Guardar en un atributo para luego enviar a registrarUsuario
+                this.imagenBytes = imageBytes;
+
+                // Mostrar imagen en ImageView
+                javafx.scene.image.Image image = new javafx.scene.image.Image(file.toURI().toString());
+                imagenPerfilRegistro.setImage(image);
+                textoFoto.setText("");
+            } catch (java.io.IOException e) {
+                mostrarError("Error al cargar la imagen: " + e.getMessage());
+            }
+        }
+    }
+    
     @FXML
     private void handleEliminarFotoRegistro(ActionEvent event) {
-        imagenPerfilRegistro.setImage(null);
+        imagenBytes = null;
+        javafx.scene.image.Image defaultImage = new javafx.scene.image.Image(
+            getClass().getResource("/icons/avatar_usuario.jpg").toExternalForm()
+        );
+        imagenPerfilRegistro.setImage(defaultImage);
+        textoFoto.setText("Insertar imagen");
+        actualizarEstadoBotonEliminarFoto();
+    }
+    
+    private void actualizarEstadoBotonEliminarFoto() {
+       if (imagenBytes == null) {
+            eliminarFotoRegistro.setDisable(true);  
+        } else {
+            eliminarFotoRegistro.setDisable(false); 
+        }
     }
 }
