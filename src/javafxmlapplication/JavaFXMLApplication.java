@@ -9,7 +9,7 @@ import javafx.stage.Stage;
 public class JavaFXMLApplication extends Application {
 
     private Stage ventanaPrincipal;
-
+    
     @Override
     public void start(Stage stage) throws Exception {
         this.ventanaPrincipal = stage;
@@ -35,7 +35,7 @@ public class JavaFXMLApplication extends Application {
         controller.setMainApp(this);
         ventanaPrincipal.setScene(new Scene(root));
         ventanaPrincipal.setTitle("Registrar usuario");
-        ventanaPrincipal.setMinWidth(600);
+        ventanaPrincipal.setMinWidth(650);
         ventanaPrincipal.setMinHeight(520);
         ventanaPrincipal.show();
     }
@@ -47,7 +47,7 @@ public class JavaFXMLApplication extends Application {
         ventanaPrincipal.setScene(new Scene(root));
         ventanaPrincipal.setTitle("Menú Usuario");
         ventanaPrincipal.setMinWidth(650);
-        ventanaPrincipal.setMinHeight(450);
+        ventanaPrincipal.setMinHeight(520);
         ventanaPrincipal.show();
     }
 

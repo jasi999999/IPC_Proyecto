@@ -55,7 +55,7 @@ public class DatabaseManager {
     public static boolean autenticarUsuario(String nick, String password) {
         String sql = "SELECT nick FROM usuarios WHERE nick = ? AND password = ?";
         try (Connection conn = DriverManager.getConnection(DB_URL);
-             PreparedStatement pstmt = conn.prepareStatement(sql)) {
+            PreparedStatement pstmt = conn.prepareStatement(sql)) {
             pstmt.setString(1, nick);
             pstmt.setString(2, password);
             ResultSet rs = pstmt.executeQuery();

@@ -78,9 +78,10 @@
                                        </HBox.margin>
                                        <children>
                                           <PasswordField fx:id="passwordMenuInicial" prefHeight="30.0" prefWidth="220.0" promptText="Contraseña" />
+                                          <TextField fx:id="passwordVisible" managed="false" prefHeight="30.0" prefWidth="220.0" promptText="Contraseña visible" visible="false" />
                                           <HBox alignment="CENTER" maxHeight="25.0" maxWidth="25.0" minHeight="25.0" minWidth="25.0" prefHeight="25.0" prefWidth="25.0">
                                              <children>
-                                                <ImageView fx:id="mostrarContraseña" fitHeight="25.0" fitWidth="25.0" onDragDetected="#handleMostrarContraseña" opacity="0.33" pickOnBounds="true" preserveRatio="true">
+                                                <ImageView fx:id="mostrarContraseña" fitHeight="25.0" fitWidth="25.0" onMouseClicked="#handleMostrarContraseña" opacity="0.33" pickOnBounds="true" preserveRatio="true">
                                                    <image>
                                                       <Image url="@../icons/logo_ojo.jpg" />
                                                    </image>
