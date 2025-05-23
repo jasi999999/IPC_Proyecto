@@ -1,17 +1,20 @@
-Interfaces listas para ir emplementando el código:
+Intefraces completamente listas
 - Iniciar Sesión
-- Registrar Usuario (Añadir los listeners de la práctica 4")
-- Modificar Perfil
-- Menú Usuario
+- Registrar Usuario (excepto imagen)
+- Modificar Perfil (excepto imagen)
+- Menú Usuario (excepto imagen)
+
+Interfaces listas para ir emplementando el código:
+- Menú Estadísticas
 
 
 Faltan:
 - Menú Problema (Enunciado aleatorio, respuestas, selección, comprobar, continuar,
                 vuelta al Menú Usuario, Mesa Trabajo)
+- Menú Examen (Enunciado aleatorio, respuestas, selección, comprobar, continuar,
+                vuelta al Menú Usuario, Mesa Trabajo)
 - Mesa Trabajo  (carta náutica + herramientas, ¿en un Stage nuevo?)
-- Menú Estadísticas
 
-- Permitir que el suuario introduzca - o _ en el username
-- Modificar los errores de registro para que se vea QUE error hacen
+Opcional:
 - ¿Añadir listeners al registro? (si sobra tiempo para hacerlo bonito, rollo como
     en la práctica)
