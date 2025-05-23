@@ -13,6 +13,14 @@ public class UsuarioManager {
     public static void registrarUsuario(UsuarioSimulado usuario) {
         listaUsuarios.add(usuario);
     }
+    
+    
+    // Implementar ¿?
+    public static void modificarUsuario(UsuarioSimulado usuario) {
+        
+        // listaUsuarios.add(usuario);
+        return;
+    }
 
     public static UsuarioSimulado autenticar(String nick, String pass) {
         return listaUsuarios.stream()
