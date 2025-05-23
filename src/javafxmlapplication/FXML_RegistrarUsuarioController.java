@@ -75,21 +75,18 @@ public class FXML_RegistrarUsuarioController implements Initializable {
             return;
         }
 
-        String errorNick = validarNickname(nick);
-        if (errorNick != null) {
-            mostrarError("Nombre de usuario inválido: " + errorNick);
+        if (!validarNickname(nick)) {
+            mostrarError("Nombre de usuario inválido.");
             return;
         }
 
-        String errorEmail = validarEmail(email);
-        if (errorEmail != null) {
-            mostrarError("Correo inválido: " + errorEmail);
+        if (!validarCorreo(email)) {
+            mostrarError("Correo inválido.");
             return;
         }
-        
-        String errorPass = validarPassword(pass);
-        if (errorPass != null) {
-            mostrarError("Contraseña insegura: " + errorPass);
+
+        if (!validarPassword(pass)) {
+            mostrarError("Contraseña insegura.");
             return;
         }
 
@@ -98,7 +95,7 @@ public class FXML_RegistrarUsuarioController implements Initializable {
             return;
         }
 
-        boolean exito = DatabaseManager.registrarUsuario(nick, email, pass, birthDate);
+        boolean exito = DatabaseManager.registrarUsuario(nick, email, pass);
         if (!exito) {
             mostrarError("El nombre de usuario ya existe.");
             return;
@@ -122,42 +119,17 @@ public class FXML_RegistrarUsuarioController implements Initializable {
         mensajeErrorRegistro.setVisible(false);
     }
 
-    private String validarNickname(String nick) {
-        if (nick.length() < 6 || nick.length() > 15) {
-            return "Debe tener entre 6 y 15 caracteres.";
-        }
-        if (!nick.matches("^[a-zA-Z0-9_-]+$")) {
-            return "Solo se permiten letras, números, guiones y guiones bajos.";
-        }
-        return null;
+    private boolean validarNickname(String nick) {
+        return nick.length() >= 6 && nick.length() <= 15 && !nick.contains(" ");
     }
 
-    private String validarEmail(String email) {
-        if (!Pattern.matches("^[\\w.-]+@[\\w-]+\\.[\\w]{2,}$", email)) {
-            return "Formato incorrecto. Ejemplo: usuario@dominio.com";
-        }
-        return null;
+    private boolean validarCorreo(String email) {
+        return Pattern.matches("^[\\w-.]+@([\\w-]+\\.)+[\\w-]{2,4}$", email);
     }
 
-    private String validarPassword(String pass) {
-        if (pass.length() < 8 || pass.length() > 20) {
-            return "Debe tener entre 8 y 20 caracteres.";
-        }
-        if (!pass.matches(".*[a-z].*")) {
-            return "Debe incluir al menos una letra minúscula.";
-        }
-        if (!pass.matches(".*[A-Z].*")) {
-            return "Debe incluir al menos una letra mayúscula.";
-        }
-        if (!pass.matches(".*\\d.*")) {
-            return "Debe incluir al menos un número.";
-        }
-        if (!pass.matches(".*[!@#$%&*()\\-+=].*")) {
-            return "Debe incluir al menos un carácter especial (!@#$%&*()-+=).";
-        }
-        return null;
+    private boolean validarPassword(String pass) {
+        return Pattern.matches("^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[!@#$%&*()\\-+=]).{8,20}$", pass);
     }
-
 
     private boolean mayorDe16Anios(LocalDate fechaNacimiento) {
         return Period.between(fechaNacimiento, LocalDate.now()).getYears() >= 16;
