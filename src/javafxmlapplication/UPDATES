@@ -7,12 +7,11 @@ Intefraces completamente listas
 
 Interfaces listas para ir emplementando el código:
 - Menú Estadísticas (show estadísticas)
-- Menús Problema (validar respuestas)
+- Menú Problema (validar respuestas y guardar aciertos y fallos)
+- Menú Examen (validar respuestas y guardar aciertos y fallos)
 
 
 Faltan:
-- Menú Examen (Enunciado aleatorio, respuestas, selección, comprobar, continuar,
-                vuelta al Menú Usuario, Mesa Trabajo)
 - Mesa Trabajo  (carta náutica + herramientas, en un Stage nuevo)
 
 Opcional:
