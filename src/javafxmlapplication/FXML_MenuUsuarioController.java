@@ -15,7 +15,9 @@ import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
+import javafx.scene.image.Image;
 import javafx.scene.layout.BorderPane;
+import java.io.ByteArrayInputStream;
 
 /**
  * FXML Controller class
@@ -34,6 +36,15 @@ public class FXML_MenuUsuarioController implements Initializable {
     public void setUsuario(Usuario usuario) {
         this.usuario = usuario;
         bienvenidaName.setText(usuario.getNick() + "!");
+        
+        byte[] imagenBytes = usuario.getImagen(); 
+            if (imagenBytes != null) {
+            Image imagen = new Image(new ByteArrayInputStream(imagenBytes));
+            imagenUser.setImage(imagen);
+        } else {
+            Image defaultImage = new Image(getClass().getResource("/icons/avatar_usuario.jpg").toExternalForm());
+            imagenUser.setImage(defaultImage);
+        }
     }
     
     @FXML
@@ -64,10 +75,20 @@ public class FXML_MenuUsuarioController implements Initializable {
 
     @FXML
     private void handleModoExamen(ActionEvent event) {
+        try {
+            mainApp.startMenuExamen(usuario);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     @FXML
     private void handleElegirProblema(ActionEvent event) {
+        try {
+            mainApp.startMenuProblema(usuario);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     @FXML
@@ -82,7 +103,7 @@ public class FXML_MenuUsuarioController implements Initializable {
     @FXML
     private void handleEstadisticas(ActionEvent event) {
         try {
-            mainApp.startMenuEstadisticas();
+            mainApp.startMenuEstadisticas(usuario);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -91,11 +112,11 @@ public class FXML_MenuUsuarioController implements Initializable {
     @FXML
     private void handleCerrarSesion(ActionEvent event) {
         try {
+            usuario = null;
+            bienvenidaName.setText("");
             mainApp.startIniciarSesion();
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
-
-    
 }

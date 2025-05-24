@@ -175,7 +175,7 @@
                                                       <Image url="@../icons/avatar_usuario.jpg" />
                                                    </image>
                                                 </ImageView>
-                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Insertar imagen">
+                                                <Text fx:id="textoFoto" strokeType="OUTSIDE" strokeWidth="0.0" text="Insertar imagen">
                                                    <font>
                                                       <Font name="Times New Roman" size="14.0" />
                                                    </font>
@@ -196,7 +196,7 @@
                                           <DropShadow blurType="ONE_PASS_BOX" />
                                        </effect>
                                     </Button>
-                                    <Button fx:id="eliminarFotoRegistro" alignment="CENTER" contentDisplay="CENTER" defaultButton="true" mnemonicParsing="false" onAction="#handleEliminarFotoRegistro" prefHeight="35.0" prefWidth="80.0" style="-fx-background-color: #5f84A2;" styleClass="shad" text="Eliminar" textFill="WHITE">
+                                    <Button fx:id="eliminarFotoRegistro" alignment="CENTER" contentDisplay="CENTER" defaultButton="true" disable="true" mnemonicParsing="false" onAction="#handleEliminarFotoRegistro" prefHeight="35.0" prefWidth="80.0" style="-fx-background-color: #5f84A2;" styleClass="shad" text="Eliminar" textFill="WHITE">
                                        <font>
                                           <Font name="Times New Roman" size="15.0" />
                                        </font>

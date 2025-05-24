@@ -23,6 +23,17 @@ import javafx.scene.layout.BorderPane;
  */
 public class FXML_MenuProblemaController implements Initializable {
 
+    private JavaFXMLApplication mainApp;
+    private Usuario usuario;
+    
+    public void setMainApp(JavaFXMLApplication mainApp) {
+        this.mainApp = mainApp;
+    }
+    
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
+    }
+    
     @FXML
     private BorderPane rootPane;
     @FXML
