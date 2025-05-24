@@ -88,12 +88,15 @@ public class FXML_ModificarPerfilController implements Initializable {
                 imagenPerfil.setImage(imagen);
                 textoFoto.setText("");
                 
+                actualizarEstadoBotonEliminarFoto();
             } else {
                 javafx.scene.image.Image defaultImage = new javafx.scene.image.Image(
                     getClass().getResource("/icons/avatar_usuario.jpg").toExternalForm()
                 );
                 imagenPerfil.setImage(defaultImage);
                 textoFoto.setText("Insertar imagen");
+                
+                actualizarEstadoBotonEliminarFoto();
             }
         }
     }
@@ -106,6 +109,15 @@ public class FXML_ModificarPerfilController implements Initializable {
         // TODO
         javafx.application.Platform.runLater(() -> rootPane.requestFocus());
         rootPane.setOnMouseClicked(event -> rootPane.requestFocus());
+        
+        if (imagenPerfil.getImage() == null) {
+            javafx.scene.image.Image defaultImage = new javafx.scene.image.Image(
+                getClass().getResource("/icons/avatar_usuario.jpg").toExternalForm()
+            );
+            imagenPerfil.setImage(defaultImage);
+            textoFoto.setText("Insertar imagen");
+        }
+         
         actualizarEstadoBotonEliminarFoto();
         
         // Para el campo de username
@@ -226,6 +238,8 @@ public class FXML_ModificarPerfilController implements Initializable {
                 javafx.scene.image.Image image = new javafx.scene.image.Image(file.toURI().toString());
                 imagenPerfil.setImage(image);
                 textoFoto.setText("");
+                
+                actualizarEstadoBotonEliminarFoto();
             } catch (java.io.IOException e) {
                 mostrarError("Error al cargar la imagen: " + e.getMessage());
             }

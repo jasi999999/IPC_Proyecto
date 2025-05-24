@@ -55,6 +55,13 @@ public class FXML_RegistrarUsuarioController implements Initializable {
         javafx.application.Platform.runLater(() -> rootPane.requestFocus());
         rootPane.setOnMouseClicked(event -> rootPane.requestFocus());
         mensajeErrorRegistro.setVisible(false);
+        
+        javafx.scene.image.Image defaultImage = new javafx.scene.image.Image(
+            getClass().getResource("/icons/avatar_usuario.jpg").toExternalForm()
+        );
+        imagenPerfilRegistro.setImage(defaultImage);
+        textoFoto.setText("Insertar imagen");
+        
         actualizarEstadoBotonEliminarFoto();
     }
 
@@ -194,6 +201,8 @@ public class FXML_RegistrarUsuarioController implements Initializable {
                 javafx.scene.image.Image image = new javafx.scene.image.Image(file.toURI().toString());
                 imagenPerfilRegistro.setImage(image);
                 textoFoto.setText("");
+                
+                actualizarEstadoBotonEliminarFoto();
             } catch (java.io.IOException e) {
                 mostrarError("Error al cargar la imagen: " + e.getMessage());
             }
