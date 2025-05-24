@@ -1,9 +1,6 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/javafx/FXMLController.java to edit this template
- */
 package javafxmlapplication;
 
+import java.sql.*;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -39,6 +36,8 @@ public class FXML_MenuExamenController implements Initializable {
     private JavaFXMLApplication mainApp;
     private Usuario usuario;
     private List<Problem> problemas;
+    private int indexActual = -1;
+    private static final String DB_URL = "jdbc:sqlite:usuarios.db";
     
     @FXML
     private Text enunciadoProblema;
@@ -123,6 +122,7 @@ public class FXML_MenuExamenController implements Initializable {
             }
             Random rand = new Random();
             int index = rand.nextInt(problemas.size());
+            indexActual = index;
             mostrarProblema(index);
         } catch (NavDAOException e) {
             System.err.println("Error cargando los problemas: " + e.getMessage());
@@ -131,6 +131,41 @@ public class FXML_MenuExamenController implements Initializable {
     
     @FXML
     private void handleResponder(ActionEvent event) {
+        RadioButton seleccionada = (RadioButton) respuestasGroup.getSelectedToggle();
+        if (seleccionada == null) {
+            System.out.println("Debes seleccionar una respuesta.");
+            return;
+        }
+        String textoRespuesta = seleccionada.getText();
+
+        if (indexActual < 0 || indexActual >= problemas.size()) {
+            System.err.println("Índice de problema no válido.");
+            return;
+        }
+
+        Problem problemaActual = problemas.get(indexActual);
+
+        boolean esCorrecta = false;
+        for (Answer a : problemaActual.getAnswers()) {
+            if (a.getText().equals(textoRespuesta) && a.getValidity()) {
+                esCorrecta = true;
+                break;
+            }
+        }
+
+        if (esCorrecta) {
+            System.out.println("Respuesta correcta!");
+            guardarEstadistica(usuario.getNick(), true);
+        } else {
+            System.out.println("Respuesta incorrecta.");
+            guardarEstadistica(usuario.getNick(), false);
+        }
+        
+        try {
+            mainApp.startMenuUsuario(usuario);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     @FXML
@@ -188,6 +223,23 @@ public class FXML_MenuExamenController implements Initializable {
         } catch (Exception e) {
             e.printStackTrace();
         }   
+    }
+    
+    public void guardarEstadistica(String nick, boolean acierto) {
+        String resultado = acierto ? "acierto" : "fallo";
+        String fecha = java.time.LocalDate.now().toString();
+
+        String sql = "INSERT INTO usuarios_estadisticas (nick, resultado, fecha) VALUES (?, ?, ?)";
+
+        try (Connection conn = DriverManager.getConnection(DB_URL);
+            PreparedStatement pstmt = conn.prepareStatement(sql)) {
+            pstmt.setString(1, nick);
+            pstmt.setString(2, resultado);
+            pstmt.setString(3, fecha);
+            pstmt.executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }
 
