@@ -2,6 +2,8 @@ package javafxmlapplication;
 
 import java.sql.*;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 public class DatabaseManager {
 
@@ -15,16 +17,26 @@ public class DatabaseManager {
     }
 
     public static void crearTablaSiNoExiste() {
-        String sql = "CREATE TABLE IF NOT EXISTS usuarios (" +
+        String sqlUsuarios = "CREATE TABLE IF NOT EXISTS usuarios (" +
                      "nick TEXT PRIMARY KEY, " +
                      "email TEXT NOT NULL, " +
                      "password TEXT NOT NULL," +
                      "fecha_nacimiento TEXT NOT NULL," +
                      "imagen BLOB" +
                      ")";
+        
+        String sqlEstadisticas = "CREATE TABLE IF NOT EXISTS usuarios_estadisticas (" +
+                                 "id INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                                 "nick TEXT NOT NULL, " +
+                                 "resultado TEXT CHECK(resultado IN ('acierto', 'fallo')) NOT NULL, " +
+                                 "fecha TEXT NOT NULL, " +
+                                 "FOREIGN KEY(nick) REFERENCES usuarios(nick) ON DELETE CASCADE" +
+                                 ")";
+        
         try (Connection conn = DriverManager.getConnection(DB_URL);
              Statement stmt = conn.createStatement()) {
-            stmt.execute(sql);
+            stmt.execute(sqlUsuarios);
+            stmt.execute(sqlEstadisticas);
         } catch (SQLException e) {
             System.err.println("Error creando tabla: " + e.getMessage());
         }
@@ -63,7 +75,6 @@ public class DatabaseManager {
             pstmt.setString(1, email);
             pstmt.setString(2, password);
             pstmt.setString(3, birthDate.toString());
-            pstmt.setString(4, nick);
             if (imagen != null) {
             pstmt.setBytes(4, imagen);
             } else {
@@ -135,5 +146,38 @@ public class DatabaseManager {
             System.err.println("Error obteniendo usuario: " + e.getMessage());
         }
         return null;
+    }
+    
+    public static boolean registrarResultado(String nick, boolean acierto) {
+        String sql = "INSERT INTO usuarios_estadisticas(nick, resultado, fecha) VALUES (?, ?, ?)";
+        try (Connection conn = DriverManager.getConnection(DB_URL);
+            PreparedStatement pstmt = conn.prepareStatement(sql)) {
+            pstmt.setString(1, nick);
+            pstmt.setString(2, acierto ? "acierto" : "fallo");
+            pstmt.setString(3, LocalDate.now().toString());
+            pstmt.executeUpdate();
+            return true;
+        } catch (SQLException e) {
+            System.err.println("Error registrando resultado: " + e.getMessage());
+            return false;
+        } 
+    }
+
+    public static List<Resultado> obtenerResultados(String nick) {
+        List<Resultado> resultados = new ArrayList<>();
+        String sql = "SELECT resultado, fecha FROM usuarios_estadisticas WHERE nick = ? ORDER BY fecha ASC";
+        try (Connection conn = DriverManager.getConnection(DB_URL);
+            PreparedStatement pstmt = conn.prepareStatement(sql)) {
+            pstmt.setString(1, nick);
+            ResultSet rs = pstmt.executeQuery();
+            while (rs.next()) {
+                String resultado = rs.getString("resultado");
+                String fecha = rs.getString("fecha");
+                resultados.add(new Resultado(fecha, resultado));
+            }
+        } catch (SQLException e) {
+            System.err.println("Error obteniendo resultados: " + e.getMessage());
+        }
+        return resultados;
     }
 }
