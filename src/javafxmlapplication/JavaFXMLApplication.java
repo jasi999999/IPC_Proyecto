@@ -4,6 +4,7 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 public class JavaFXMLApplication extends Application {
@@ -163,23 +164,6 @@ public class JavaFXMLApplication extends Application {
         Parent root = loader.load();
         
         FXML_MenuExamenController controller = loader.getController();
-        controller.setMainApp(this);
-        controller.setUsuario(usuario);
-        
-        ventanaPrincipal.setScene(new Scene(root));
-        ventanaPrincipal.setTitle("Menú Examen");
-        ventanaPrincipal.setMinWidth(620);
-        ventanaPrincipal.setMinHeight(560);
-        ventanaPrincipal.setWidth(Math.max(anchoVentana, 620));
-        ventanaPrincipal.setHeight(Math.max(altoVentana, 560));
-        ventanaPrincipal.show();
-    }
-    
-    public void startMesaTrabajo(Usuario usuario) throws Exception {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("FXML_MesaTrabajo.fxml"));
-        Parent root = loader.load();
-        
-        FXML_MesaTrabajoController controller = loader.getController();
         controller.setMainApp(this);
         controller.setUsuario(usuario);
         

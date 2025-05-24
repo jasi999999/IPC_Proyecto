@@ -7,12 +7,16 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
 import javafx.scene.control.ListView;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.text.Text;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 
 import model.Problem;
 import model.Answer;
@@ -100,7 +104,7 @@ public class FXML_MenuProblemaController implements Initializable {
     @FXML
     private void handleMesaTrabajo(ActionEvent event) {
         try {
-            mainApp.startMesaTrabajo(usuario);
+            showMesaTrabajoModal(usuario);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -140,5 +144,30 @@ public class FXML_MenuProblemaController implements Initializable {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+    
+    public void showMesaTrabajoModal(Usuario usuario) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("FXML_MesaTrabajo.fxml"));
+            Parent root = loader.load();
+
+            FXML_MesaTrabajoController controller = loader.getController();
+            controller.setMainApp(mainApp);
+            controller.setUsuario(usuario);
+
+            Stage modalStage = new Stage();
+            modalStage.setScene(new Scene(root));
+            modalStage.setTitle("Mesa de Trabajo");
+            modalStage.setMinWidth(620);
+            modalStage.setMinHeight(560);
+            modalStage.initModality(Modality.APPLICATION_MODAL);
+
+            Stage ownerStage = (Stage) rootPane.getScene().getWindow();
+            modalStage.initOwner(ownerStage);
+
+            modalStage.showAndWait();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }   
     }
 }
