@@ -96,7 +96,7 @@
                                  <children>
                                     <VBox>
                                        <children>
-                                          <Text fill="#5f84a2" strokeType="OUTSIDE" strokeWidth="0.0" text="Contraseña">
+                                          <Text fill="#5f84a2" strokeType="OUTSIDE" strokeWidth="0.0" text="Contraseña:">
                                              <font>
                                                 <Font name="Times New Roman" size="14.0" />
                                              </font>

@@ -23,6 +23,9 @@ import javafx.scene.layout.BorderPane;
  */
 public class FXML_MesaTrabajoController implements Initializable {
 
+    private JavaFXMLApplication mainApp;
+    private Usuario usuario;
+    
     @FXML
     private BorderPane rootPane;
     @FXML
@@ -36,6 +39,14 @@ public class FXML_MesaTrabajoController implements Initializable {
     @FXML
     private Label errorLogin;
 
+    public void setMainApp(JavaFXMLApplication mainApp) {
+        this.mainApp = mainApp;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
+    }
+    
     /**
      * Initializes the controller class.
      */

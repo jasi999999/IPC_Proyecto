@@ -85,7 +85,7 @@ public class FXML_MenuUsuarioController implements Initializable {
     @FXML
     private void handleElegirProblema(ActionEvent event) {
         try {
-            mainApp.startMenuProblema(usuario);
+            mainApp.startMenuElegirProblema(usuario);
         } catch (Exception e) {
             e.printStackTrace();
         }

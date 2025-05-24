@@ -2,7 +2,6 @@ package javafxmlapplication;
 
 import java.net.URL;
 import java.util.ResourceBundle;
-import java.util.regex.Pattern;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -10,6 +9,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
@@ -39,6 +39,8 @@ public class FXML_IniciarSesionController implements Initializable {
     @FXML
     private Label errorLogin;
 
+    private boolean contrasenaVisible = false;
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         javafx.application.Platform.runLater(() -> rootPane.requestFocus());
@@ -46,6 +48,11 @@ public class FXML_IniciarSesionController implements Initializable {
         iniciarSesionButton.setOnMouseReleased(event -> rootPane.requestFocus());
         rootPane.setOnMouseClicked(event -> rootPane.requestFocus());
         errorLogin.setVisible(false);
+        
+        // Listener para Enter
+        usernameMenuInicial.setOnAction(e -> iniciarSesionButton.fire());
+        passwordMenuInicial.setOnAction(e -> iniciarSesionButton.fire());
+        passwordVisible.setOnAction(e -> iniciarSesionButton.fire());
     }
 
     @FXML
@@ -95,19 +102,34 @@ public class FXML_IniciarSesionController implements Initializable {
 
     @FXML
     private void handleMostrarContraseña(MouseEvent event) {
-        boolean oculto = passwordMenuInicial.isVisible();
-        if (oculto) {
+        contrasenaVisible = !contrasenaVisible;
+
+        if (contrasenaVisible) {
             passwordVisible.setText(passwordMenuInicial.getText());
             passwordMenuInicial.setVisible(false);
             passwordMenuInicial.setManaged(false);
             passwordVisible.setVisible(true);
             passwordVisible.setManaged(true);
+
+            URL cerrado = getClass().getResource("/icons/logo_ojo_cerrado.png");
+            if (cerrado != null) {
+                mostrarContraseña.setImage(new Image(cerrado.toExternalForm()));
+            } else {
+                System.err.println("Imagen no encontrada: logo_ojo_cerrado.png");
+            }
         } else {
             passwordMenuInicial.setText(passwordVisible.getText());
             passwordVisible.setVisible(false);
             passwordVisible.setManaged(false);
             passwordMenuInicial.setVisible(true);
             passwordMenuInicial.setManaged(true);
+
+            URL abierto = getClass().getResource("/icons/logo_ojo.jpg");
+            if (abierto != null) {
+                mostrarContraseña.setImage(new Image(abierto.toExternalForm()));
+            } else {
+                System.err.println("Imagen no encontrada: logo_ojo.jpg");
+            }
         }
     }
 }

@@ -9,6 +9,7 @@ import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.chart.LineChart;
 import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
@@ -26,6 +27,19 @@ import javafx.scene.layout.HBox;
  */
 public class FXML_MenuEstadisticasController implements Initializable {
 
+    @FXML
+    private LineChart<?, ?> chart;
+    @FXML
+    private DatePicker fechaInicio;
+    @FXML
+    private DatePicker fechaFin;
+    @FXML
+    private Button filtrar;
+    @FXML
+    private Button volverB;
+    @FXML
+    private BorderPane rootPane;
+    
     private JavaFXMLApplication mainApp;
     private Usuario usuario;
     
@@ -36,12 +50,6 @@ public class FXML_MenuEstadisticasController implements Initializable {
     public void setUsuario(Usuario usuario) {
         this.usuario = usuario;
     }
-    
-    @FXML
-    private HBox volverB;
-    @FXML
-    private BorderPane rootPane;
-
 
     /**
      * Initializes the controller class.
@@ -53,13 +61,11 @@ public class FXML_MenuEstadisticasController implements Initializable {
     }    
 
     @FXML
-    private void handleVolverMenuUsuario(MouseEvent event) {
+    private void handleVolverMenuUsuario(ActionEvent event) {
         try {
-            mainApp.startIniciarSesion();
+            mainApp.startMenuUsuario(usuario);
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
-
-    
 }

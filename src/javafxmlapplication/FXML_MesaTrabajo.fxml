@@ -42,7 +42,7 @@
                            <children>
                               <HBox prefHeight="100.0" prefWidth="200.0" GridPane.columnSpan="2">
                                  <children>
-                                    <Label alignment="CENTER" prefHeight="50.0" prefWidth="350.0" text="Iniciar sesión" textFill="#8fadc2">
+                                    <Label alignment="CENTER" prefHeight="50.0" prefWidth="350.0" text="Mesa Trabajo" textFill="#8fadc2">
                                        <font>
                                           <Font name="Times New Roman Bold" size="18.0" />
                                        </font>

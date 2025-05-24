@@ -1,19 +1,19 @@
 Intefraces completamente listas
 - Iniciar Sesión
-- Registrar Usuario (excepto imagen)
-- Modificar Perfil (excepto imagen)
-- Menú Usuario (excepto imagen)
+- Registrar Usuario
+- Modificar Perfil
+- Menú Usuario
+- Menú Seleccionar Problema
 
 Interfaces listas para ir emplementando el código:
-- Menú Estadísticas
+- Menú Estadísticas (show estadísticas)
+- Menús Problema (validar respuestas)
 
 
 Faltan:
-- Menú Problema (Enunciado aleatorio, respuestas, selección, comprobar, continuar,
-                vuelta al Menú Usuario, Mesa Trabajo)
 - Menú Examen (Enunciado aleatorio, respuestas, selección, comprobar, continuar,
                 vuelta al Menú Usuario, Mesa Trabajo)
-- Mesa Trabajo  (carta náutica + herramientas, ¿en un Stage nuevo?)
+- Mesa Trabajo  (carta náutica + herramientas, en un Stage nuevo)
 
 Opcional:
 - ¿Añadir listeners al registro? (si sobra tiempo para hacerlo bonito, rollo como
