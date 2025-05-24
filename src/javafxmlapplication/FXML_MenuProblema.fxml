@@ -42,7 +42,7 @@
                            <children>
                               <Text fx:id="enunciadoProblema" fill="#5f84a2" strokeType="OUTSIDE" strokeWidth="0.0" text="Enunciado problema">
                                  <font>
-                                    <Font size="13.0" />
+                                    <Font size="10.0" />
                                  </font>
                               </Text>
                            </children>
