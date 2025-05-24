@@ -40,11 +40,7 @@
                         <Text fx:id="respuesta2" strokeType="OUTSIDE" strokeWidth="0.0" text="Respuesta 2" GridPane.rowIndex="2" />
                         <Text fx:id="respuesta3" strokeType="OUTSIDE" strokeWidth="0.0" text="Respuesta3" GridPane.rowIndex="3" />
                         <Text fx:id="respuesta4" strokeType="OUTSIDE" strokeWidth="0.0" text="Respuesta4" GridPane.rowIndex="4" />
-                        <RadioButton mnemonicParsing="false" text="isValid1" GridPane.columnIndex="1" GridPane.rowIndex="1">
-                           <toggleGroup>
-                              <ToggleGroup fx:id="respuestasGroup" />
-                           </toggleGroup>
-                        </RadioButton>
+                        <RadioButton fx:id="valid1" mnemonicParsing="false" text="isValid1" toggleGroup="$respuestasGroup" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                         <RadioButton fx:id="valid2" mnemonicParsing="false" text="isValid2" toggleGroup="$respuestasGroup" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                         <RadioButton fx:id="valid3" mnemonicParsing="false" text="isValid3" toggleGroup="$respuestasGroup" GridPane.columnIndex="1" GridPane.rowIndex="3" />
                         <RadioButton fx:id="valid4" mnemonicParsing="false" text="isValid4" toggleGroup="$respuestasGroup" GridPane.columnIndex="1" GridPane.rowIndex="4" />
