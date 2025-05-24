@@ -116,7 +116,7 @@
                            <children>
                               <StackPane minHeight="170.0" minWidth="170.0" prefHeight="170.0" prefWidth="170.0">
                                  <children>
-                                    <ProgressBar prefHeight="160.0" prefWidth="160.0" progress="0.0" />
+                                    <ProgressBar prefHeight="110.0" prefWidth="114.0" progress="0.0" />
                                     <Circle fill="DODGERBLUE" radius="80.0" stroke="BLACK" strokeType="INSIDE" style="-fx-fill: null; -fx-stroke: #5f84A2; -fx-stroke-width: 35;" />
                                  </children>
                               </StackPane>
