@@ -24,9 +24,6 @@ public class FXML_MenuProblemaController implements Initializable {
     private JavaFXMLApplication mainApp;
     private Usuario usuario;
     private List<Problem> problemas;
-
-    @FXML
-    private ComboBox<String> problemasList;
     
     @FXML
     private Text enunciadoProblema;
@@ -69,19 +66,7 @@ public class FXML_MenuProblemaController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        try {
-            problemas = Navigation.getInstance().getProblems();
-
-            for (int i = 0; i < problemas.size(); i++) {
-                problemasList.getItems().add("Problema #" + (i + 1));
-            }
-
-            problemasList.setOnAction(e -> mostrarProblema(problemasList.getSelectionModel().getSelectedIndex()));
-
-        } catch (NavDAOException e) {
-            System.err.println("Error cargando los problemas: " + e.getMessage());
-            e.printStackTrace();
-        }
+        //
     }
 
     private void mostrarProblema(int index) {
@@ -128,8 +113,7 @@ public class FXML_MenuProblemaController implements Initializable {
         try {
             problemas = Navigation.getInstance().getProblems();
             if (index < problemas.size()) {
-                mostrarProblema(index); // Ya tienes este método
-                problemasList.getSelectionModel().select(index); // Opcional: seleccionarlo en el ComboBox
+                mostrarProblema(index);
             }
         } catch (NavDAOException e) {
             System.err.println("Error cargando los problemas: " + e.getMessage());

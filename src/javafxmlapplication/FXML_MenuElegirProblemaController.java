@@ -33,6 +33,7 @@ public class FXML_MenuElegirProblemaController implements Initializable {
     private ListView<String> problemasListView;
     
     private List<Problem> problemas;
+    
     private JavaFXMLApplication mainApp;
     private Usuario usuario;
     

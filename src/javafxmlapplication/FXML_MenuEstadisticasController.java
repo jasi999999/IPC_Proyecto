@@ -27,9 +27,6 @@ import javafx.scene.layout.HBox;
  */
 public class FXML_MenuEstadisticasController implements Initializable {
 
-    private JavaFXMLApplication mainApp;
-    private Usuario usuario;
-    
     @FXML
     private LineChart<?, ?> chart;
     @FXML
@@ -42,6 +39,9 @@ public class FXML_MenuEstadisticasController implements Initializable {
     private Button volverB;
     @FXML
     private BorderPane rootPane;
+    
+    private JavaFXMLApplication mainApp;
+    private Usuario usuario;
     
     public void setMainApp(JavaFXMLApplication mainApp) {
         this.mainApp = mainApp;

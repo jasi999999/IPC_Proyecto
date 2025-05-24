@@ -48,6 +48,11 @@ public class FXML_IniciarSesionController implements Initializable {
         iniciarSesionButton.setOnMouseReleased(event -> rootPane.requestFocus());
         rootPane.setOnMouseClicked(event -> rootPane.requestFocus());
         errorLogin.setVisible(false);
+        
+        // Listener para Enter
+        usernameMenuInicial.setOnAction(e -> iniciarSesionButton.fire());
+        passwordMenuInicial.setOnAction(e -> iniciarSesionButton.fire());
+        passwordVisible.setOnAction(e -> iniciarSesionButton.fire());
     }
 
     @FXML
