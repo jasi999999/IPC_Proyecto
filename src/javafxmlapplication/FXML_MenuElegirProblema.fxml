@@ -56,7 +56,7 @@
    <top>
       <HBox alignment="CENTER" minHeight="60.0" prefHeight="60.0" style="-fx-background-color: #8fadc2;" BorderPane.alignment="CENTER">
          <children>
-            <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Seleccionar un problema">
+            <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Seleccionar Problema">
                <font>
                   <Font name="Times New Roman Bold" size="18.0" />
                </font>
