@@ -60,17 +60,12 @@ public class FXML_MenuEstadisticasController implements Initializable {
         javafx.application.Platform.runLater(() -> rootPane.requestFocus());
     }    
 
-    private void handleVolverMenuUsuario(MouseEvent event) {
+    @FXML
+    private void handleVolverMenuUsuario(ActionEvent event) {
         try {
             mainApp.startMenuUsuario(usuario);
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
-
-    @FXML
-    private void handleVolverMenuUsuario(ActionEvent event) {
-    }
-
-    
 }
