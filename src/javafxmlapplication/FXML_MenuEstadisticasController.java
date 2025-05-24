@@ -17,6 +17,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.HBox;
 
 /**
  * FXML Controller class
@@ -37,7 +38,7 @@ public class FXML_MenuEstadisticasController implements Initializable {
     }
     
     @FXML
-    private ImageView volverB;
+    private HBox volverB;
     @FXML
     private BorderPane rootPane;
 

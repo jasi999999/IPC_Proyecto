@@ -75,10 +75,20 @@ public class FXML_MenuUsuarioController implements Initializable {
 
     @FXML
     private void handleModoExamen(ActionEvent event) {
+        try {
+            mainApp.startMenuExamen(usuario);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     @FXML
     private void handleElegirProblema(ActionEvent event) {
+        try {
+            mainApp.startMenuProblema(usuario);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     @FXML
@@ -93,7 +103,7 @@ public class FXML_MenuUsuarioController implements Initializable {
     @FXML
     private void handleEstadisticas(ActionEvent event) {
         try {
-            mainApp.startMenuEstadisticas();
+            mainApp.startMenuEstadisticas(usuario);
         } catch (Exception e) {
             e.printStackTrace();
         }
