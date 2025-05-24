@@ -123,13 +123,14 @@ public class JavaFXMLApplication extends Application {
         ventanaPrincipal.show();
     }
     
-    public void startMenuProblema(Usuario usuario) throws Exception {
+    public void startMenuProblema(Usuario usuario, int indexP) throws Exception {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("FXML_MenuProblema.fxml"));
         Parent root = loader.load();
         
         FXML_MenuProblemaController controller = loader.getController();
         controller.setMainApp(this);
         controller.setUsuario(usuario);
+        controller.setIndexProblema(indexP);
         
         ventanaPrincipal.setScene(new Scene(root));
         ventanaPrincipal.setTitle("Menú Problema");

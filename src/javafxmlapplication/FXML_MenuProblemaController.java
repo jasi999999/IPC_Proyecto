@@ -121,4 +121,18 @@ public class FXML_MenuProblemaController implements Initializable {
     @FXML
     private void handleResponder(ActionEvent event) {
     }
+    
+    public void setIndexProblema(int index) {
+        if (index < 0) return;
+        
+        try {
+            problemas = Navigation.getInstance().getProblems();
+            if (index < problemas.size()) {
+                mostrarProblema(index); // Ya tienes este método
+                problemasList.getSelectionModel().select(index); // Opcional: seleccionarlo en el ComboBox
+            }
+        } catch (NavDAOException e) {
+            System.err.println("Error cargando los problemas: " + e.getMessage());
+        }
+    }
 }

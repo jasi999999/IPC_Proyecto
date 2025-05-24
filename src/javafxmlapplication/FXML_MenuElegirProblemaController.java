@@ -77,6 +77,17 @@ public class FXML_MenuElegirProblemaController implements Initializable {
 
     @FXML
     private void handleSeleccionar(ActionEvent event) {
+        int index = problemasListView.getSelectionModel().getSelectedIndex();
+
+        if (index >= 0 && index < problemas.size()) {
+            try {
+                mainApp.startMenuProblema(usuario, index);  // Pasa solo el índice
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        } else {
+            System.out.println("Ningún problema seleccionado.");
+        }
     }
 
     @FXML
@@ -87,6 +98,11 @@ public class FXML_MenuElegirProblemaController implements Initializable {
             e.printStackTrace();
         }
     }
-
     
+    public void setIndexProblema(int index) {
+        if (problemasListView != null && index >= 0 && index < problemasListView.getItems().size()) {
+            problemasListView.getSelectionModel().select(index);
+            problemasListView.scrollTo(index);
+        }
+    }
 }
