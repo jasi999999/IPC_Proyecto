@@ -174,6 +174,23 @@ public class JavaFXMLApplication extends Application {
         ventanaPrincipal.setHeight(Math.max(altoVentana, 560));
         ventanaPrincipal.show();
     }
+    
+    public void startMesaTrabajo(Usuario usuario) throws Exception {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("FXML_MesaTrabajo.fxml"));
+        Parent root = loader.load();
+        
+        FXML_MesaTrabajoController controller = loader.getController();
+        controller.setMainApp(this);
+        controller.setUsuario(usuario);
+        
+        ventanaPrincipal.setScene(new Scene(root));
+        ventanaPrincipal.setTitle("Menú Examen");
+        ventanaPrincipal.setMinWidth(620);
+        ventanaPrincipal.setMinHeight(560);
+        ventanaPrincipal.setWidth(Math.max(anchoVentana, 620));
+        ventanaPrincipal.setHeight(Math.max(altoVentana, 560));
+        ventanaPrincipal.show();
+    }
 
     public static void main(String[] args) {
         launch(args);

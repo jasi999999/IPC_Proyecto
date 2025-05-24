@@ -55,6 +55,8 @@ public class FXML_MenuProblemaController implements Initializable {
     private Button mesaTrabajoB;
     @FXML
     private Button responderB;
+    @FXML
+    private Button problemasB;
 
     public void setMainApp(JavaFXMLApplication mainApp) {
         this.mainApp = mainApp;
@@ -66,7 +68,12 @@ public class FXML_MenuProblemaController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        //
+        
+        // Listeners, si click -> opción marcada
+        respuesta1.setOnMouseClicked(e -> valid1.setSelected(true));
+        respuesta2.setOnMouseClicked(e -> valid2.setSelected(true));
+        respuesta3.setOnMouseClicked(e -> valid3.setSelected(true));
+        respuesta4.setOnMouseClicked(e -> valid4.setSelected(true));
     }
 
     private void mostrarProblema(int index) {
@@ -75,7 +82,7 @@ public class FXML_MenuProblemaController implements Initializable {
         Problem p = problemas.get(index);
         List<Answer> respuestas = p.getAnswers();
 
-        enunciadoProblema.setText(p.getText());
+        enunciadoProblema.setText("Problema #" + (index + 1) + ":\n" + p.getText());
 
         if (respuestas.size() >= 4) {
             respuesta1.setText(respuestas.get(0).getText());
@@ -92,6 +99,11 @@ public class FXML_MenuProblemaController implements Initializable {
 
     @FXML
     private void handleMesaTrabajo(ActionEvent event) {
+        try {
+            mainApp.startMesaTrabajo(usuario);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     @FXML
@@ -105,6 +117,7 @@ public class FXML_MenuProblemaController implements Initializable {
 
     @FXML
     private void handleResponder(ActionEvent event) {
+        // 
     }
     
     public void setIndexProblema(int index) {
@@ -117,6 +130,15 @@ public class FXML_MenuProblemaController implements Initializable {
             }
         } catch (NavDAOException e) {
             System.err.println("Error cargando los problemas: " + e.getMessage());
+        }
+    }
+
+    @FXML
+    private void handleProblemas(ActionEvent event) {
+        try {
+            mainApp.startMenuElegirProblema(usuario);
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 }
