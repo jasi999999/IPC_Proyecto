@@ -3,11 +3,12 @@ package javafxmlapplication;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
-
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.ListView;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.BorderPane;
@@ -25,10 +26,8 @@ public class FXML_MenuProblemaController implements Initializable {
     private List<Problem> problemas;
 
     @FXML
-    private BorderPane rootPane;
-    @FXML
     private ComboBox<String> problemasList;
-
+    
     @FXML
     private Text enunciadoProblema;
     @FXML
@@ -48,9 +47,17 @@ public class FXML_MenuProblemaController implements Initializable {
     private RadioButton valid3;
     @FXML
     private RadioButton valid4;
-
+    
+    @FXML
+    private Button atrasB;
+    @FXML
+    private BorderPane rootPane;
     @FXML
     private ToggleGroup respuestasGroup;
+    @FXML
+    private Button mesaTrabajoB;
+    @FXML
+    private Button responderB;
 
     public void setMainApp(JavaFXMLApplication mainApp) {
         this.mainApp = mainApp;
@@ -96,5 +103,22 @@ public class FXML_MenuProblemaController implements Initializable {
             valid3.setSelected(false);
             valid4.setSelected(false);
         }
+    }
+
+    @FXML
+    private void handleMesaTrabajo(ActionEvent event) {
+    }
+
+    @FXML
+    private void handleAtras(ActionEvent event) {
+        try {
+            mainApp.startMenuUsuario(usuario);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
+    private void handleResponder(ActionEvent event) {
     }
 }

@@ -7,13 +7,14 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane fx:id="rootPane" style="-fx-background-color: #5f84A2;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javafxmlapplication.FXML_MenuProblemaController">
+<BorderPane fx:id="rootPane" maxHeight="520.0" maxWidth="600.0" minHeight="520.0" minWidth="600.0" prefHeight="520.0" prefWidth="600.0" style="-fx-background-color: #5f84A2;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javafxmlapplication.FXML_MenuProblemaController">
    <center>
       <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="260.0" minWidth="360.0" style="-fx-background-color: #5f84A2; -fx-border-color: #5f84A2;" BorderPane.alignment="CENTER">
          <children>
@@ -40,11 +41,20 @@
                         <Text fx:id="respuesta2" strokeType="OUTSIDE" strokeWidth="0.0" text="Respuesta 2" GridPane.rowIndex="2" />
                         <Text fx:id="respuesta3" strokeType="OUTSIDE" strokeWidth="0.0" text="Respuesta3" GridPane.rowIndex="3" />
                         <Text fx:id="respuesta4" strokeType="OUTSIDE" strokeWidth="0.0" text="Respuesta4" GridPane.rowIndex="4" />
-                        <RadioButton fx:id="valid1" mnemonicParsing="false" text="isValid1" toggleGroup="$respuestasGroup" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                        <RadioButton fx:id="valid1" mnemonicParsing="false" text="isValid1" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                           <toggleGroup>
+                              <ToggleGroup fx:id="respuestasGroup" />
+                           </toggleGroup></RadioButton>
                         <RadioButton fx:id="valid2" mnemonicParsing="false" text="isValid2" toggleGroup="$respuestasGroup" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                         <RadioButton fx:id="valid3" mnemonicParsing="false" text="isValid3" toggleGroup="$respuestasGroup" GridPane.columnIndex="1" GridPane.rowIndex="3" />
                         <RadioButton fx:id="valid4" mnemonicParsing="false" text="isValid4" toggleGroup="$respuestasGroup" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-                        <Button mnemonicParsing="false" text="Mesa de trabajo" GridPane.rowIndex="5" />
+                        <HBox GridPane.columnSpan="2" GridPane.rowIndex="5">
+                           <children>
+                              <Button fx:id="mesaTrabajoB" mnemonicParsing="false" onAction="#handleMesaTrabajo" text="Mesa de trabajo" />
+                              <Button fx:id="atrasB" mnemonicParsing="false" onAction="#handleAtras" text="Atras" />
+                              <Button fx:id="responderB" mnemonicParsing="false" onAction="#handleResponder" text="Responder" />
+                           </children>
+                        </HBox>
                      </children>
                   </GridPane>
                </children>

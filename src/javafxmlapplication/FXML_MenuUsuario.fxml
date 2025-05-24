@@ -3,6 +3,7 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
@@ -48,17 +49,17 @@
                                        <children>
                                           <HBox maxHeight="-Infinity" maxWidth="-Infinity" scaleShape="false">
                                              <children>
-                                                <Label style="-fx-text-fill: #5f84A2;" text="¡Bienvenido, " HBox.hgrow="SOMETIMES">
+                                                <Label style="-fx-text-fill: #8fadc2;" text="¡Bienvenido, " textFill="#8fadc2" HBox.hgrow="SOMETIMES">
                                                    <HBox.margin>
                                                       <Insets />
                                                    </HBox.margin>
                                                    <font>
-                                                      <Font name="System Bold" size="13.0" />
+                                                      <Font name="Times New Roman Bold" size="18.0" />
                                                    </font>
                                                 </Label>
-                                                <Label fx:id="bienvenidaName" style="-fx-text-fill: #5f84A2;" HBox.hgrow="SOMETIMES">
+                                                <Label fx:id="bienvenidaName" style="-fx-text-fill: #8fadc2;" textFill="#8fadc2" HBox.hgrow="SOMETIMES">
                                                    <font>
-                                                      <Font name="System Bold" size="13.0" />
+                                                      <Font name="Times New Roman Bold" size="18.0" />
                                                    </font>
                                                    <HBox.margin>
                                                       <Insets />
@@ -80,11 +81,17 @@
                                                    <font>
                                                       <Font name="Times New Roman" size="15.0" />
                                                    </font>
+                                                   <effect>
+                                                      <DropShadow />
+                                                   </effect>
                                                 </Button>
                                                 <Button fx:id="elegirProblemaB" minHeight="160.0" minWidth="160.0" mnemonicParsing="false" onAction="#handleElegirProblema" prefHeight="160.0" prefWidth="160.0" style="-fx-background-color: #5f84A2;" text="Elegir problema" textFill="WHITE">
                                                    <font>
                                                       <Font name="Times New Roman" size="15.0" />
                                                    </font>
+                                                   <effect>
+                                                      <DropShadow />
+                                                   </effect>
                                                 </Button>
                                              </children>
                                           </HBox>
@@ -125,6 +132,9 @@
                                        <font>
                                           <Font name="Times New Roman" size="15.0" />
                                        </font>
+                                       <effect>
+                                          <DropShadow />
+                                       </effect>
                                     </Button>
                                  </children>
                               </HBox>
@@ -139,6 +149,9 @@
                                        <font>
                                           <Font name="Times New Roman" size="15.0" />
                                        </font>
+                                       <effect>
+                                          <DropShadow />
+                                       </effect>
                                     </Button>
                                  </children>
                               </HBox>
@@ -153,15 +166,18 @@
                                        <font>
                                           <Font name="Times New Roman" size="15.0" />
                                        </font>
+                                       <effect>
+                                          <DropShadow />
+                                       </effect>
                                     </Button>
                                  </children>
                               </HBox>
-                              <HBox alignment="CENTER" prefHeight="144.0" prefWidth="170.0">
+                              <HBox alignment="CENTER" prefHeight="450.0" prefWidth="170.0">
                                  <GridPane.margin>
                                     <Insets bottom="10.0" top="10.0" />
                                  </GridPane.margin>
                                  <children>
-                                    <BorderPane style="-fx-border-color: #5f84A2;">
+                                    <BorderPane prefWidth="132.0" style="-fx-border-color: #5f84A2;">
                                        <center>
                                           <ImageView fx:id="imagenUser" fitHeight="140.0" fitWidth="130.0" pickOnBounds="true" preserveRatio="true">
                                              <image>

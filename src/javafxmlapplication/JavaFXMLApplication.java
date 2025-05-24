@@ -140,6 +140,23 @@ public class JavaFXMLApplication extends Application {
         ventanaPrincipal.show();
     }
     
+    public void startMenuElegirProblema(Usuario usuario) throws Exception {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("FXML_MenuElegirProblema.fxml"));
+        Parent root = loader.load();
+        
+        FXML_MenuElegirProblemaController controller = loader.getController();
+        controller.setMainApp(this);
+        controller.setUsuario(usuario);
+        
+        ventanaPrincipal.setScene(new Scene(root));
+        ventanaPrincipal.setTitle("Menú Elegir Problema");
+        ventanaPrincipal.setMinWidth(620);
+        ventanaPrincipal.setMinHeight(560);
+        ventanaPrincipal.setWidth(Math.max(anchoVentana, 620));
+        ventanaPrincipal.setHeight(Math.max(altoVentana, 560));
+        ventanaPrincipal.show();
+    }
+    
     public void startMenuExamen(Usuario usuario) throws Exception {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("FXML_MenuExamen.fxml"));
         Parent root = loader.load();
