@@ -10,11 +10,15 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
+import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
+import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.text.Text;
 
 /**
  * FXML Controller class
@@ -26,6 +30,27 @@ public class FXML_MenuProblemaController implements Initializable {
     private JavaFXMLApplication mainApp;
     private Usuario usuario;
     
+    @FXML
+    private Text enunciadoProblema;
+    @FXML
+    private ComboBox<?> problemasList;
+    @FXML
+    private Text respuesta1;
+    @FXML
+    private Text respuesta2;
+    @FXML
+    private Text respuesta3;
+    @FXML
+    private Text respuesta4;
+    @FXML
+    private ToggleGroup respuestasGroup;
+    @FXML
+    private RadioButton valid2;
+    @FXML
+    private RadioButton valid3;
+    @FXML
+    private RadioButton valid4;
+    
     public void setMainApp(JavaFXMLApplication mainApp) {
         this.mainApp = mainApp;
     }
@@ -36,16 +61,6 @@ public class FXML_MenuProblemaController implements Initializable {
     
     @FXML
     private BorderPane rootPane;
-    @FXML
-    private TextField usernameMenuInicial;
-    @FXML
-    private PasswordField passwordMenuInicial;
-    @FXML
-    private Button registrarseButton;
-    @FXML
-    private Button iniciarSesionButton;
-    @FXML
-    private Label errorLogin;
 
     /**
      * Initializes the controller class.
@@ -53,14 +68,5 @@ public class FXML_MenuProblemaController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-    }    
-
-    @FXML
-    private void menuRegistrarse(ActionEvent event) {
-    }
-
-    @FXML
-    private void iniciarSesionButton(ActionEvent event) {
-    }
-    
+    } 
 }
