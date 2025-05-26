@@ -17,7 +17,7 @@
     <center>
       <StackPane minHeight="395.0" minWidth="600.0" prefHeight="395.0" prefWidth="600.0">
          <children>
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#8fadc2" height="380.0" stroke="#8fadc2" strokeType="INSIDE" width="570.0" />
+            <Rectangle arcHeight="10.0" arcWidth="10.0" fill="#8fadc2" height="380.0" stroke="#8fadc2" strokeType="INSIDE" width="570.0" />
               <VBox alignment="CENTER" spacing="10.0">
                   <children>
                   <VBox maxHeight="370.0" maxWidth="560.0" minHeight="370.0" minWidth="560.0" prefHeight="370.0" prefWidth="560.0">

@@ -10,7 +10,7 @@ import javafx.stage.Stage;
 public class JavaFXMLApplication extends Application {
 
     private Stage ventanaPrincipal;
-    // Medidas de VENTANA m´nimas y predeterminadas:
+    // Medidas de VENTANA mínimas y predeterminadas:
     private double anchoVentana = 620;
     private double altoVentana = 560;
     // Medidas de los PANE: 600, 520.
@@ -21,11 +21,9 @@ public class JavaFXMLApplication extends Application {
     public void start(Stage stage) throws Exception {
         this.ventanaPrincipal = stage;
         
-        // Inicializar con valores mínimos
         ventanaPrincipal.setMinWidth(anchoVentana);
         ventanaPrincipal.setMinHeight(altoVentana);
         
-        // Listeners para guardar tamaño cuando cambia la ventana
         ventanaPrincipal.widthProperty().addListener((obs, viejoVal, nuevoVal) -> {
             if (nuevoVal.doubleValue() >= ventanaPrincipal.getMinWidth()) {
                 anchoVentana = nuevoVal.doubleValue();
@@ -97,7 +95,6 @@ public class JavaFXMLApplication extends Application {
         controller.setMainApp(this);
         controller.setUsuario(usuario);
         
-        // controller.setMainApp(this);
         ventanaPrincipal.setScene(new Scene(root));
         ventanaPrincipal.setTitle("Menú Estadísticas");
         ventanaPrincipal.setMinWidth(620);

@@ -190,8 +190,8 @@ public class FXML_MenuProblemaController implements Initializable {
             Stage modalStage = new Stage();
             modalStage.setScene(new Scene(root));
             modalStage.setTitle("Mesa de Trabajo");
-            modalStage.setMinWidth(620);
-            modalStage.setMinHeight(560);
+            modalStage.setMinWidth(1146);
+            modalStage.setMinHeight(676);
             modalStage.initModality(Modality.APPLICATION_MODAL);
 
             Stage ownerStage = (Stage) rootPane.getScene().getWindow();

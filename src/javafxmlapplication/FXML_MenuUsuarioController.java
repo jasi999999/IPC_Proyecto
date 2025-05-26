@@ -29,6 +29,23 @@ public class FXML_MenuUsuarioController implements Initializable {
     private JavaFXMLApplication mainApp;
     private Usuario usuario;
     
+    @FXML
+    private BorderPane rootPane;
+    @FXML
+    private Button modoExamenB;
+    @FXML
+    private Button elegirProblemaB;
+    @FXML
+    private Button modificarPerfilB;
+    @FXML
+    private Button estadisticasB;
+    @FXML
+    private Button cerrarSesionB;
+    @FXML
+    private ImageView imagenUser;
+    @FXML
+    private Label bienvenidaName;
+
     public void setMainApp(JavaFXMLApplication mainApp) {
         this.mainApp = mainApp;
     }
@@ -47,26 +64,6 @@ public class FXML_MenuUsuarioController implements Initializable {
         }
     }
     
-    @FXML
-    private BorderPane rootPane;
-    @FXML
-    private Button modoExamenB;
-    @FXML
-    private Button elegirProblemaB;
-    @FXML
-    private Button modificarPerfilB;
-    @FXML
-    private Button estadisticasB;
-    @FXML
-    private Button cerrarSesionB;
-    @FXML
-    private ImageView imagenUser;
-    @FXML
-    private Label bienvenidaName;
-
-    /**
-     * Initializes the controller class.
-     */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO

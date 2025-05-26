@@ -21,26 +21,12 @@ import java.time.LocalDate;
 import java.time.Period;
 import java.io.ByteArrayInputStream;
 
-
-
-/**
- * FXML Controller class
- *
- * @author Pablo
- */
-
-/**
- * Mismo archivo y controlador que el de Registrar usuario, pero con la selección
- * del campo useranme -> TextField -> Properties -> Editable desactivada.
- * Posibilidad de eliminar este campo y reutilizar el "RegistrarUsuario". 
- * 
- */
 public class FXML_ModificarPerfilController implements Initializable {
 
     @FXML
     private BorderPane rootPane;
     @FXML
-    private TextField usernameRegistro; // No editable
+    private TextField usernameRegistro;
     @FXML
     private Text mensajeErrorRegistro;
     @FXML
@@ -75,6 +61,29 @@ public class FXML_ModificarPerfilController implements Initializable {
         cargarDatosUsuario();
     }
     
+    @Override
+    public void initialize(URL url, ResourceBundle rb) {
+        // TODO
+        javafx.application.Platform.runLater(() -> rootPane.requestFocus());
+        rootPane.setOnMouseClicked(event -> rootPane.requestFocus());
+        
+        if (imagenPerfil.getImage() == null) {
+            javafx.scene.image.Image defaultImage = new javafx.scene.image.Image(
+                getClass().getResource("/icons/avatar_usuario.jpg").toExternalForm()
+            );
+            imagenPerfil.setImage(defaultImage);
+            textoFoto.setText("Insertar imagen");
+        }
+         
+        actualizarEstadoBotonEliminarFoto();
+        
+        usernameRegistro.setEditable(false);    
+        usernameRegistro.setFocusTraversable(false);
+        usernameRegistro.setMouseTransparent(true); 
+
+        mensajeErrorRegistro.setVisible(false);
+    }
+    
     private void cargarDatosUsuario() {
         if (usuario != null) {
             usernameRegistro.setText(usuario.getNick());
@@ -99,33 +108,6 @@ public class FXML_ModificarPerfilController implements Initializable {
                 actualizarEstadoBotonEliminarFoto();
             }
         }
-    }
-
-    /**
-     * Initializes the controller class.
-     */
-    @Override
-    public void initialize(URL url, ResourceBundle rb) {
-        // TODO
-        javafx.application.Platform.runLater(() -> rootPane.requestFocus());
-        rootPane.setOnMouseClicked(event -> rootPane.requestFocus());
-        
-        if (imagenPerfil.getImage() == null) {
-            javafx.scene.image.Image defaultImage = new javafx.scene.image.Image(
-                getClass().getResource("/icons/avatar_usuario.jpg").toExternalForm()
-            );
-            imagenPerfil.setImage(defaultImage);
-            textoFoto.setText("Insertar imagen");
-        }
-         
-        actualizarEstadoBotonEliminarFoto();
-        
-        // Para el campo de username
-        usernameRegistro.setEditable(false);      // No permite modificar el texto
-        usernameRegistro.setFocusTraversable(false); // Evita que reciba foco al hacer clic
-        usernameRegistro.setMouseTransparent(true);  // Ignora eventos de mouse (clic)
-
-        mensajeErrorRegistro.setVisible(false);
     }
 
     @FXML
@@ -156,7 +138,6 @@ public class FXML_ModificarPerfilController implements Initializable {
             return;
         }
 
-        // Guardar cambios en la base de datos
         boolean exito = DatabaseManager.modificarPerfil(usernameRegistro.getText(), email, pass, birthDate, imagenBytes);
         if (!exito) {
             mostrarError("Error al actualizar el perfil.");

@@ -25,17 +25,16 @@ import model.Navigation;
  */
 public class FXML_MenuElegirProblemaController implements Initializable {
     
+    private List<Problem> problemas;
+    private JavaFXMLApplication mainApp;
+    private Usuario usuario;
+    
     @FXML
     private Button seleccionarB;
     @FXML
     private Button atrasB;
     @FXML
     private ListView<String> problemasListView;
-    
-    private List<Problem> problemas;
-    
-    private JavaFXMLApplication mainApp;
-    private Usuario usuario;
     
     public void setMainApp(JavaFXMLApplication mainApp) {
         this.mainApp = mainApp;
@@ -45,9 +44,6 @@ public class FXML_MenuElegirProblemaController implements Initializable {
         this.usuario = usuario;
     }
 
-    /**
-     * Initializes the controller class.
-     */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         try {
@@ -60,7 +56,6 @@ public class FXML_MenuElegirProblemaController implements Initializable {
 
             problemasListView.setItems(items);
 
-            // Cambios al seleccionar
             problemasListView.getSelectionModel().selectedIndexProperty().addListener(
                 (obs, oldVal, newVal) -> {
                     int index = newVal.intValue();
@@ -82,7 +77,7 @@ public class FXML_MenuElegirProblemaController implements Initializable {
 
         if (index >= 0 && index < problemas.size()) {
             try {
-                mainApp.startMenuProblema(usuario, index);  // Pasa solo el índice
+                mainApp.startMenuProblema(usuario, index);
             } catch (Exception e) {
                 e.printStackTrace();
             }

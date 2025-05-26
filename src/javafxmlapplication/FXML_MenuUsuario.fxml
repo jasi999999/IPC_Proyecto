@@ -22,7 +22,7 @@
          <children>
             <StackPane prefHeight="500.0" prefWidth="580.0">
                <children>
-                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#91aec4" height="470.0" stroke="#91aec4" strokeType="INSIDE" strokeWidth="5.0" width="550.0" />
+                  <Rectangle arcHeight="10.0" arcWidth="10.0" fill="#91aec4" height="470.0" stroke="#91aec4" strokeType="INSIDE" strokeWidth="5.0" width="550.0" />
                   <HBox alignment="CENTER" minHeight="450.0" prefHeight="450.0">
                      <children>
                         <StackPane alignment="BOTTOM_LEFT" prefWidth="400.0">

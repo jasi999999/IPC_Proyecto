@@ -10,13 +10,8 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.Label;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.StackPane;
 
 /**
  * FXML Controller class
@@ -33,7 +28,23 @@ public class FXML_MesaTrabajoController implements Initializable {
     @FXML
     private ImageView mapa;
     @FXML
-    private StackPane stackPane;
+    private Button puntoB;
+    @FXML
+    private Button lineaB;
+    @FXML
+    private Button arcoB;
+    @FXML
+    private Button textoB;
+    @FXML
+    private Button colorB;
+    @FXML
+    private Button eleminarElementoB;
+    @FXML
+    private Button limpiarB;
+    @FXML
+    private Button reglaB;
+    @FXML
+    private Button extremosB;
 
     public void setMainApp(JavaFXMLApplication mainApp) {
         this.mainApp = mainApp;
@@ -43,17 +54,49 @@ public class FXML_MesaTrabajoController implements Initializable {
         this.usuario = usuario;
     }
     
-    /**
-     * Initializes the controller class.
-     */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-        
-
-        mapa.fitWidthProperty().bind(stackPane.widthProperty());
-        mapa.fitHeightProperty().bind(stackPane.heightProperty());
     }    
 
+    @FXML
+    private void handlePunto(ActionEvent event) {
+    }
+
+    @FXML
+    private void handleLinea(ActionEvent event) {
+    }
+
+    @FXML
+    private void handleArco(ActionEvent event) {
+    }
+
+    @FXML
+    private void handleTexto(ActionEvent event) {
+    }
+
+    @FXML
+    private void handleColor(ActionEvent event) {
+    }
+
+    @FXML
+    private void handleEliminarElemento(ActionEvent event) {
+    }
+
+    @FXML
+    private void handleLimpiar(ActionEvent event) {
+    }
+
+    @FXML
+    private void handleTransportador(ActionEvent event) {
+    }
+
+    @FXML
+    private void handleRegla(ActionEvent event) {
+    }
+
+    @FXML
+    private void handleExtremos(ActionEvent event) {
+    }
     
 }

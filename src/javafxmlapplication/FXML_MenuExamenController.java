@@ -26,11 +26,6 @@ import model.NavDAOException;
 import model.Navigation;
 import model.Problem;
 
-/**
- * FXML Controller class
- *
- * @author Pablo
- */
 public class FXML_MenuExamenController implements Initializable {
     
     private JavaFXMLApplication mainApp;
@@ -77,9 +72,6 @@ public class FXML_MenuExamenController implements Initializable {
     @FXML
     private BorderPane rootPane;
 
-    /**
-     * Initializes the controller class.
-     */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         
@@ -212,8 +204,8 @@ public class FXML_MenuExamenController implements Initializable {
             Stage modalStage = new Stage();
             modalStage.setScene(new Scene(root));
             modalStage.setTitle("Mesa de Trabajo");
-            modalStage.setMinWidth(620);
-            modalStage.setMinHeight(560);
+            modalStage.setMinWidth(1146);
+            modalStage.setMinHeight(676);
             modalStage.initModality(Modality.APPLICATION_MODAL);
 
             Stage ownerStage = (Stage) rootPane.getScene().getWindow();

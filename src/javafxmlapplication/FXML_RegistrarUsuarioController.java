@@ -20,10 +20,6 @@ public class FXML_RegistrarUsuarioController implements Initializable {
 
     private JavaFXMLApplication mainApp;
     private byte[] imagenBytes;
-    
-    public void setMainApp(JavaFXMLApplication mainApp) {
-        this.mainApp = mainApp;
-    }
 
     @FXML
     private Text mensajeErrorRegistro;
@@ -50,6 +46,10 @@ public class FXML_RegistrarUsuarioController implements Initializable {
     @FXML
     private Text textoFoto;
 
+    public void setMainApp(JavaFXMLApplication mainApp) {
+        this.mainApp = mainApp;
+    }
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         javafx.application.Platform.runLater(() -> rootPane.requestFocus());
