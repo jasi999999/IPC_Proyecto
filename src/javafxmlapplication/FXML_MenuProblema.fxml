@@ -42,7 +42,7 @@
                            <children>
                               <Text fx:id="enunciadoProblema" fill="#5f84a2" strokeType="OUTSIDE" strokeWidth="0.0" text="Enunciado problema">
                                  <font>
-                                    <Font size="13.0" />
+                                    <Font size="10.0" />
                                  </font>
                               </Text>
                            </children>
@@ -54,7 +54,7 @@
                   </HBox>
                   <HBox alignment="CENTER_LEFT" spacing="5.0" GridPane.columnSpan="2" GridPane.rowIndex="1">
                      <children>
-                        <RadioButton fx:id="valid1" mnemonicParsing="false">
+                        <RadioButton fx:id="valid1" mnemonicParsing="false" selected="true">
                            <toggleGroup>
                               <ToggleGroup fx:id="respuestasGroup" />
                            </toggleGroup>

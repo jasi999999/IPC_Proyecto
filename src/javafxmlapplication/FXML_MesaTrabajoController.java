@@ -14,7 +14,9 @@ import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.StackPane;
 
 /**
  * FXML Controller class
@@ -29,15 +31,9 @@ public class FXML_MesaTrabajoController implements Initializable {
     @FXML
     private BorderPane rootPane;
     @FXML
-    private TextField usernameMenuInicial;
+    private ImageView mapa;
     @FXML
-    private PasswordField passwordMenuInicial;
-    @FXML
-    private Button registrarseButton;
-    @FXML
-    private Button iniciarSesionButton;
-    @FXML
-    private Label errorLogin;
+    private StackPane stackPane;
 
     public void setMainApp(JavaFXMLApplication mainApp) {
         this.mainApp = mainApp;
@@ -53,14 +49,11 @@ public class FXML_MesaTrabajoController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+        
+
+        mapa.fitWidthProperty().bind(stackPane.widthProperty());
+        mapa.fitHeightProperty().bind(stackPane.heightProperty());
     }    
 
-    @FXML
-    private void menuRegistrarse(ActionEvent event) {
-    }
-
-    @FXML
-    private void iniciarSesionButton(ActionEvent event) {
-    }
     
 }
