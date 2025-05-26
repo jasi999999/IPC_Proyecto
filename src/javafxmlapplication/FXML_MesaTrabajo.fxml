@@ -4,9 +4,10 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Slider?>
+<?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
@@ -19,20 +20,7 @@
    <top>
       <HBox alignment="CENTER_LEFT" minHeight="30.0" prefHeight="30.0" BorderPane.alignment="CENTER">
          <children>
-            <Button mnemonicParsing="false" style="-fx-background-color: null;">
-               <graphic>
-                  <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../icons/volver-flecha.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-            </Button>
-            <Label text="Volver" textFill="WHITE">
-               <font>
-                  <Font name="System Bold" size="14.0" />
-               </font>
-            </Label>
+            <Button mnemonicParsing="false" style="-fx-background-color: null;" />
          </children>
       </HBox>
    </top>
@@ -46,30 +34,73 @@
       <Pane minHeight="30.0" prefHeight="30.0" BorderPane.alignment="CENTER" />
    </bottom>
    <center>
-      <StackPane>
+      <StackPane maxHeight="575.0" maxWidth="1065.0" minHeight="575.0" minWidth="1065.0" prefHeight="575.0" prefWidth="1065.0">
          <children>
             <Rectangle arcHeight="10.0" arcWidth="10.0" fill="#8fadc2" height="575.0" stroke="#8fadc2" strokeType="INSIDE" width="1065.0" />
-            <HBox alignment="CENTER" spacing="10.0">
+            <HBox alignment="CENTER" maxHeight="555.0" maxWidth="1045.0" minHeight="555.0" minWidth="1045.0" prefHeight="555.0" prefWidth="1045.0" spacing="10.0">
                <children>
-                  <ScrollPane fitToHeight="true" fitToWidth="true">
-                     <content>
-                        <AnchorPane>
-                           <children>
-                              <ImageView fx:id="mapa" fitHeight="576.0" fitWidth="896.0" pickOnBounds="true" preserveRatio="true">
+                  <StackPane maxHeight="555.0" maxWidth="865.0" minHeight="555.0" minWidth="865.0" prefHeight="555.0" prefWidth="865.0">
+                     <children>
+                        <ScrollPane fx:id="mapScroll" fitToHeight="true" fitToWidth="true" maxHeight="555.0" maxWidth="865.0" minHeight="555.0" minWidth="865.0" prefHeight="555.0" prefWidth="865.0">
+                           <content>
+                              <ImageView fx:id="map" fitHeight="576.0" fitWidth="896.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@../icons/carta_nautica.jpg" />
                                  </image>
                               </ImageView>
-                           </children>
-                        </AnchorPane>
-                     </content>
-                  </ScrollPane>
-                  <StackPane>
-                     <children>
-                        <Rectangle arcHeight="10.0" arcWidth="10.0" fill="#5f84a2" height="485.0" stroke="#5f84a2" strokeType="INSIDE" width="165.0" />
-                        <VBox alignment="TOP_CENTER" maxHeight="480.0" maxWidth="160.0" minHeight="480.0" minWidth="160.0" prefHeight="480.0" prefWidth="160.0" spacing="5.0" style="-fx-background-color: #5f84A2;">
+                           </content>
+                        </ScrollPane>
+                        <StackPane alignment="TOP_RIGHT">
                            <children>
-                              <Label text="HERRAMIENTAS" textFill="WHITE">
+                              <Rectangle arcHeight="10.0" arcWidth="10.0" fill="#5f84a2" height="50.0" stroke="#5f84a2" strokeType="INSIDE" width="185.0">
+                                 <StackPane.margin>
+                                    <Insets right="30.0" top="10.0" />
+                                 </StackPane.margin>
+                                 <effect>
+                                    <DropShadow />
+                                 </effect>
+                              </Rectangle>
+                              <HBox alignment="TOP_RIGHT" prefHeight="100.0" prefWidth="200.0" spacing="5.0">
+                                 <children>
+                                    <Button fx:id="menosZoomB" maxHeight="30.0" maxWidth="30.0" minHeight="30.0" minWidth="30.0" mnemonicParsing="false" onAction="#handleMenosZoom" prefHeight="30.0" prefWidth="30.0" style="-fx-background-color: #5f84a2;" text="–" textFill="WHITE">
+                                       <font>
+                                          <Font name="Times New Roman Bold" size="15.0" />
+                                       </font>
+                                       <effect>
+                                          <DropShadow />
+                                       </effect>
+                                       <HBox.margin>
+                                          <Insets bottom="3.0" />
+                                       </HBox.margin>
+                                    </Button>
+                                    <Slider fx:id="zoomBar" maxHeight="15.0" maxWidth="100.0" minHeight="15.0" minWidth="100.0" prefHeight="15.0" prefWidth="100.0">
+                                       <HBox.margin>
+                                          <Insets top="8.0" />
+                                       </HBox.margin>
+                                    </Slider>
+                                    <Button fx:id="masZoomB" maxHeight="30.0" maxWidth="30.0" minHeight="30.0" minWidth="30.0" mnemonicParsing="false" onAction="#handleMasZoom" prefHeight="30.0" prefWidth="30.0" style="-fx-background-color: #5f84a2;" text="+" textFill="WHITE">
+                                       <font>
+                                          <Font name="Times New Roman Bold" size="15.0" />
+                                       </font>
+                                       <effect>
+                                          <DropShadow />
+                                       </effect>
+                                    </Button>
+                                 </children>
+                                 <StackPane.margin>
+                                    <Insets right="35.0" top="20.0" />
+                                 </StackPane.margin>
+                              </HBox>
+                           </children>
+                        </StackPane>
+                     </children>
+                  </StackPane>
+                  <StackPane maxHeight="555.0" maxWidth="170.0" minHeight="555.0" minWidth="170.0" prefHeight="555.0" prefWidth="170.0">
+                     <children>
+                        <Rectangle arcHeight="10.0" arcWidth="10.0" fill="#5f84a2" height="505.0" stroke="#5f84a2" strokeType="INSIDE" width="165.0" />
+                        <VBox alignment="TOP_CENTER" maxHeight="500.0" maxWidth="160.0" minHeight="500.0" minWidth="160.0" prefHeight="500.0" prefWidth="160.0" spacing="5.0" style="-fx-background-color: #5f84A2;">
+                           <children>
+                              <Label text="Herramientas" textFill="WHITE">
                                  <font>
                                     <Font name="Times New Roman Bold" size="18.0" />
                                  </font>
@@ -81,7 +112,10 @@
                                           <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" />
                                        </graphic>
                                     </Button>
-                                    <Label text="Punto" />
+                                    <Label text="Punto" textFill="WHITE">
+                                       <font>
+                                          <Font name="Times New Roman" size="15.0" />
+                                       </font></Label>
                                  </children>
                                  <padding>
                                     <Insets left="5.0" />
@@ -94,7 +128,10 @@
                                           <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" />
                                        </graphic>
                                     </Button>
-                                    <Label text="Línea" />
+                                    <Label text="Línea" textFill="WHITE">
+                                       <font>
+                                          <Font name="Times New Roman" size="15.0" />
+                                       </font></Label>
                                  </children>
                                  <padding>
                                     <Insets left="5.0" />
@@ -107,7 +144,10 @@
                                           <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" />
                                        </graphic>
                                     </Button>
-                                    <Label text="Arco" />
+                                    <Label text="Arco" textFill="WHITE">
+                                       <font>
+                                          <Font name="Times New Roman" size="15.0" />
+                                       </font></Label>
                                  </children>
                                  <padding>
                                     <Insets left="5.0" />
@@ -123,7 +163,10 @@
                                           <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" />
                                        </graphic>
                                     </Button>
-                                    <Label text="Texto" />
+                                    <Label text="Texto" textFill="WHITE">
+                                       <font>
+                                          <Font name="Times New Roman" size="15.0" />
+                                       </font></Label>
                                  </children>
                                  <padding>
                                     <Insets left="5.0" />
@@ -136,7 +179,10 @@
                                           <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" />
                                        </graphic>
                                     </Button>
-                                    <Label text="Color" />
+                                    <Label text="Color" textFill="WHITE">
+                                       <font>
+                                          <Font name="Times New Roman" size="15.0" />
+                                       </font></Label>
                                  </children>
                                  <padding>
                                     <Insets left="5.0" />
@@ -149,7 +195,10 @@
                                           <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" />
                                        </graphic>
                                     </Button>
-                                    <Label text="Eliminar elemento" />
+                                    <Label text="Elimina objeto" textFill="WHITE">
+                                       <font>
+                                          <Font name="Times New Roman" size="15.0" />
+                                       </font></Label>
                                  </children>
                                  <padding>
                                     <Insets left="5.0" />
@@ -162,7 +211,10 @@
                                           <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" />
                                        </graphic>
                                     </Button>
-                                    <Label text="Limpiar" />
+                                    <Label text="Limpia" textFill="WHITE">
+                                       <font>
+                                          <Font name="Times New Roman" size="15.0" />
+                                       </font></Label>
                                  </children>
                                  <padding>
                                     <Insets left="5.0" />
@@ -175,7 +227,10 @@
                                           <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" />
                                        </graphic>
                                     </Button>
-                                    <Label text="Transportador" />
+                                    <Label text="Transportador" textFill="WHITE">
+                                       <font>
+                                          <Font name="Times New Roman" size="15.0" />
+                                       </font></Label>
                                  </children>
                                  <padding>
                                     <Insets left="5.0" />
@@ -188,7 +243,10 @@
                                           <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" />
                                        </graphic>
                                     </Button>
-                                    <Label text="Regla" />
+                                    <Label text="Regla" textFill="WHITE">
+                                       <font>
+                                          <Font name="Times New Roman" size="15.0" />
+                                       </font></Label>
                                  </children>
                                  <padding>
                                     <Insets left="5.0" />
@@ -201,13 +259,26 @@
                                           <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" />
                                        </graphic>
                                     </Button>
-                                    <Label text="Marcar extremos" />
+                                    <Label text="Marcar extremo" textFill="WHITE">
+                                       <font>
+                                          <Font name="Times New Roman" size="15.0" />
+                                       </font></Label>
                                  </children>
                                  <padding>
                                     <Insets left="5.0" />
                                  </padding>
                               </HBox>
-                              <HBox prefHeight="50.0" prefWidth="200.0" />
+                              <HBox alignment="CENTER" prefHeight="80.0" prefWidth="200.0">
+                                 <children>
+                                    <Button fx:id="cerrarB" minHeight="35.0" minWidth="80.0" mnemonicParsing="false" onAction="#handleCerrar" prefHeight="35.0" prefWidth="80.0" style="-fx-background-color: #5f84a2;" text="Cerrar" textFill="WHITE">
+                                       <font>
+                                          <Font name="Times New Roman" size="18.0" />
+                                       </font>
+                                       <effect>
+                                          <DropShadow />
+                                       </effect>
+                                    </Button>
+                                 </children></HBox>
                            </children>
                            <padding>
                               <Insets top="5.0" />

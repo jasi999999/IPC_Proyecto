@@ -10,14 +10,11 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.ScrollPane;
+import javafx.scene.control.Slider;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 
-/**
- * FXML Controller class
- *
- * @author Pablo
- */
 public class FXML_MesaTrabajoController implements Initializable {
 
     private JavaFXMLApplication mainApp;
@@ -25,8 +22,6 @@ public class FXML_MesaTrabajoController implements Initializable {
     
     @FXML
     private BorderPane rootPane;
-    @FXML
-    private ImageView mapa;
     @FXML
     private Button puntoB;
     @FXML
@@ -45,6 +40,18 @@ public class FXML_MesaTrabajoController implements Initializable {
     private Button reglaB;
     @FXML
     private Button extremosB;
+    @FXML
+    private Button cerrarB;
+    @FXML
+    private ScrollPane mapScroll;
+    @FXML
+    private ImageView map;
+    @FXML
+    private Button menosZoomB;
+    @FXML
+    private Slider zoomBar;
+    @FXML
+    private Button masZoomB;
 
     public void setMainApp(JavaFXMLApplication mainApp) {
         this.mainApp = mainApp;
@@ -56,7 +63,6 @@ public class FXML_MesaTrabajoController implements Initializable {
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
     }    
 
     @FXML
@@ -97,6 +103,19 @@ public class FXML_MesaTrabajoController implements Initializable {
 
     @FXML
     private void handleExtremos(ActionEvent event) {
+    }
+
+    @FXML
+    private void handleCerrar(ActionEvent event) {
+        ((javafx.stage.Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow()).close();
+    }
+
+    @FXML
+    private void handleMenosZoom(ActionEvent event) {
+    }
+
+    @FXML
+    private void handleMasZoom(ActionEvent event) {
     }
     
 }
