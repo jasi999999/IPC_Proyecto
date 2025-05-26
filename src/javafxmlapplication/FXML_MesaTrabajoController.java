@@ -9,16 +9,22 @@ import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Group;
 import javafx.scene.control.Button;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.Slider;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.Pane;
 
 public class FXML_MesaTrabajoController implements Initializable {
 
     private JavaFXMLApplication mainApp;
     private Usuario usuario;
+    private double zoomFactor = 1.0;
+    private final double zoomStep = 0.1;
+    private final double zoomMin = 0.5;
+    private final double zoomMax = 3.0;
     
     @FXML
     private BorderPane rootPane;
@@ -52,6 +58,8 @@ public class FXML_MesaTrabajoController implements Initializable {
     private Slider zoomBar;
     @FXML
     private Button masZoomB;
+    @FXML
+    private Group imageGroup;
 
     public void setMainApp(JavaFXMLApplication mainApp) {
         this.mainApp = mainApp;
@@ -63,6 +71,15 @@ public class FXML_MesaTrabajoController implements Initializable {
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        zoomBar.setMin(zoomMin);
+        zoomBar.setMax(zoomMax);
+        zoomBar.setValue(zoomFactor);
+        zoomBar.setBlockIncrement(zoomStep);
+        zoomBar.valueProperty().addListener((obs, oldVal, newVal) -> {
+            zoomFactor = newVal.doubleValue();
+            updateZoom();
+        });
+        mapScroll.requestFocus();
     }    
 
     @FXML
@@ -112,10 +129,22 @@ public class FXML_MesaTrabajoController implements Initializable {
 
     @FXML
     private void handleMenosZoom(ActionEvent event) {
+        if (zoomFactor - zoomStep >= zoomMin) {
+            zoomFactor -= zoomStep;
+            zoomBar.setValue(zoomFactor);
+        }
     }
 
     @FXML
     private void handleMasZoom(ActionEvent event) {
+        if (zoomFactor + zoomStep <= zoomMax) {
+            zoomFactor += zoomStep;
+            zoomBar.setValue(zoomFactor);
+        }
     }
     
+    private void updateZoom() {
+        map.setFitWidth(896 * zoomFactor);  // el tamaño original del ImageView
+        map.setFitHeight(576 * zoomFactor);
+    }   
 }
