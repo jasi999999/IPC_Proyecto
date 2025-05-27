@@ -21,7 +21,7 @@
    <center>
       <StackPane minHeight="395.0" minWidth="600.0" prefHeight="395.0" prefWidth="600.0">
          <children>
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#91aec4" height="380.0" stroke="#91aec4" strokeType="INSIDE" width="570.0" />
+            <Rectangle arcHeight="10.0" arcWidth="10.0" fill="#91aec4" height="380.0" stroke="#91aec4" strokeType="INSIDE" width="570.0" />
             <GridPane maxHeight="370.0" maxWidth="560.0" minHeight="370.0" minWidth="560.0" prefHeight="370.0" prefWidth="560.0" style="-fx-background-color: white;">
               <columnConstraints>
                 <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />

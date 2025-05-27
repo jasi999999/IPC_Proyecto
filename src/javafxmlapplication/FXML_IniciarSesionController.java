@@ -17,10 +17,7 @@ import javafx.scene.layout.BorderPane;
 public class FXML_IniciarSesionController implements Initializable {
 
     private JavaFXMLApplication mainApp;
-
-    public void setMainApp(JavaFXMLApplication mainApp) {
-        this.mainApp = mainApp;
-    }
+    private boolean contrasenaVisible = false;
 
     @FXML
     private ImageView mostrarContraseña;
@@ -39,8 +36,10 @@ public class FXML_IniciarSesionController implements Initializable {
     @FXML
     private Label errorLogin;
 
-    private boolean contrasenaVisible = false;
-
+    public void setMainApp(JavaFXMLApplication mainApp) {
+        this.mainApp = mainApp;
+    }
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         javafx.application.Platform.runLater(() -> rootPane.requestFocus());

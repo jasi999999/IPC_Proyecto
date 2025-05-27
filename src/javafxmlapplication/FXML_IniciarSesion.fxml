@@ -24,7 +24,7 @@
          <children>
             <StackPane>
                <children>
-                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#8fadc2" height="260.0" stroke="#8fadc2" strokeType="INSIDE" width="360.0" />
+                  <Rectangle arcHeight="10.0" arcWidth="10.0" fill="#8fadc2" height="260.0" stroke="#8fadc2" strokeType="INSIDE" width="360.0" />
                   <HBox>
                      <children>
                         <GridPane prefHeight="250.0" prefWidth="350.0" style="-fx-background-color: white;">

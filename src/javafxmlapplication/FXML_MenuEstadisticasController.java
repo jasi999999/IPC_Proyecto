@@ -27,6 +27,9 @@ import javafx.scene.layout.HBox;
  */
 public class FXML_MenuEstadisticasController implements Initializable {
 
+    private JavaFXMLApplication mainApp;
+    private Usuario usuario;
+    
     @FXML
     private LineChart<?, ?> chart;
     @FXML
@@ -40,9 +43,6 @@ public class FXML_MenuEstadisticasController implements Initializable {
     @FXML
     private BorderPane rootPane;
     
-    private JavaFXMLApplication mainApp;
-    private Usuario usuario;
-    
     public void setMainApp(JavaFXMLApplication mainApp) {
         this.mainApp = mainApp;
     }
@@ -51,12 +51,8 @@ public class FXML_MenuEstadisticasController implements Initializable {
         this.usuario = usuario;
     }
 
-    /**
-     * Initializes the controller class.
-     */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
         javafx.application.Platform.runLater(() -> rootPane.requestFocus());
     }    
 

@@ -1,140 +1,305 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.Group?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.PasswordField?>
-<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Slider?>
 <?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.layout.ColumnConstraints?>
-<?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
-<?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane fx:id="rootPane" style="-fx-background-color: #5f84A2;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javafxmlapplication.FXML_MesaTrabajoController">
-   <center>
-      <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="260.0" minWidth="360.0" style="-fx-background-color: #5f84A2; -fx-border-color: #5f84A2;" BorderPane.alignment="CENTER">
-         <children>
-            <StackPane>
-               <children>
-                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#91aec4" height="260.0" stroke="#91aec4" strokeType="INSIDE" width="360.0" />
-                  <HBox>
-                     <children>
-                        <GridPane prefHeight="250.0" prefWidth="350.0" style="-fx-background-color: white;">
-                          <columnConstraints>
-                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                          </columnConstraints>
-                          <rowConstraints>
-                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                          </rowConstraints>
-                           <children>
-                              <HBox prefHeight="100.0" prefWidth="200.0" GridPane.columnSpan="2">
-                                 <children>
-                                    <Label alignment="CENTER" prefHeight="50.0" prefWidth="350.0" text="Mesa Trabajo" textFill="#8fadc2">
-                                       <font>
-                                          <Font name="Times New Roman Bold" size="18.0" />
-                                       </font>
-                                    </Label>
-                                 </children>
-                              </HBox>
-                              <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="10.0" GridPane.columnSpan="2" GridPane.rowIndex="1">
-                                 <children>
-                                    <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
-                                       <image>
-                                          <Image url="@../icons/logo_usuario.jpg" />
-                                       </image>
-                                    </ImageView>
-                                    <TextField fx:id="usernameMenuInicial" prefHeight="30.0" prefWidth="220.0" promptText="Usuario" />
-                                 </children>
-                                 <GridPane.margin>
-                                    <Insets left="30.0" />
-                                 </GridPane.margin>
-                              </HBox>
-                              <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="10.0" GridPane.columnSpan="2" GridPane.rowIndex="2">
-                                 <children>
-                                    <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
-                                       <image>
-                                          <Image url="@../icons/logo_passwd.jpg" />
-                                       </image>
-                                       <HBox.margin>
-                                          <Insets left="5.0" right="5.0" />
-                                       </HBox.margin>
-                                    </ImageView>
-                                    <PasswordField fx:id="passwordMenuInicial" prefHeight="30.0" prefWidth="220.0" promptText="Contraseña">
-                                       <HBox.margin>
-                                          <Insets />
-                                       </HBox.margin></PasswordField>
-                                 </children>
-                                 <GridPane.margin>
-                                    <Insets left="30.0" />
-                                 </GridPane.margin>
-                              </HBox>
-                              <HBox alignment="CENTER_RIGHT" spacing="10.0" GridPane.columnSpan="2" GridPane.rowIndex="4">
-                                 <children>
-                                    <Button fx:id="registrarseButton" alignment="CENTER" contentDisplay="CENTER" defaultButton="true" mnemonicParsing="false" onAction="#menuRegistrarse" prefHeight="35.0" prefWidth="120.0" style="-fx-background-color: #5f84A2;" text="Registrarse" textFill="WHITE">
-                                       <font>
-                                          <Font name="Times New Roman Bold" size="15.0" />
-                                       </font>
-                                       <effect>
-                                          <DropShadow blurType="ONE_PASS_BOX" />
-                                       </effect>
-                                    </Button>
-                                    <Button fx:id="iniciarSesionButton" alignment="CENTER" contentDisplay="CENTER" defaultButton="true" mnemonicParsing="false" onAction="#iniciarSesionButton" prefHeight="35.0" prefWidth="120.0" style="-fx-background-color: #5f84A2;" styleClass="shad" text="Iniciar sesión" textFill="WHITE">
-                                       <font>
-                                          <Font name="Times New Roman Bold" size="15.0" />
-                                       </font>
-                                       <effect>
-                                          <DropShadow blurType="ONE_PASS_BOX" />
-                                       </effect>
-                                    </Button>
-                                 </children>
-                                 <GridPane.margin>
-                                    <Insets bottom="5.0" right="10.0" />
-                                 </GridPane.margin>
-                              </HBox>
-                              <HBox prefHeight="100.0" prefWidth="200.0" GridPane.columnSpan="2" GridPane.rowIndex="3">
-                                 <children>
-                                    <Label fx:id="errorLogin" alignment="CENTER" contentDisplay="CENTER" prefHeight="50.0" prefWidth="350.0" text="Usuario y/o contraseña incorrectos" textFill="RED">
-                                       <padding>
-                                          <Insets bottom="10.0" />
-                                       </padding>
-                                    </Label>
-                                 </children>
-                              </HBox>
-                           </children>
-                        </GridPane>
-                     </children>
-                     <StackPane.margin>
-                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                     </StackPane.margin>
-                  </HBox>
-               </children>
-            </StackPane>
-         </children>
-      </Pane>
-   </center>
+<BorderPane fx:id="rootPane" maxHeight="635.0" maxWidth="1125.0" minHeight="635.0" minWidth="1125.0" prefHeight="635.0" prefWidth="1125.0" style="-fx-background-color: #5f84A2;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javafxmlapplication.FXML_MesaTrabajoController">
    <top>
-      <Pane minHeight="0.0" prefHeight="130.0" prefWidth="200.0" style="-fx-background-color: #5f84A2;" BorderPane.alignment="CENTER" />
+      <HBox alignment="CENTER_LEFT" minHeight="30.0" prefHeight="30.0" BorderPane.alignment="CENTER">
+         <children>
+            <Button mnemonicParsing="false" style="-fx-background-color: null;" />
+         </children>
+      </HBox>
    </top>
    <left>
-      <Pane minWidth="0.0" prefWidth="120.0" style="-fx-background-color: #5f84A2;" BorderPane.alignment="CENTER" />
+      <Pane minWidth="30.0" prefWidth="30.0" BorderPane.alignment="CENTER" />
    </left>
    <right>
-      <Pane prefWidth="120.0" style="-fx-background-color: #5f84A2;" BorderPane.alignment="CENTER" />
+      <Pane minWidth="30.0" prefWidth="30.0" BorderPane.alignment="CENTER" />
    </right>
    <bottom>
-      <Pane minHeight="0.0" prefHeight="130.0" style="-fx-background-color: #5f84A2;" BorderPane.alignment="CENTER" />
+      <Pane minHeight="30.0" prefHeight="30.0" BorderPane.alignment="CENTER" />
    </bottom>
+   <center>
+      <StackPane maxHeight="575.0" maxWidth="1065.0" minHeight="575.0" minWidth="1065.0" prefHeight="575.0" prefWidth="1065.0">
+         <children>
+            <Rectangle arcHeight="10.0" arcWidth="10.0" fill="#8fadc2" height="575.0" stroke="#8fadc2" strokeType="INSIDE" width="1065.0" />
+            <HBox alignment="CENTER" maxHeight="555.0" maxWidth="1045.0" minHeight="555.0" minWidth="1045.0" prefHeight="555.0" prefWidth="1045.0" spacing="10.0">
+               <children>
+                  <StackPane maxHeight="555.0" maxWidth="865.0" minHeight="555.0" minWidth="865.0" prefHeight="555.0" prefWidth="865.0">
+                     <children>
+                        <ScrollPane fx:id="mapScroll" fitToHeight="true" fitToWidth="true" maxHeight="555.0" maxWidth="865.0" minHeight="555.0" minWidth="865.0" prefHeight="555.0" prefWidth="865.0">
+                           <content>
+                              <Group fx:id="imageGroup">
+                                 <children>
+                                    <ImageView fx:id="map" fitHeight="576.0" fitWidth="896.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../icons/carta_nautica.jpg" />
+                                       </image>
+                                    </ImageView>
+                                 </children>
+                              </Group>
+                           </content>
+                        </ScrollPane>
+                        <StackPane alignment="TOP_RIGHT">
+                           <children>
+                              <Rectangle arcHeight="10.0" arcWidth="10.0" fill="#5f84a2" height="50.0" stroke="#5f84a2" strokeType="INSIDE" width="185.0">
+                                 <StackPane.margin>
+                                    <Insets right="30.0" top="10.0" />
+                                 </StackPane.margin>
+                                 <effect>
+                                    <DropShadow />
+                                 </effect>
+                              </Rectangle>
+                              <HBox alignment="TOP_RIGHT" prefHeight="100.0" prefWidth="200.0" spacing="5.0">
+                                 <children>
+                                    <Button fx:id="menosZoomB" maxHeight="30.0" maxWidth="30.0" minHeight="30.0" minWidth="30.0" mnemonicParsing="false" onAction="#handleMenosZoom" prefHeight="30.0" prefWidth="30.0" style="-fx-background-color: #5f84a2;" text="–" textFill="WHITE">
+                                       <font>
+                                          <Font name="Times New Roman Bold" size="15.0" />
+                                       </font>
+                                       <effect>
+                                          <DropShadow />
+                                       </effect>
+                                       <HBox.margin>
+                                          <Insets bottom="3.0" />
+                                       </HBox.margin>
+                                    </Button>
+                                    <Slider fx:id="zoomBar" maxHeight="15.0" maxWidth="100.0" minHeight="15.0" minWidth="100.0" prefHeight="15.0" prefWidth="100.0">
+                                       <HBox.margin>
+                                          <Insets top="8.0" />
+                                       </HBox.margin>
+                                    </Slider>
+                                    <Button fx:id="masZoomB" maxHeight="30.0" maxWidth="30.0" minHeight="30.0" minWidth="30.0" mnemonicParsing="false" onAction="#handleMasZoom" prefHeight="30.0" prefWidth="30.0" style="-fx-background-color: #5f84a2;" text="+" textFill="WHITE">
+                                       <font>
+                                          <Font name="Times New Roman Bold" size="15.0" />
+                                       </font>
+                                       <effect>
+                                          <DropShadow />
+                                       </effect>
+                                    </Button>
+                                 </children>
+                                 <StackPane.margin>
+                                    <Insets right="35.0" top="20.0" />
+                                 </StackPane.margin>
+                              </HBox>
+                           </children>
+                        </StackPane>
+                     </children>
+                  </StackPane>
+                  <StackPane maxHeight="555.0" maxWidth="170.0" minHeight="555.0" minWidth="170.0" prefHeight="555.0" prefWidth="170.0">
+                     <children>
+                        <Rectangle arcHeight="10.0" arcWidth="10.0" fill="#5f84a2" height="505.0" stroke="#5f84a2" strokeType="INSIDE" width="165.0" />
+                        <VBox alignment="TOP_CENTER" maxHeight="500.0" maxWidth="160.0" minHeight="500.0" minWidth="160.0" prefHeight="500.0" prefWidth="160.0" spacing="5.0" style="-fx-background-color: #5f84A2;">
+                           <children>
+                              <Label text="Herramientas" textFill="WHITE">
+                                 <font>
+                                    <Font name="Times New Roman Bold" size="18.0" />
+                                 </font>
+                              </Label>
+                              <HBox alignment="CENTER_LEFT" prefHeight="50.0" prefWidth="200.0" spacing="10.0">
+                                 <children>
+                                    <Button fx:id="puntoB" minHeight="30.0" minWidth="40.0" mnemonicParsing="false" onAction="#handlePunto" prefHeight="30.0" prefWidth="40.0">
+                                       <graphic>
+                                          <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" />
+                                       </graphic>
+                                    </Button>
+                                    <Label text="Punto" textFill="WHITE">
+                                       <font>
+                                          <Font name="Times New Roman" size="15.0" />
+                                       </font></Label>
+                                 </children>
+                                 <padding>
+                                    <Insets left="5.0" />
+                                 </padding>
+                              </HBox>
+                              <HBox alignment="CENTER_LEFT" prefHeight="50.0" prefWidth="200.0" spacing="10.0">
+                                 <children>
+                                    <Button fx:id="lineaB" minHeight="30.0" minWidth="40.0" mnemonicParsing="false" onAction="#handleLinea" prefHeight="30.0" prefWidth="40.0">
+                                       <graphic>
+                                          <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" />
+                                       </graphic>
+                                    </Button>
+                                    <Label text="Línea" textFill="WHITE">
+                                       <font>
+                                          <Font name="Times New Roman" size="15.0" />
+                                       </font></Label>
+                                 </children>
+                                 <padding>
+                                    <Insets left="5.0" />
+                                 </padding>
+                              </HBox>
+                              <HBox alignment="CENTER_LEFT" prefHeight="50.0" prefWidth="200.0" spacing="10.0">
+                                 <children>
+                                    <Button fx:id="arcoB" minHeight="30.0" minWidth="40.0" mnemonicParsing="false" onAction="#handleArco" prefHeight="30.0" prefWidth="40.0">
+                                       <graphic>
+                                          <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" />
+                                       </graphic>
+                                    </Button>
+                                    <Label text="Arco" textFill="WHITE">
+                                       <font>
+                                          <Font name="Times New Roman" size="15.0" />
+                                       </font></Label>
+                                 </children>
+                                 <padding>
+                                    <Insets left="5.0" />
+                                 </padding>
+                              </HBox>
+                              <HBox alignment="CENTER_LEFT" prefHeight="50.0" prefWidth="200.0" spacing="10.0">
+                                 <children>
+                                    <Button fx:id="textoB" minHeight="30.0" minWidth="40.0" mnemonicParsing="false" onAction="#handleTexto" prefHeight="30.0" prefWidth="40.0" text="T">
+                                       <font>
+                                          <Font name="System Bold" size="16.0" />
+                                       </font>
+                                       <graphic>
+                                          <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" />
+                                       </graphic>
+                                    </Button>
+                                    <Label text="Texto" textFill="WHITE">
+                                       <font>
+                                          <Font name="Times New Roman" size="15.0" />
+                                       </font></Label>
+                                 </children>
+                                 <padding>
+                                    <Insets left="5.0" />
+                                 </padding>
+                              </HBox>
+                              <HBox alignment="CENTER_LEFT" prefHeight="50.0" prefWidth="200.0" spacing="10.0">
+                                 <children>
+                                    <Button fx:id="colorB" minHeight="30.0" minWidth="40.0" mnemonicParsing="false" onAction="#handleColor" prefHeight="30.0" prefWidth="40.0">
+                                       <graphic>
+                                          <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" />
+                                       </graphic>
+                                    </Button>
+                                    <Label text="Color" textFill="WHITE">
+                                       <font>
+                                          <Font name="Times New Roman" size="15.0" />
+                                       </font></Label>
+                                 </children>
+                                 <padding>
+                                    <Insets left="5.0" />
+                                 </padding>
+                              </HBox>
+                              <HBox alignment="CENTER_LEFT" prefHeight="50.0" prefWidth="200.0" spacing="10.0">
+                                 <children>
+                                    <Button fx:id="eleminarElementoB" minHeight="30.0" minWidth="40.0" mnemonicParsing="false" onAction="#handleEliminarElemento" prefHeight="30.0" prefWidth="40.0">
+                                       <graphic>
+                                          <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" />
+                                       </graphic>
+                                    </Button>
+                                    <Label text="Elimina objeto" textFill="WHITE">
+                                       <font>
+                                          <Font name="Times New Roman" size="15.0" />
+                                       </font></Label>
+                                 </children>
+                                 <padding>
+                                    <Insets left="5.0" />
+                                 </padding>
+                              </HBox>
+                              <HBox alignment="CENTER_LEFT" prefHeight="50.0" prefWidth="200.0" spacing="10.0">
+                                 <children>
+                                    <Button fx:id="limpiarB" minHeight="30.0" minWidth="40.0" mnemonicParsing="false" onAction="#handleLimpiar" prefHeight="30.0" prefWidth="40.0">
+                                       <graphic>
+                                          <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" />
+                                       </graphic>
+                                    </Button>
+                                    <Label text="Limpia" textFill="WHITE">
+                                       <font>
+                                          <Font name="Times New Roman" size="15.0" />
+                                       </font></Label>
+                                 </children>
+                                 <padding>
+                                    <Insets left="5.0" />
+                                 </padding>
+                              </HBox>
+                              <HBox alignment="CENTER_LEFT" prefHeight="50.0" prefWidth="200.0" spacing="10.0">
+                                 <children>
+                                    <Button minHeight="30.0" minWidth="40.0" mnemonicParsing="false" onAction="#handleTransportador" prefHeight="30.0" prefWidth="40.0">
+                                       <graphic>
+                                          <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" />
+                                       </graphic>
+                                    </Button>
+                                    <Label text="Transportador" textFill="WHITE">
+                                       <font>
+                                          <Font name="Times New Roman" size="15.0" />
+                                       </font></Label>
+                                 </children>
+                                 <padding>
+                                    <Insets left="5.0" />
+                                 </padding>
+                              </HBox>
+                              <HBox alignment="CENTER_LEFT" prefHeight="50.0" prefWidth="200.0" spacing="10.0">
+                                 <children>
+                                    <Button fx:id="reglaB" minHeight="30.0" minWidth="40.0" mnemonicParsing="false" onAction="#handleRegla" prefHeight="30.0" prefWidth="40.0">
+                                       <graphic>
+                                          <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" />
+                                       </graphic>
+                                    </Button>
+                                    <Label text="Regla" textFill="WHITE">
+                                       <font>
+                                          <Font name="Times New Roman" size="15.0" />
+                                       </font></Label>
+                                 </children>
+                                 <padding>
+                                    <Insets left="5.0" />
+                                 </padding>
+                              </HBox>
+                              <HBox alignment="CENTER_LEFT" prefHeight="50.0" prefWidth="200.0" spacing="10.0">
+                                 <children>
+                                    <Button fx:id="extremosB" minHeight="30.0" minWidth="40.0" mnemonicParsing="false" onAction="#handleExtremos" prefHeight="30.0" prefWidth="40.0">
+                                       <graphic>
+                                          <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" />
+                                       </graphic>
+                                    </Button>
+                                    <Label text="Marcar extremo" textFill="WHITE">
+                                       <font>
+                                          <Font name="Times New Roman" size="15.0" />
+                                       </font></Label>
+                                 </children>
+                                 <padding>
+                                    <Insets left="5.0" />
+                                 </padding>
+                              </HBox>
+                              <HBox alignment="CENTER" prefHeight="80.0" prefWidth="200.0">
+                                 <children>
+                                    <Button fx:id="cerrarB" minHeight="35.0" minWidth="80.0" mnemonicParsing="false" onAction="#handleCerrar" prefHeight="35.0" prefWidth="80.0" style="-fx-background-color: #5f84a2;" text="Cerrar" textFill="WHITE">
+                                       <font>
+                                          <Font name="Times New Roman" size="18.0" />
+                                       </font>
+                                       <effect>
+                                          <DropShadow />
+                                       </effect>
+                                    </Button>
+                                 </children></HBox>
+                           </children>
+                           <padding>
+                              <Insets top="5.0" />
+                           </padding>
+                           <StackPane.margin>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </StackPane.margin>
+                        </VBox>
+                     </children>
+                  </StackPane>
+               </children>
+               <StackPane.margin>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </StackPane.margin>
+            </HBox>
+         </children>
+      </StackPane>
+   </center>
 </BorderPane>
