@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.Group?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
@@ -40,11 +39,11 @@
             <Rectangle arcHeight="10.0" arcWidth="10.0" fill="#8fadc2" height="575.0" stroke="#8fadc2" strokeType="INSIDE" width="1065.0" />
             <HBox alignment="CENTER" maxHeight="555.0" maxWidth="1045.0" minHeight="555.0" minWidth="1045.0" prefHeight="555.0" prefWidth="1045.0" spacing="10.0">
                <children>
-                  <StackPane maxHeight="555.0" maxWidth="865.0" minHeight="555.0" minWidth="865.0" prefHeight="555.0" prefWidth="865.0">
+                  <StackPane alignment="TOP_RIGHT" maxHeight="555.0" maxWidth="865.0" minHeight="555.0" minWidth="865.0" prefHeight="555.0" prefWidth="865.0">
                      <children>
-                        <ScrollPane fx:id="mapScroll" fitToHeight="true" fitToWidth="true" maxHeight="555.0" maxWidth="865.0" minHeight="555.0" minWidth="865.0" prefHeight="555.0" prefWidth="865.0">
+                        <ScrollPane fx:id="map_scrollpane" fitToHeight="true" fitToWidth="true" maxHeight="555.0" maxWidth="865.0" minHeight="555.0" minWidth="865.0" prefHeight="555.0" prefWidth="865.0">
                            <content>
-                              <Group fx:id="imageGroup">
+                              <Pane>
                                  <children>
                                     <ImageView fx:id="map" fitHeight="576.0" fitWidth="896.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
@@ -52,14 +51,14 @@
                                        </image>
                                     </ImageView>
                                  </children>
-                              </Group>
+                              </Pane>
                            </content>
                         </ScrollPane>
-                        <StackPane alignment="TOP_RIGHT">
+                        <StackPane maxHeight="50.0" maxWidth="185.0" minHeight="50.0" minWidth="185.0" prefHeight="50.0" prefWidth="185.0">
                            <children>
                               <Rectangle arcHeight="10.0" arcWidth="10.0" fill="#5f84a2" height="50.0" stroke="#5f84a2" strokeType="INSIDE" width="185.0">
                                  <StackPane.margin>
-                                    <Insets right="30.0" top="10.0" />
+                                    <Insets />
                                  </StackPane.margin>
                                  <effect>
                                     <DropShadow />
@@ -67,7 +66,7 @@
                               </Rectangle>
                               <HBox alignment="TOP_RIGHT" prefHeight="100.0" prefWidth="200.0" spacing="5.0">
                                  <children>
-                                    <Button fx:id="menosZoomB" maxHeight="30.0" maxWidth="30.0" minHeight="30.0" minWidth="30.0" mnemonicParsing="false" onAction="#handleMenosZoom" prefHeight="30.0" prefWidth="30.0" style="-fx-background-color: #5f84a2;" text="–" textFill="WHITE">
+                                    <Button fx:id="menosZoomB" maxHeight="30.0" maxWidth="30.0" minHeight="30.0" minWidth="30.0" mnemonicParsing="false" onAction="#zoomOut" prefHeight="30.0" prefWidth="30.0" style="-fx-background-color: #5f84a2;" text="–" textFill="WHITE">
                                        <font>
                                           <Font name="Times New Roman Bold" size="15.0" />
                                        </font>
@@ -78,12 +77,12 @@
                                           <Insets bottom="3.0" />
                                        </HBox.margin>
                                     </Button>
-                                    <Slider fx:id="zoomBar" maxHeight="15.0" maxWidth="100.0" minHeight="15.0" minWidth="100.0" prefHeight="15.0" prefWidth="100.0">
+                                    <Slider fx:id="zoom_slider" maxHeight="15.0" maxWidth="100.0" minHeight="15.0" minWidth="100.0" prefHeight="15.0" prefWidth="100.0">
                                        <HBox.margin>
                                           <Insets top="8.0" />
                                        </HBox.margin>
                                     </Slider>
-                                    <Button fx:id="masZoomB" maxHeight="30.0" maxWidth="30.0" minHeight="30.0" minWidth="30.0" mnemonicParsing="false" onAction="#handleMasZoom" prefHeight="30.0" prefWidth="30.0" style="-fx-background-color: #5f84a2;" text="+" textFill="WHITE">
+                                    <Button fx:id="masZoomB" maxHeight="30.0" maxWidth="30.0" minHeight="30.0" minWidth="30.0" mnemonicParsing="false" onAction="#zoomIn" prefHeight="30.0" prefWidth="30.0" style="-fx-background-color: #5f84a2;" text="+" textFill="WHITE">
                                        <font>
                                           <Font name="Times New Roman Bold" size="15.0" />
                                        </font>
@@ -93,7 +92,7 @@
                                     </Button>
                                  </children>
                                  <StackPane.margin>
-                                    <Insets right="35.0" top="20.0" />
+                                    <Insets right="7.0" top="10.0" />
                                  </StackPane.margin>
                               </HBox>
                            </children>
