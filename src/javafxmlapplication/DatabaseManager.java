@@ -4,6 +4,9 @@ import java.sql.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+import java.util.HashMap;
+import java.time.LocalDate;
 
 public class DatabaseManager {
 
@@ -179,5 +182,42 @@ public class DatabaseManager {
             System.err.println("Error obteniendo resultados: " + e.getMessage());
         }
         return resultados;
+    }
+    
+    public static Map<String, Map<String, Integer>> obtenerEstadisticasPorFecha(String nick, LocalDate inicio, LocalDate fin) {
+        // Mapa donde clave = fecha (String), valor = mapa con conteo { "acierto": int, "fallo": int }
+        Map<String, Map<String, Integer>> stats = new HashMap<>();
+
+        String sql = "SELECT resultado, fecha, COUNT(*) as total " +
+                     "FROM usuarios_estadisticas " +
+                     "WHERE nick = ? AND fecha BETWEEN ? AND ? " +
+                     "GROUP BY resultado, fecha " +
+                     "ORDER BY fecha";
+
+        try (Connection conn = DriverManager.getConnection(DB_URL);
+            PreparedStatement pstmt = conn.prepareStatement(sql)) {
+            
+                pstmt.setString(1, nick);
+                pstmt.setString(2, inicio.toString());
+                pstmt.setString(3, fin.toString());
+
+                ResultSet rs = pstmt.executeQuery();
+
+                while (rs.next()) {
+                    String resultado = rs.getString("resultado");  // "acierto" o "fallo"
+                    String fecha = rs.getString("fecha");
+                    int total = rs.getInt("total");
+
+                    // Si no existe fecha, inicializamos mapa con 0
+                    stats.putIfAbsent(fecha, new HashMap<>());
+                    Map<String, Integer> resultadosPorFecha = stats.get(fecha);
+
+                    resultadosPorFecha.put(resultado, total);
+            }
+        } catch (SQLException e) {
+        System.err.println("Error obteniendo estadísticas: " + e.getMessage());
+        }
+
+        return stats;
     }
 }

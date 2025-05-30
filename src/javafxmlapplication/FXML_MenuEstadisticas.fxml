@@ -7,11 +7,10 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.ProgressBar?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.effect.DropShadow?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
@@ -47,10 +46,10 @@
                            <children>
                               <LineChart fx:id="chart">
                                 <xAxis>
-                                  <CategoryAxis side="BOTTOM" />
+                                  <CategoryAxis prefWidth="283.0" side="BOTTOM" fx:id="xAxis" />
                                 </xAxis>
                                 <yAxis>
-                                  <NumberAxis side="LEFT" />
+                                  <NumberAxis fx:id="yAxis" side="LEFT" />
                                 </yAxis>
                                  <VBox.margin>
                                     <Insets />
@@ -65,9 +64,21 @@
                                                 <Font name="Times New Roman" size="14.0" />
                                              </font>
                                           </Text>
-                                          <HBox alignment="CENTER_LEFT" minHeight="35.0" prefHeight="35.0">
+                                          <HBox alignment="CENTER_LEFT" minHeight="35.0" prefHeight="35.0" spacing="20.0">
                                              <children>
                                                 <DatePicker fx:id="fechaInicio" />
+                                                <Button fx:id="mostrarB" maxHeight="35.0" maxWidth="120.0" minHeight="35.0" minWidth="120.0" mnemonicParsing="false" onAction="#handleMostrar" prefHeight="35.0" prefWidth="120.0" style="-fx-background-color: #5f84A2;">
+                                                   <graphic>
+                                                      <Label maxHeight="35.0" minHeight="35.0" prefHeight="35.0" text="Mostrar" textFill="WHITE">
+                                                         <font>
+                                                            <Font name="Times New Roman" size="15.0" />
+                                                         </font>
+                                                      </Label>
+                                                   </graphic>
+                                                   <effect>
+                                                      <DropShadow />
+                                                   </effect>
+                                                </Button>
                                              </children>
                                           </HBox>
                                           <Text fill="#5f84a2" strokeType="OUTSIDE" strokeWidth="0.0" text="Fecha de fin:">
@@ -92,6 +103,19 @@
                                                             <DropShadow />
                                                          </effect>
                                                       </Button>
+                                                   </children>
+                                                </HBox>
+                                             </children>
+                                          </HBox>
+                                          <HBox alignment="CENTER_LEFT" spacing="20.0">
+                                             <children>
+                                                <HBox alignment="CENTER_LEFT" maxHeight="35.0" minHeight="35.0" prefHeight="35.0" spacing="5.0">
+                                                   <children>
+                                                      <Label fx:id="mensajeError" textFill="RED">
+                                                         <font>
+                                                            <Font name="Times New Roman" size="14.0" />
+                                                         </font>
+                                                      </Label>
                                                    </children>
                                                 </HBox>
                                              </children>
@@ -136,19 +160,10 @@
                         </VBox>
                         <VBox alignment="CENTER" spacing="10.0" style="-fx-border-color: #5f84A2;">
                            <children>
-                              <Button fx:id="filtrar" mnemonicParsing="false" text="Filtrar">
-                                 <graphic>
-                                    <ImageView fitHeight="50.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
-                                       <image>
-                                          <Image url="@../icons/filtrar.png" />
-                                       </image>
-                                    </ImageView>
-                                 </graphic>
-                                 <VBox.margin>
-                                    <Insets left="110.0" top="5.0" />
-                                 </VBox.margin>
-                              </Button>
-                              <ScrollPane hbarPolicy="NEVER" prefHeight="1000.0" prefWidth="0.0" vbarPolicy="ALWAYS" />
+                              <ScrollPane fx:id="scrollPane" hbarPolicy="NEVER" prefHeight="1000.0" prefWidth="0.0" vbarPolicy="ALWAYS">
+                                 <content>
+                                    <ListView fx:id="listView" maxHeight="215.0" maxWidth="170.0" minHeight="215.0" minWidth="170.0" prefHeight="215.0" prefWidth="170.0" />
+                                 </content></ScrollPane>
                            </children>
                         </VBox>
                      </children>
