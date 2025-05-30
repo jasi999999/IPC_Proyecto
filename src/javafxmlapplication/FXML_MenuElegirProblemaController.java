@@ -18,11 +18,7 @@ import model.Problem;
 import model.NavDAOException;
 import model.Navigation;
 
-/**
- * FXML Controller class
- *
- * @author Pablo
- */
+
 public class FXML_MenuElegirProblemaController implements Initializable {
     
     private List<Problem> problemas;

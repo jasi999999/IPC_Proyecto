@@ -185,7 +185,7 @@ public class DatabaseManager {
     }
     
     public static Map<String, Map<String, Integer>> obtenerEstadisticasPorFecha(String nick, LocalDate inicio, LocalDate fin) {
-        // Mapa donde clave = fecha (String), valor = mapa con conteo { "acierto": int, "fallo": int }
+        
         Map<String, Map<String, Integer>> stats = new HashMap<>();
 
         String sql = "SELECT resultado, fecha, COUNT(*) as total " +
@@ -204,11 +204,11 @@ public class DatabaseManager {
                 ResultSet rs = pstmt.executeQuery();
 
                 while (rs.next()) {
-                    String resultado = rs.getString("resultado");  // "acierto" o "fallo"
+                    String resultado = rs.getString("resultado");  
                     String fecha = rs.getString("fecha");
                     int total = rs.getInt("total");
 
-                    // Si no existe fecha, inicializamos mapa con 0
+                    
                     stats.putIfAbsent(fecha, new HashMap<>());
                     Map<String, Integer> resultadosPorFecha = stats.get(fecha);
 

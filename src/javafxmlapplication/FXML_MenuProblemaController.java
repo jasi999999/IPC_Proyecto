@@ -76,7 +76,7 @@ public class FXML_MenuProblemaController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         
-        // Listeners, si click -> opción marcada
+        
         respuesta1.setOnMouseClicked(e -> valid1.setSelected(true));
         respuesta2.setOnMouseClicked(e -> valid2.setSelected(true));
         respuesta3.setOnMouseClicked(e -> valid3.setSelected(true));
@@ -124,7 +124,7 @@ public class FXML_MenuProblemaController implements Initializable {
 
    @FXML
     private void handleResponder(ActionEvent event) {
-        // Determinar qué opción está seleccionada
+        
         RadioButton seleccionada = (RadioButton) respuestasGroup.getSelectedToggle();
         if (seleccionada == null) return;
 
@@ -160,7 +160,7 @@ public class FXML_MenuProblemaController implements Initializable {
             System.out.println("→ respuesta DB: " + textoRespuesta);
 
             if (a.getValidity()) {
-                // Marcar cuál es la respuesta correcta
+                
                 textoCorrectoControl = switch (i) {
                     case 0 -> respuesta1;
                     case 1 -> respuesta2;
@@ -170,13 +170,13 @@ public class FXML_MenuProblemaController implements Initializable {
                 };
             }
 
-            // Verificar si el texto seleccionado es correcto
+            
             if (textoRespuesta.equalsIgnoreCase(textoSeleccionado) && a.getValidity()) {
                 esCorrecta = true;
             }
         }
 
-        // Colorear
+        
         if (textoCorrectoControl != null) {
             textoCorrectoControl.setStyle("-fx-fill: green;");
         }
@@ -184,12 +184,12 @@ public class FXML_MenuProblemaController implements Initializable {
             textoSeleccionadoControl.setStyle("-fx-fill: red;");
         }
 
-        // Registrar resultado en la base de datos
+        
         DatabaseManager.registrarResultado(usuario.getNick(), esCorrecta);
 
         System.out.println(esCorrecta ? "✅ Respuesta correcta" : "❌ Respuesta incorrecta");
 
-        // Desactivar responder, activar volver
+        
         responderB.setDisable(true);
         atrasB.setDisable(false);
     }
