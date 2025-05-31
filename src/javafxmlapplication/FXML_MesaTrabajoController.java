@@ -209,15 +209,6 @@ public class FXML_MesaTrabajoController implements Initializable {
                     herramientaActiva = HerramientaActiva.NINGUNA;
                     arcoCentroX = arcoCentroY = -1;
                 }
-            } else if (herramientaActiva == HerramientaActiva.ELIMINAR) {
-                javafx.scene.Node nodoSeleccionado = getElementoEn(x, y);
-                if (nodoSeleccionado != null) {
-                    drawPane.getChildren().remove(nodoSeleccionado);
-                    System.out.println("Elemento eliminado.");
-                } else {
-                System.out.println("No hay elemento para eliminar en esa posición.");
-                }
-                herramientaActiva = HerramientaActiva.NINGUNA;
             }
         });
     }    
@@ -255,6 +246,9 @@ public class FXML_MesaTrabajoController implements Initializable {
 
     @FXML
     private void handleLimpiar(ActionEvent event) {
+        drawPane.getChildren().clear();
+        System.out.println("Carta limpiada.");
+        herramientaActiva = HerramientaActiva.NINGUNA;
     }
 
     @FXML

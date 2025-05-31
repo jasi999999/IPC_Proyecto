@@ -229,7 +229,7 @@
                                           <DropShadow />
                                        </effect>
                                     </Button>
-                                    <Label text="Elimina objeto" textFill="WHITE">
+                                    <Label text="Eliminar objeto" textFill="WHITE">
                                        <font>
                                           <Font name="Times New Roman" size="15.0" />
                                        </font></Label>
@@ -251,7 +251,7 @@
                                           <DropShadow />
                                        </effect>
                                     </Button>
-                                    <Label text="Limpia" textFill="WHITE">
+                                    <Label text="Limpiar" textFill="WHITE">
                                        <font>
                                           <Font name="Times New Roman" size="15.0" />
                                        </font></Label>
