@@ -74,19 +74,14 @@ public class FXML_MesaTrabajoController implements Initializable {
     @FXML
     private ScrollPane map_scrollpane;
     @FXML
-    private Circle circulo1;
+    private ImageView transportador;
     @FXML
-    private Circle circulo12;
-    @FXML
-    private Line linea;
-    @FXML
-    private Text texto;
-    @FXML
-    private ColorPicker colorElegir;
+    private ImageView regla;
 
     private enum HerramientaActiva {
         NINGUNA, PUNTO, LINEA_ESPERANDO_PUNTO_FINAL, ARCO_ESPERANDO_RADIO,
-        ESPERANDO_POSICION_TEXTO, ELIMINAR, COLOR, EXTREMOS_CARTA
+        ESPERANDO_POSICION_TEXTO, ELIMINAR, COLOR, EXTREMOS_CARTA, TRANSPORTADOR,
+        REGLA
     }
     
     public void setMainApp(JavaFXMLApplication mainApp) {
@@ -99,6 +94,9 @@ public class FXML_MesaTrabajoController implements Initializable {
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        regla.getStyleClass().add("regla");
+        transportador.getStyleClass().add("transportador");
+        
         zoom_slider.setMin(1.0);
         zoom_slider.setMax(5.0);
         zoom_slider.setValue(3.0);
@@ -313,10 +311,14 @@ public class FXML_MesaTrabajoController implements Initializable {
 
     @FXML
     private void handleTransportador(ActionEvent event) {
+        herramientaActiva = HerramientaActiva.TRANSPORTADOR;
+        transportador.setVisible(true);
     }
 
     @FXML
     private void handleRegla(ActionEvent event) {
+        herramientaActiva = HerramientaActiva.REGLA;
+        regla.setVisible(true);
     }
 
     @FXML

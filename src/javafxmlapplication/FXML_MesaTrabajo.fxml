@@ -43,13 +43,31 @@
                      <children>
                         <ScrollPane fx:id="map_scrollpane" fitToHeight="true" fitToWidth="true" maxHeight="555.0" maxWidth="865.0" minHeight="555.0" minWidth="865.0" prefHeight="555.0" prefWidth="865.0">
                            <content>
-                              <Pane>
+                              <Pane stylesheets="@../icons/protractor.css">
                                  <children>
                                     <ImageView fx:id="map" fitHeight="576.0" fitWidth="896.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
                                           <Image url="@../icons/carta_nautica.jpg" />
                                        </image>
                                     </ImageView>
+                                    <VBox>
+                                       <children>
+                                          <ImageView fx:id="transportador" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" styleClass="transportador" visible="false">
+                                             <image>
+                                                <Image url="@../icons/transportadorMesa.png" />
+                                             </image>
+                                          </ImageView>
+                                       </children>
+                                    </VBox>
+                                    <VBox>
+                                       <children>
+                                          <ImageView fx:id="regla" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" styleClass="regla" visible="false">
+                                             <image>
+                                                <Image url="@../icons/reglaMesa.png" />
+                                             </image>
+                                          </ImageView>
+                                       </children>
+                                    </VBox>
                                  </children>
                               </Pane>
                            </content>

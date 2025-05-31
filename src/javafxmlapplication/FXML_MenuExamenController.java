@@ -202,7 +202,10 @@ public class FXML_MenuExamenController implements Initializable {
             controller.setUsuario(usuario);
 
             Stage modalStage = new Stage();
-            modalStage.setScene(new Scene(root));
+            Scene scene = new Scene(root);
+            modalStage.setScene(scene);
+            scene.getStylesheets().add(getClass().getResource("/icons/protractor.css").toExternalForm());
+
             modalStage.setTitle("Mesa de Trabajo");
             modalStage.setMinWidth(1145);
             modalStage.setMinHeight(675);
