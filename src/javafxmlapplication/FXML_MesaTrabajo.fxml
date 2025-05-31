@@ -111,9 +111,12 @@
                               </Label>
                               <HBox alignment="CENTER_LEFT" prefHeight="50.0" prefWidth="200.0" spacing="10.0">
                                  <children>
-                                    <Button fx:id="puntoB" minHeight="30.0" minWidth="40.0" mnemonicParsing="false" onAction="#handlePunto" prefHeight="30.0" prefWidth="40.0">
+                                    <Button fx:id="puntoB" minHeight="30.0" minWidth="40.0" mnemonicParsing="false" onAction="#handlePunto" prefHeight="30.0" prefWidth="40.0" style="-fx-background-color: null;">
                                        <graphic>
-                                          <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" />
+                                          <ImageView fitHeight="20.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@../icons/punto.png" />
+                                             </image></ImageView>
                                        </graphic>
                                     </Button>
                                     <Label text="Punto" textFill="WHITE">
@@ -127,9 +130,12 @@
                               </HBox>
                               <HBox alignment="CENTER_LEFT" prefHeight="50.0" prefWidth="200.0" spacing="10.0">
                                  <children>
-                                    <Button fx:id="lineaB" minHeight="30.0" minWidth="40.0" mnemonicParsing="false" onAction="#handleLinea" prefHeight="30.0" prefWidth="40.0">
+                                    <Button fx:id="lineaB" minHeight="30.0" minWidth="40.0" mnemonicParsing="false" onAction="#handleLinea" prefHeight="30.0" prefWidth="40.0" style="-fx-background-color: null;">
                                        <graphic>
-                                          <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" />
+                                          <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@../icons/linea.png" />
+                                             </image></ImageView>
                                        </graphic>
                                     </Button>
                                     <Label text="Línea" textFill="WHITE">
@@ -143,9 +149,12 @@
                               </HBox>
                               <HBox alignment="CENTER_LEFT" prefHeight="50.0" prefWidth="200.0" spacing="10.0">
                                  <children>
-                                    <Button fx:id="arcoB" minHeight="30.0" minWidth="40.0" mnemonicParsing="false" onAction="#handleArco" prefHeight="30.0" prefWidth="40.0">
+                                    <Button fx:id="arcoB" minHeight="30.0" minWidth="40.0" mnemonicParsing="false" onAction="#handleArco" prefHeight="30.0" prefWidth="40.0" style="-fx-background-color: null;">
                                        <graphic>
-                                          <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" />
+                                          <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@../icons/compas.png" />
+                                             </image></ImageView>
                                        </graphic>
                                     </Button>
                                     <Label text="Arco" textFill="WHITE">
@@ -159,13 +168,10 @@
                               </HBox>
                               <HBox alignment="CENTER_LEFT" prefHeight="50.0" prefWidth="200.0" spacing="10.0">
                                  <children>
-                                    <Button fx:id="textoB" minHeight="30.0" minWidth="40.0" mnemonicParsing="false" onAction="#handleTexto" prefHeight="30.0" prefWidth="40.0" text="T">
+                                    <Button fx:id="textoB" minHeight="30.0" minWidth="40.0" mnemonicParsing="false" onAction="#handleTexto" prefHeight="30.0" prefWidth="40.0" style="-fx-background-color: null;" text="T" textFill="WHITE">
                                        <font>
-                                          <Font name="System Bold" size="16.0" />
+                                          <Font name="System Bold" size="18.0" />
                                        </font>
-                                       <graphic>
-                                          <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" />
-                                       </graphic>
                                     </Button>
                                     <Label text="Texto" textFill="WHITE">
                                        <font>
@@ -178,9 +184,12 @@
                               </HBox>
                               <HBox alignment="CENTER_LEFT" prefHeight="50.0" prefWidth="200.0" spacing="10.0">
                                  <children>
-                                    <Button fx:id="colorB" minHeight="30.0" minWidth="40.0" mnemonicParsing="false" onAction="#handleColor" prefHeight="30.0" prefWidth="40.0">
+                                    <Button fx:id="colorB" minHeight="30.0" minWidth="40.0" mnemonicParsing="false" onAction="#handleColor" prefHeight="30.0" prefWidth="40.0" style="-fx-background-color: null;">
                                        <graphic>
-                                          <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" />
+                                          <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@../icons/colores.png" />
+                                             </image></ImageView>
                                        </graphic>
                                     </Button>
                                     <Label text="Color" textFill="WHITE">
@@ -194,9 +203,12 @@
                               </HBox>
                               <HBox alignment="CENTER_LEFT" prefHeight="50.0" prefWidth="200.0" spacing="10.0">
                                  <children>
-                                    <Button fx:id="eleminarElementoB" minHeight="30.0" minWidth="40.0" mnemonicParsing="false" onAction="#handleEliminarElemento" prefHeight="30.0" prefWidth="40.0">
+                                    <Button fx:id="eleminarElementoB" minHeight="30.0" minWidth="40.0" mnemonicParsing="false" onAction="#handleEliminarElemento" prefHeight="30.0" prefWidth="40.0" style="-fx-background-color: null;">
                                        <graphic>
-                                          <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" />
+                                          <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@../icons/eliminar.png" />
+                                             </image></ImageView>
                                        </graphic>
                                     </Button>
                                     <Label text="Elimina objeto" textFill="WHITE">
@@ -210,9 +222,12 @@
                               </HBox>
                               <HBox alignment="CENTER_LEFT" prefHeight="50.0" prefWidth="200.0" spacing="10.0">
                                  <children>
-                                    <Button fx:id="limpiarB" minHeight="30.0" minWidth="40.0" mnemonicParsing="false" onAction="#handleLimpiar" prefHeight="30.0" prefWidth="40.0">
+                                    <Button fx:id="limpiarB" minHeight="30.0" minWidth="40.0" mnemonicParsing="false" onAction="#handleLimpiar" prefHeight="30.0" prefWidth="40.0" style="-fx-background-color: null;">
                                        <graphic>
-                                          <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" />
+                                          <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@../icons/limpiar.png" />
+                                             </image></ImageView>
                                        </graphic>
                                     </Button>
                                     <Label text="Limpia" textFill="WHITE">
@@ -226,9 +241,12 @@
                               </HBox>
                               <HBox alignment="CENTER_LEFT" prefHeight="50.0" prefWidth="200.0" spacing="10.0">
                                  <children>
-                                    <Button minHeight="30.0" minWidth="40.0" mnemonicParsing="false" onAction="#handleTransportador" prefHeight="30.0" prefWidth="40.0">
+                                    <Button minHeight="30.0" minWidth="40.0" mnemonicParsing="false" onAction="#handleTransportador" prefHeight="30.0" prefWidth="40.0" style="-fx-background-color: null;">
                                        <graphic>
-                                          <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" />
+                                          <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@../icons/transportador.png" />
+                                             </image></ImageView>
                                        </graphic>
                                     </Button>
                                     <Label text="Transportador" textFill="WHITE">
@@ -242,9 +260,12 @@
                               </HBox>
                               <HBox alignment="CENTER_LEFT" prefHeight="50.0" prefWidth="200.0" spacing="10.0">
                                  <children>
-                                    <Button fx:id="reglaB" minHeight="30.0" minWidth="40.0" mnemonicParsing="false" onAction="#handleRegla" prefHeight="30.0" prefWidth="40.0">
+                                    <Button fx:id="reglaB" minHeight="30.0" minWidth="40.0" mnemonicParsing="false" onAction="#handleRegla" prefHeight="30.0" prefWidth="40.0" style="-fx-background-color: null;">
                                        <graphic>
-                                          <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" />
+                                          <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@../icons/regla.png" />
+                                             </image></ImageView>
                                        </graphic>
                                     </Button>
                                     <Label text="Regla" textFill="WHITE">
@@ -258,9 +279,12 @@
                               </HBox>
                               <HBox alignment="CENTER_LEFT" prefHeight="50.0" prefWidth="200.0" spacing="10.0">
                                  <children>
-                                    <Button fx:id="extremosB" minHeight="30.0" minWidth="40.0" mnemonicParsing="false" onAction="#handleExtremos" prefHeight="30.0" prefWidth="40.0">
+                                    <Button fx:id="extremosB" minHeight="30.0" minWidth="40.0" mnemonicParsing="false" onAction="#handleExtremos" prefHeight="30.0" prefWidth="40.0" style="-fx-background-color: null;">
                                        <graphic>
-                                          <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" />
+                                          <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@../icons/extremo.png" />
+                                             </image></ImageView>
                                        </graphic>
                                     </Button>
                                     <Label text="Marcar extremo" textFill="WHITE">
