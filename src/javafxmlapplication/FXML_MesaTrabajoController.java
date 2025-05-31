@@ -227,7 +227,7 @@ public class FXML_MesaTrabajoController implements Initializable {
                     javafx.scene.Scene popupScene = new javafx.scene.Scene(popupPane);
                     javafx.stage.Stage colorStage = new javafx.stage.Stage();
                     colorStage.setScene(popupScene);
-                    colorStage.setTitle("Selecciona un color");
+                    colorStage.setTitle("Color");
                     colorStage.show();
 
                     picker.setOnAction(e -> {
