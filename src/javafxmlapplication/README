@@ -17,3 +17,5 @@
 - Marcar extremos (latitud y longitud) solo funciona para un PUNTO seleccionado,
     como ha si se solicita en el caso. HAY PÉRDIDA DE FOCUS AL CLICAR DONDE NO SE
     DEBE, volver a clicar en el botón y esta vez, sí, en el punto debido.
+
+- El transportador y la regla no están debidamente implementados.
