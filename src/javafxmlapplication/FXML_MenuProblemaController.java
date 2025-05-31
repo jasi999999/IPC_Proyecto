@@ -76,7 +76,7 @@ public class FXML_MenuProblemaController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         
-        // Listeners, si click -> opción marcada
+        
         respuesta1.setOnMouseClicked(e -> valid1.setSelected(true));
         respuesta2.setOnMouseClicked(e -> valid2.setSelected(true));
         respuesta3.setOnMouseClicked(e -> valid3.setSelected(true));
@@ -122,38 +122,82 @@ public class FXML_MenuProblemaController implements Initializable {
         }
     }
 
-    @FXML
+   @FXML
     private void handleResponder(ActionEvent event) {
+        
         RadioButton seleccionada = (RadioButton) respuestasGroup.getSelectedToggle();
-        if (seleccionada == null) {
-            return;
-            }
-        String textoRespuesta = seleccionada.getText();
+        if (seleccionada == null) return;
+
+        String textoSeleccionado = "";
+        Text textoSeleccionadoControl = null;
+
+        if (valid1.isSelected()) {
+            textoSeleccionado = respuesta1.getText().trim();
+            textoSeleccionadoControl = respuesta1;
+        } else if (valid2.isSelected()) {
+            textoSeleccionado = respuesta2.getText().trim();
+            textoSeleccionadoControl = respuesta2;
+        } else if (valid3.isSelected()) {
+            textoSeleccionado = respuesta3.getText().trim();
+            textoSeleccionadoControl = respuesta3;
+        } else if (valid4.isSelected()) {
+            textoSeleccionado = respuesta4.getText().trim();
+            textoSeleccionadoControl = respuesta4;
+        }
 
         Problem problemaActual = problemas.get(indexActual);
+        List<Answer> respuestas = problemaActual.getAnswers();
 
         boolean esCorrecta = false;
-        for (Answer a : problemaActual.getAnswers()) {
-            if (a.getText().equals(textoRespuesta) && a.getValidity()) {
+        Text textoCorrectoControl = null;
+
+        for (int i = 0; i < respuestas.size(); i++) {
+            Answer a = respuestas.get(i);
+            String textoRespuesta = a.getText().trim();
+
+            System.out.println("Comparando:");
+            System.out.println("→ seleccionado: " + textoSeleccionado);
+            System.out.println("→ respuesta DB: " + textoRespuesta);
+
+            if (a.getValidity()) {
+                
+                textoCorrectoControl = switch (i) {
+                    case 0 -> respuesta1;
+                    case 1 -> respuesta2;
+                    case 2 -> respuesta3;
+                    case 3 -> respuesta4;
+                    default -> null;
+                };
+            }
+
+            
+            if (textoRespuesta.equalsIgnoreCase(textoSeleccionado) && a.getValidity()) {
                 esCorrecta = true;
-                break;
             }
         }
 
-        if (esCorrecta) {
-            System.out.println("Respuesta correcta!");
-            guardarEstadistica(usuario.getNick(), true);
-        } else {
-            System.out.println("Respuesta incorrecta.");
-            guardarEstadistica(usuario.getNick(), false);
-        }
         
-        try {
-            mainApp.startMenuUsuario(usuario);
-        } catch (Exception e) {
-            e.printStackTrace();
+        if (textoCorrectoControl != null) {
+            textoCorrectoControl.setStyle("-fx-fill: green;");
         }
+        if (textoSeleccionadoControl != null && textoSeleccionadoControl != textoCorrectoControl) {
+            textoSeleccionadoControl.setStyle("-fx-fill: red;");
+        }
+
+        
+        DatabaseManager.registrarResultado(usuario.getNick(), esCorrecta);
+
+        System.out.println(esCorrecta ? "✅ Respuesta correcta" : "❌ Respuesta incorrecta");
+
+        
+        responderB.setDisable(true);
+        atrasB.setDisable(false);
     }
+
+
+
+
+
     
     public void setIndexProblema(int index) {
         if (index < 0) return;
@@ -203,20 +247,5 @@ public class FXML_MenuProblemaController implements Initializable {
         }  
     }
     
-    public void guardarEstadistica(String nick, boolean acierto) {
-        String resultado = acierto ? "acierto" : "fallo";
-        String fecha = java.time.LocalDate.now().toString();
-
-        String sql = "INSERT INTO usuarios_estadisticas (nick, resultado, fecha) VALUES (?, ?, ?)";
-
-        try (Connection conn = DriverManager.getConnection(DB_URL);
-            PreparedStatement pstmt = conn.prepareStatement(sql)) {
-            pstmt.setString(1, nick);
-            pstmt.setString(2, resultado);
-            pstmt.setString(3, fecha);
-            pstmt.executeUpdate();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
+    
 }

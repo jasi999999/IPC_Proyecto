@@ -1,0 +1,21 @@
+# USUARIOS Y PASSWDS
+
+- user1: User123!
+- jpgarcia: passPER21!2
+
+# CONSIDERACIONES SOBRE LAS HERRAMIENTAS
+
+- Para utilizar cada herramienta, primero clicar en la herramienta, luego efectuar
+    la acción (ej: clicar color y luego seleccionar el objeto a cambiar de color).
+- Si no funciona:
+    -> No se ha pulsado bien el botón, clicar otra vez
+    -> Se ha pulsado donde no se debía y se ha perdido el Focus: clicar otra
+            vez (no se han gestionado TODOS los casos).
+- 1 clic de botón = 1 uso.
+- Para la recta, si no se clica en los puntos, se crean otros
+- Para el arco, si no se clica en punto, se crea otro. 
+- Marcar extremos (latitud y longitud) solo funciona para un PUNTO seleccionado,
+    como ha si se solicita en el caso. HAY PÉRDIDA DE FOCUS AL CLICAR DONDE NO SE
+    DEBE, volver a clicar en el botón y esta vez, sí, en el punto debido.
+
+- El transportador y la regla no están debidamente implementados.
