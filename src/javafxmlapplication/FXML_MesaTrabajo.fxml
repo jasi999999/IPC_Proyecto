@@ -111,13 +111,16 @@
                               </Label>
                               <HBox alignment="CENTER_LEFT" prefHeight="50.0" prefWidth="200.0" spacing="10.0">
                                  <children>
-                                    <Button fx:id="puntoB" minHeight="30.0" minWidth="40.0" mnemonicParsing="false" onAction="#handlePunto" prefHeight="30.0" prefWidth="40.0" style="-fx-background-color: null;">
+                                    <Button fx:id="puntoB" minHeight="30.0" minWidth="40.0" mnemonicParsing="false" onAction="#handlePunto" prefHeight="30.0" prefWidth="40.0" style="-fx-background-color: null; -fx-border-color: #8fadc2;">
                                        <graphic>
                                           <ImageView fitHeight="20.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
                                              <image>
                                                 <Image url="@../icons/punto.png" />
                                              </image></ImageView>
                                        </graphic>
+                                       <effect>
+                                          <DropShadow />
+                                       </effect>
                                     </Button>
                                     <Label text="Punto" textFill="WHITE">
                                        <font>
@@ -130,13 +133,16 @@
                               </HBox>
                               <HBox alignment="CENTER_LEFT" prefHeight="50.0" prefWidth="200.0" spacing="10.0">
                                  <children>
-                                    <Button fx:id="lineaB" minHeight="30.0" minWidth="40.0" mnemonicParsing="false" onAction="#handleLinea" prefHeight="30.0" prefWidth="40.0" style="-fx-background-color: null;">
+                                    <Button fx:id="lineaB" minHeight="30.0" minWidth="40.0" mnemonicParsing="false" onAction="#handleLinea" prefHeight="30.0" prefWidth="40.0" style="-fx-background-color: null; -fx-border-color: #8fadc2;">
                                        <graphic>
                                           <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                                              <image>
                                                 <Image url="@../icons/linea.png" />
                                              </image></ImageView>
                                        </graphic>
+                                       <effect>
+                                          <DropShadow />
+                                       </effect>
                                     </Button>
                                     <Label text="Línea" textFill="WHITE">
                                        <font>
@@ -149,13 +155,16 @@
                               </HBox>
                               <HBox alignment="CENTER_LEFT" prefHeight="50.0" prefWidth="200.0" spacing="10.0">
                                  <children>
-                                    <Button fx:id="arcoB" minHeight="30.0" minWidth="40.0" mnemonicParsing="false" onAction="#handleArco" prefHeight="30.0" prefWidth="40.0" style="-fx-background-color: null;">
+                                    <Button fx:id="arcoB" minHeight="30.0" minWidth="40.0" mnemonicParsing="false" onAction="#handleArco" prefHeight="30.0" prefWidth="40.0" style="-fx-background-color: null; -fx-border-color: #8fadc2;">
                                        <graphic>
                                           <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                                              <image>
                                                 <Image url="@../icons/compas.png" />
                                              </image></ImageView>
                                        </graphic>
+                                       <effect>
+                                          <DropShadow />
+                                       </effect>
                                     </Button>
                                     <Label text="Arco" textFill="WHITE">
                                        <font>
@@ -168,10 +177,13 @@
                               </HBox>
                               <HBox alignment="CENTER_LEFT" prefHeight="50.0" prefWidth="200.0" spacing="10.0">
                                  <children>
-                                    <Button fx:id="textoB" minHeight="30.0" minWidth="40.0" mnemonicParsing="false" onAction="#handleTexto" prefHeight="30.0" prefWidth="40.0" style="-fx-background-color: null;" text="T" textFill="WHITE">
+                                    <Button fx:id="textoB" minHeight="30.0" minWidth="40.0" mnemonicParsing="false" onAction="#handleTexto" prefHeight="30.0" prefWidth="40.0" style="-fx-background-color: null; -fx-border-color: #8fadc2;" text="T" textFill="WHITE">
                                        <font>
                                           <Font name="System Bold" size="18.0" />
                                        </font>
+                                       <effect>
+                                          <DropShadow />
+                                       </effect>
                                     </Button>
                                     <Label text="Texto" textFill="WHITE">
                                        <font>
@@ -184,13 +196,16 @@
                               </HBox>
                               <HBox alignment="CENTER_LEFT" prefHeight="50.0" prefWidth="200.0" spacing="10.0">
                                  <children>
-                                    <Button fx:id="colorB" minHeight="30.0" minWidth="40.0" mnemonicParsing="false" onAction="#handleColor" prefHeight="30.0" prefWidth="40.0" style="-fx-background-color: null;">
+                                    <Button fx:id="colorB" minHeight="30.0" minWidth="40.0" mnemonicParsing="false" onAction="#handleColor" prefHeight="30.0" prefWidth="40.0" style="-fx-background-color: null; -fx-border-color: #8fadc2;">
                                        <graphic>
                                           <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                                              <image>
                                                 <Image url="@../icons/colores.png" />
                                              </image></ImageView>
                                        </graphic>
+                                       <effect>
+                                          <DropShadow />
+                                       </effect>
                                     </Button>
                                     <Label text="Color" textFill="WHITE">
                                        <font>
@@ -203,13 +218,16 @@
                               </HBox>
                               <HBox alignment="CENTER_LEFT" prefHeight="50.0" prefWidth="200.0" spacing="10.0">
                                  <children>
-                                    <Button fx:id="eleminarElementoB" minHeight="30.0" minWidth="40.0" mnemonicParsing="false" onAction="#handleEliminarElemento" prefHeight="30.0" prefWidth="40.0" style="-fx-background-color: null;">
+                                    <Button fx:id="eleminarElementoB" minHeight="30.0" minWidth="40.0" mnemonicParsing="false" onAction="#handleEliminarElemento" prefHeight="30.0" prefWidth="40.0" style="-fx-background-color: null; -fx-border-color: #8fadc2;">
                                        <graphic>
                                           <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                                              <image>
                                                 <Image url="@../icons/eliminar.png" />
                                              </image></ImageView>
                                        </graphic>
+                                       <effect>
+                                          <DropShadow />
+                                       </effect>
                                     </Button>
                                     <Label text="Elimina objeto" textFill="WHITE">
                                        <font>
@@ -222,13 +240,16 @@
                               </HBox>
                               <HBox alignment="CENTER_LEFT" prefHeight="50.0" prefWidth="200.0" spacing="10.0">
                                  <children>
-                                    <Button fx:id="limpiarB" minHeight="30.0" minWidth="40.0" mnemonicParsing="false" onAction="#handleLimpiar" prefHeight="30.0" prefWidth="40.0" style="-fx-background-color: null;">
+                                    <Button fx:id="limpiarB" minHeight="30.0" minWidth="40.0" mnemonicParsing="false" onAction="#handleLimpiar" prefHeight="30.0" prefWidth="40.0" style="-fx-background-color: null; -fx-border-color: #8fadc2;">
                                        <graphic>
                                           <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                                              <image>
                                                 <Image url="@../icons/limpiar.png" />
                                              </image></ImageView>
                                        </graphic>
+                                       <effect>
+                                          <DropShadow />
+                                       </effect>
                                     </Button>
                                     <Label text="Limpia" textFill="WHITE">
                                        <font>
@@ -241,13 +262,16 @@
                               </HBox>
                               <HBox alignment="CENTER_LEFT" prefHeight="50.0" prefWidth="200.0" spacing="10.0">
                                  <children>
-                                    <Button minHeight="30.0" minWidth="40.0" mnemonicParsing="false" onAction="#handleTransportador" prefHeight="30.0" prefWidth="40.0" style="-fx-background-color: null;">
+                                    <Button minHeight="30.0" minWidth="40.0" mnemonicParsing="false" onAction="#handleTransportador" prefHeight="30.0" prefWidth="40.0" style="-fx-background-color: null; -fx-border-color: #8fadc2;">
                                        <graphic>
                                           <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                                              <image>
                                                 <Image url="@../icons/transportador.png" />
                                              </image></ImageView>
                                        </graphic>
+                                       <effect>
+                                          <DropShadow />
+                                       </effect>
                                     </Button>
                                     <Label text="Transportador" textFill="WHITE">
                                        <font>
@@ -260,13 +284,16 @@
                               </HBox>
                               <HBox alignment="CENTER_LEFT" prefHeight="50.0" prefWidth="200.0" spacing="10.0">
                                  <children>
-                                    <Button fx:id="reglaB" minHeight="30.0" minWidth="40.0" mnemonicParsing="false" onAction="#handleRegla" prefHeight="30.0" prefWidth="40.0" style="-fx-background-color: null;">
+                                    <Button fx:id="reglaB" minHeight="30.0" minWidth="40.0" mnemonicParsing="false" onAction="#handleRegla" prefHeight="30.0" prefWidth="40.0" style="-fx-background-color: null; -fx-border-color: #8fadc2;">
                                        <graphic>
                                           <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                                              <image>
                                                 <Image url="@../icons/regla.png" />
                                              </image></ImageView>
                                        </graphic>
+                                       <effect>
+                                          <DropShadow />
+                                       </effect>
                                     </Button>
                                     <Label text="Regla" textFill="WHITE">
                                        <font>
@@ -279,13 +306,16 @@
                               </HBox>
                               <HBox alignment="CENTER_LEFT" prefHeight="50.0" prefWidth="200.0" spacing="10.0">
                                  <children>
-                                    <Button fx:id="extremosB" minHeight="30.0" minWidth="40.0" mnemonicParsing="false" onAction="#handleExtremos" prefHeight="30.0" prefWidth="40.0" style="-fx-background-color: null;">
+                                    <Button fx:id="extremosB" minHeight="30.0" minWidth="40.0" mnemonicParsing="false" onAction="#handleExtremos" prefHeight="30.0" prefWidth="40.0" style="-fx-background-color: null; -fx-border-color: #8fadc2;">
                                        <graphic>
                                           <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                                              <image>
                                                 <Image url="@../icons/extremo.png" />
                                              </image></ImageView>
                                        </graphic>
+                                       <effect>
+                                          <DropShadow />
+                                       </effect>
                                     </Button>
                                     <Label text="Marcar extremo" textFill="WHITE">
                                        <font>

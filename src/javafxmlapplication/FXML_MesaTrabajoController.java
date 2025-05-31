@@ -11,12 +11,20 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Group;
 import javafx.scene.control.Button;
+import javafx.scene.control.ColorPicker;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.Slider;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Circle;
+import javafx.scene.control.ContextMenu;
+import javafx.scene.control.MenuItem;
+import javafx.scene.shape.Line;
+import javafx.scene.text.Text;
+
 
 public class FXML_MesaTrabajoController implements Initializable {
 
@@ -26,9 +34,8 @@ public class FXML_MesaTrabajoController implements Initializable {
     private final double zoomStep = 0.1;
     private final double zoomMin = 0.5;
     private final double zoomMax = 3.0;
-    
-    // la variable zoomGroup se utiliza para dar soporte al zoom
-    // el escalado se realiza sobre este nodo, al escalar el Group no mueve sus nodos
+    private HerramientaActiva herramientaActiva = HerramientaActiva.NINGUNA;
+    private Pane drawPane;
     private Group zoomGroup;
     
     @FXML
@@ -63,7 +70,21 @@ public class FXML_MesaTrabajoController implements Initializable {
     private Button masZoomB;
     @FXML
     private ScrollPane map_scrollpane;
+    @FXML
+    private Circle circulo1;
+    @FXML
+    private Circle circulo12;
+    @FXML
+    private Line linea;
+    @FXML
+    private Text texto;
+    @FXML
+    private ColorPicker colorElegir;
 
+    private enum HerramientaActiva {
+        NINGUNA, PUNTO, LINEA, TEXTO, PUNTO1, PUNTO2
+    }
+    
     public void setMainApp(JavaFXMLApplication mainApp) {
         this.mainApp = mainApp;
     }
@@ -74,23 +95,31 @@ public class FXML_MesaTrabajoController implements Initializable {
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // inicializamos el slider y enlazamos con el zoom
         zoom_slider.setMin(1.0);
         zoom_slider.setMax(5.0);
         zoom_slider.setValue(3.0);
         zoom_slider.valueProperty().addListener((o, oldVal, newVal) -> zoom((Double) newVal));
 
-        //Envuelva el contenido de scrollpane en un grupo para que 
-        //ScrollPane vuelva a calcular las barras de desplazamiento tras el escalado
         Group contentGroup = new Group();
         zoomGroup = new Group();
         contentGroup.getChildren().add(zoomGroup);
         zoomGroup.getChildren().add(map_scrollpane.getContent());
         map_scrollpane.setContent(contentGroup);
+        
+        drawPane = new Pane();
+        drawPane.setPickOnBounds(false);
+        zoomGroup.getChildren().add(drawPane);
+        
+        zoomGroup.setOnMouseClicked(event -> {
+            if (herramientaActiva == HerramientaActiva.PUNTO) {
+                crearPunto(event.getX(), event.getY());
+            }
+        });
     }    
 
     @FXML
     private void handlePunto(ActionEvent event) {
+        herramientaActiva = HerramientaActiva.PUNTO;
     }
 
     @FXML
@@ -136,9 +165,6 @@ public class FXML_MesaTrabajoController implements Initializable {
 
     @FXML
     void zoomIn(ActionEvent event) {
-        //================================================
-        // el incremento del zoom dependerá de los parametros del 
-        // slider y del resultado esperado
         double sliderVal = zoom_slider.getValue();
         zoom_slider.setValue(sliderVal += 0.1);
     }
@@ -150,23 +176,27 @@ public class FXML_MesaTrabajoController implements Initializable {
     }
     
     private void updateZoom() {
-        map.setFitWidth(896 * zoomFactor);  // el tamaño original del ImageView
+        map.setFitWidth(896 * zoomFactor);
         map.setFitHeight(576 * zoomFactor);
     }  
     
-    // esta funcion es invocada al cambiar el value del slider zoom_slider
     private void zoom(double scaleValue) {
-        //===================================================
-        //guardamos los valores del scroll antes del escalado
+        
         double scrollH = map_scrollpane.getHvalue();
         double scrollV = map_scrollpane.getVvalue();
-        //===================================================
-        // escalamos el zoomGroup en X e Y con el valor de entrada
+        
         zoomGroup.setScaleX(scaleValue);
         zoomGroup.setScaleY(scaleValue);
-        //===================================================
-        // recuperamos el valor del scroll antes del escalado
+        
         map_scrollpane.setHvalue(scrollH);
         map_scrollpane.setVvalue(scrollV);
+    }
+    
+    private void crearPunto(double x, double y) {
+        Circle punto = new Circle(x, y, 5);
+        punto.setFill(Color.RED);
+        punto.setStroke(Color.BLACK);
+
+        drawPane.getChildren().add(punto);
     }
 }
