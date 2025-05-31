@@ -37,6 +37,7 @@ public class FXML_MesaTrabajoController implements Initializable {
     private HerramientaActiva herramientaActiva = HerramientaActiva.NINGUNA;
     private Pane drawPane;
     private Group zoomGroup;
+    private double startX, startY;
     
     @FXML
     private BorderPane rootPane;
@@ -82,7 +83,7 @@ public class FXML_MesaTrabajoController implements Initializable {
     private ColorPicker colorElegir;
 
     private enum HerramientaActiva {
-        NINGUNA, PUNTO, LINEA, TEXTO, PUNTO1, PUNTO2
+        NINGUNA, PUNTO, LINEA_ESPERANDO_PUNTO_FINAL
     }
     
     public void setMainApp(JavaFXMLApplication mainApp) {
@@ -111,8 +112,39 @@ public class FXML_MesaTrabajoController implements Initializable {
         zoomGroup.getChildren().add(drawPane);
         
         zoomGroup.setOnMouseClicked(event -> {
+            double x = event.getX();
+            double y = event.getY();
+
+            Circle puntoExistente = getPuntoEn(x, y);
+
             if (herramientaActiva == HerramientaActiva.PUNTO) {
-                crearPunto(event.getX(), event.getY());
+                if (puntoExistente == null) {
+                    crearPunto(x, y);
+                } else {
+                    System.out.println("Click en punto existente");
+                }
+            } else if (herramientaActiva == HerramientaActiva.LINEA_ESPERANDO_PUNTO_FINAL) {
+                if (startX < 0 && startY < 0) {
+                    startX = x;
+                    startY = y;
+                    if (puntoExistente == null) {
+                        crearPunto(startX, startY);
+                    }
+                } else {
+                    double endX = x;
+                    double endY = y;
+                    if (getPuntoEn(endX, endY) == null) {
+                        crearPunto(endX, endY);
+                    }
+
+                    Line lineaNueva = new Line(startX, startY, endX, endY);
+                    lineaNueva.setStroke(Color.BLUE);
+                    lineaNueva.setStrokeWidth(3);
+                    drawPane.getChildren().add(lineaNueva);
+
+                    herramientaActiva = HerramientaActiva.NINGUNA;
+                    startX = startY = -1;
+                }
             }
         });
     }    
@@ -124,6 +156,8 @@ public class FXML_MesaTrabajoController implements Initializable {
 
     @FXML
     private void handleLinea(ActionEvent event) {
+        herramientaActiva = HerramientaActiva.LINEA_ESPERANDO_PUNTO_FINAL;
+        startX = startY = -1;
     }
 
     @FXML
@@ -198,5 +232,20 @@ public class FXML_MesaTrabajoController implements Initializable {
         punto.setStroke(Color.BLACK);
 
         drawPane.getChildren().add(punto);
+    }
+    
+    private Circle getPuntoEn(double x, double y) {
+        for (javafx.scene.Node node : drawPane.getChildren()) {
+            if (node instanceof Circle) {
+                Circle c = (Circle) node;
+                double dx = c.getCenterX() - x;
+                double dy = c.getCenterY() - y;
+                double distancia = Math.sqrt(dx*dx + dy*dy);
+                if (distancia <= c.getRadius()) {
+                    return c; 
+                }
+            }
+        }
+        return null;
     }
 }
