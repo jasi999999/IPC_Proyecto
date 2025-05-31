@@ -4,16 +4,10 @@ Intefraces completamente listas
 - Modificar Perfil
 - Menú Usuario
 - Menú Seleccionar Problema
+- Menú Estadísticas
+- Menú Problema
+- Menú Examen
 
-Interfaces listas para ir emplementando el código:
-- Menú Estadísticas (show estadísticas)
-- Menú Problema (validar respuestas y guardar aciertos y fallos)
-- Menú Examen (validar respuestas y guardar aciertos y fallos)
+Falta:
+- Mesa Trabajo  (herramientas)
 
-
-Faltan:
-- Mesa Trabajo  (carta náutica + herramientas, en un Stage nuevo)
-
-Opcional:
-- ¿Añadir listeners al registro? (si sobra tiempo para hacerlo bonito, rollo como
-    en la práctica)
