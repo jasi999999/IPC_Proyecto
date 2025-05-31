@@ -86,7 +86,7 @@ public class FXML_MesaTrabajoController implements Initializable {
 
     private enum HerramientaActiva {
         NINGUNA, PUNTO, LINEA_ESPERANDO_PUNTO_FINAL, ARCO_ESPERANDO_RADIO,
-        ESPERANDO_POSICION_TEXTO, ELIMINAR
+        ESPERANDO_POSICION_TEXTO, ELIMINAR, COLOR
     }
     
     public void setMainApp(JavaFXMLApplication mainApp) {
@@ -209,6 +209,42 @@ public class FXML_MesaTrabajoController implements Initializable {
                     herramientaActiva = HerramientaActiva.NINGUNA;
                     arcoCentroX = arcoCentroY = -1;
                 }
+            } else if (herramientaActiva == HerramientaActiva.ELIMINAR) {
+                javafx.scene.Node nodoSeleccionado = getElementoEn(x, y);
+                if (nodoSeleccionado != null) {
+                    drawPane.getChildren().remove(nodoSeleccionado);
+                    System.out.println("Elemento eliminado.");
+                } else {
+                    System.out.println("No hay elemento para eliminar en esa posición.");
+                }
+                herramientaActiva = HerramientaActiva.NINGUNA;
+            } else if (herramientaActiva == HerramientaActiva.COLOR) {
+                javafx.scene.Node nodoSeleccionado = getElementoEn(x, y);
+                if (nodoSeleccionado != null) {
+                    ColorPicker picker = new ColorPicker();
+                    picker.setValue(Color.BLACK);
+                    Pane popupPane = new Pane(picker);
+                    javafx.scene.Scene popupScene = new javafx.scene.Scene(popupPane);
+                    javafx.stage.Stage colorStage = new javafx.stage.Stage();
+                    colorStage.setScene(popupScene);
+                    colorStage.setTitle("Selecciona un color");
+                    colorStage.show();
+
+                    picker.setOnAction(e -> {
+                        Color colorElegido = picker.getValue();
+                        if (nodoSeleccionado instanceof Circle) {
+                            ((Circle) nodoSeleccionado).setFill(colorElegido);
+                        } else if (nodoSeleccionado instanceof Line) {
+                            ((Line) nodoSeleccionado).setStroke(colorElegido);
+                        } else if (nodoSeleccionado instanceof Text) {
+                            ((Text) nodoSeleccionado).setFill(colorElegido);
+                        }
+                        colorStage.close();
+                    });
+                } else {
+                    System.out.println("No hay elemento en esa posición para cambiar el color.");
+                }
+                herramientaActiva = HerramientaActiva.NINGUNA;
             }
         });
     }    
@@ -237,6 +273,7 @@ public class FXML_MesaTrabajoController implements Initializable {
 
     @FXML
     private void handleColor(ActionEvent event) {
+        herramientaActiva = HerramientaActiva.COLOR;
     }
 
     @FXML

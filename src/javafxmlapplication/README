@@ -5,6 +5,9 @@
 
 # FUNCIONAMIENTO DE LAS HERRAMIENTAS
 
+- Si no funciona, es que se ha clickado mal el botón, INSISTIR
+- Para utilizar cada herramienta, primero clickar en la herramienta, luego hacer
+    la acción (ej: clickar color y luego seleccionar el objeto a cambiar de color).
 - Clickando en el cuadrado, 1 click = 1 uso.
 - Para la recta, si no se clica en los puntos, se crean otros
 - Para el arco, si no se clica en punto, se crea otro. 1 click 
