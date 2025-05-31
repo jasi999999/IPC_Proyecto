@@ -38,6 +38,8 @@ public class FXML_MesaTrabajoController implements Initializable {
     private Pane drawPane;
     private Group zoomGroup;
     private double startX, startY;
+    private double arcoCentroX = -1;
+    private double arcoCentroY = -1;
     
     @FXML
     private BorderPane rootPane;
@@ -83,7 +85,7 @@ public class FXML_MesaTrabajoController implements Initializable {
     private ColorPicker colorElegir;
 
     private enum HerramientaActiva {
-        NINGUNA, PUNTO, LINEA_ESPERANDO_PUNTO_FINAL
+        NINGUNA, PUNTO, LINEA_ESPERANDO_PUNTO_FINAL, ARCO_ESPERANDO_RADIO
     }
     
     public void setMainApp(JavaFXMLApplication mainApp) {
@@ -154,6 +156,42 @@ public class FXML_MesaTrabajoController implements Initializable {
                     herramientaActiva = HerramientaActiva.NINGUNA;
                     startX = startY = -1;
                 }
+            }  else if (herramientaActiva == HerramientaActiva.ARCO_ESPERANDO_RADIO) {
+                if (arcoCentroX < 0 && arcoCentroY < 0) {
+                    puntoExistente = getPuntoEn(x, y);
+                        if (puntoExistente != null) {
+                        arcoCentroX = puntoExistente.getCenterX();
+                        arcoCentroY = puntoExistente.getCenterY();
+                        } else {
+                            arcoCentroX = x;
+                            arcoCentroY = y;
+                            crearPunto(arcoCentroX, arcoCentroY);
+                        }
+                } else {
+                    Circle puntoRadio = getPuntoEn(x, y);
+                    double radioX, radioY;
+                    if (puntoRadio != null) {
+                        radioX = puntoRadio.getCenterX();
+                        radioY = puntoRadio.getCenterY();
+                    } else {
+                        radioX = x;
+                        radioY = y;
+                    }
+                    double dx = radioX - arcoCentroX;
+                    double dy = radioY - arcoCentroY;
+                    double radio = Math.sqrt(dx*dx + dy*dy);
+
+                    if (radio > 0) {
+                        Circle arco = new Circle(arcoCentroX, arcoCentroY, radio);
+                        arco.setStroke(Color.GREEN);
+                        arco.setStrokeWidth(3);
+                        arco.setFill(Color.TRANSPARENT);
+
+                        drawPane.getChildren().add(arco);
+                    }
+                    herramientaActiva = HerramientaActiva.NINGUNA;
+                    arcoCentroX = arcoCentroY = -1;
+                }
             }
         });
     }    
@@ -171,6 +209,8 @@ public class FXML_MesaTrabajoController implements Initializable {
 
     @FXML
     private void handleArco(ActionEvent event) {
+        herramientaActiva = HerramientaActiva.ARCO_ESPERANDO_RADIO;
+        arcoCentroX = arcoCentroY = -1;
     }
 
     @FXML
