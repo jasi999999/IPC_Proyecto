@@ -120,6 +120,7 @@ public class FXML_MesaTrabajoController implements Initializable {
             if (herramientaActiva == HerramientaActiva.PUNTO) {
                 if (puntoExistente == null) {
                     crearPunto(x, y);
+                    herramientaActiva = HerramientaActiva.NINGUNA;
                 } else {
                     System.out.println("Click en punto existente");
                 }
@@ -129,12 +130,20 @@ public class FXML_MesaTrabajoController implements Initializable {
                     startY = y;
                     if (puntoExistente == null) {
                         crearPunto(startX, startY);
+                    }else {
+                        startX = puntoExistente.getCenterX();
+                        startY = puntoExistente.getCenterY();
                     }
                 } else {
                     double endX = x;
                     double endY = y;
-                    if (getPuntoEn(endX, endY) == null) {
-                        crearPunto(endX, endY);
+                    if (puntoExistente == null) {
+                        crearPunto(x, y);
+                        endX = x;
+                        endY = y;
+                    } else {
+                        endX = puntoExistente.getCenterX();
+                        endY = puntoExistente.getCenterY();
                     }
 
                     Line lineaNueva = new Line(startX, startY, endX, endY);
