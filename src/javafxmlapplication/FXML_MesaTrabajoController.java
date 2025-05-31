@@ -25,7 +25,6 @@ import javafx.scene.control.MenuItem;
 import javafx.scene.shape.Line;
 import javafx.scene.text.Text;
 
-
 public class FXML_MesaTrabajoController implements Initializable {
 
     private JavaFXMLApplication mainApp;
@@ -85,7 +84,7 @@ public class FXML_MesaTrabajoController implements Initializable {
     private ColorPicker colorElegir;
 
     private enum HerramientaActiva {
-        NINGUNA, PUNTO, LINEA_ESPERANDO_PUNTO_FINAL, ARCO_ESPERANDO_RADIO
+        NINGUNA, PUNTO, LINEA_ESPERANDO_PUNTO_FINAL, ARCO_ESPERANDO_RADIO, ESPERANDO_POSICION_TEXTO
     }
     
     public void setMainApp(JavaFXMLApplication mainApp) {
@@ -119,7 +118,23 @@ public class FXML_MesaTrabajoController implements Initializable {
 
             Circle puntoExistente = getPuntoEn(x, y);
 
-            if (herramientaActiva == HerramientaActiva.PUNTO) {
+            if (herramientaActiva == HerramientaActiva.ESPERANDO_POSICION_TEXTO) {
+                javafx.scene.control.TextInputDialog dialog = new javafx.scene.control.TextInputDialog();
+                dialog.setTitle("Introducir texto");
+                dialog.setHeaderText("Ingrese el texto para mostrar en la carta:");
+                dialog.setContentText("Texto:");
+
+                dialog.showAndWait().ifPresent(textoIngresado -> {
+                    if (!textoIngresado.trim().isEmpty()) {
+                        Text textoNodo = new Text(x, y, textoIngresado);
+                        textoNodo.setFill(Color.BLACK);
+                        textoNodo.setStyle("-fx-font-size: 14px;");
+                        drawPane.getChildren().add(textoNodo);
+                    }
+                });
+
+                herramientaActiva = HerramientaActiva.NINGUNA;
+            } else if (herramientaActiva == HerramientaActiva.PUNTO) {
                 if (puntoExistente == null) {
                     crearPunto(x, y);
                     herramientaActiva = HerramientaActiva.NINGUNA;
@@ -215,6 +230,7 @@ public class FXML_MesaTrabajoController implements Initializable {
 
     @FXML
     private void handleTexto(ActionEvent event) {
+        herramientaActiva = HerramientaActiva.ESPERANDO_POSICION_TEXTO;
     }
 
     @FXML
