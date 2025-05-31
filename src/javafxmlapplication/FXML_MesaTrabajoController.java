@@ -39,7 +39,8 @@ public class FXML_MesaTrabajoController implements Initializable {
     private double startX, startY;
     private double arcoCentroX = -1;
     private double arcoCentroY = -1;
-    
+    private javafx.scene.Node elementoSeleccionado = null;
+            
     @FXML
     private BorderPane rootPane;
     @FXML
@@ -84,7 +85,8 @@ public class FXML_MesaTrabajoController implements Initializable {
     private ColorPicker colorElegir;
 
     private enum HerramientaActiva {
-        NINGUNA, PUNTO, LINEA_ESPERANDO_PUNTO_FINAL, ARCO_ESPERANDO_RADIO, ESPERANDO_POSICION_TEXTO
+        NINGUNA, PUNTO, LINEA_ESPERANDO_PUNTO_FINAL, ARCO_ESPERANDO_RADIO,
+        ESPERANDO_POSICION_TEXTO, ELIMINAR
     }
     
     public void setMainApp(JavaFXMLApplication mainApp) {
@@ -207,6 +209,15 @@ public class FXML_MesaTrabajoController implements Initializable {
                     herramientaActiva = HerramientaActiva.NINGUNA;
                     arcoCentroX = arcoCentroY = -1;
                 }
+            } else if (herramientaActiva == HerramientaActiva.ELIMINAR) {
+                javafx.scene.Node nodoSeleccionado = getElementoEn(x, y);
+                if (nodoSeleccionado != null) {
+                    drawPane.getChildren().remove(nodoSeleccionado);
+                    System.out.println("Elemento eliminado.");
+                } else {
+                System.out.println("No hay elemento para eliminar en esa posición.");
+                }
+                herramientaActiva = HerramientaActiva.NINGUNA;
             }
         });
     }    
@@ -239,6 +250,7 @@ public class FXML_MesaTrabajoController implements Initializable {
 
     @FXML
     private void handleEliminarElemento(ActionEvent event) {
+        herramientaActiva = HerramientaActiva.ELIMINAR;
     }
 
     @FXML
@@ -312,5 +324,65 @@ public class FXML_MesaTrabajoController implements Initializable {
             }
         }
         return null;
+    }
+    
+    private javafx.scene.Node getElementoEn(double x, double y) {
+        for (javafx.scene.Node node : drawPane.getChildren()) {
+           if (node instanceof Circle) {
+                Circle c = (Circle) node;
+                double dx = c.getCenterX() - x;
+                double dy = c.getCenterY() - y;
+                double distancia = Math.sqrt(dx*dx + dy*dy);
+                if (distancia <= c.getRadius()) {
+                    return c;
+                }
+            } else if (node instanceof Line) {
+                Line line = (Line) node;
+                if (isPointNearLine(x, y, line)) {
+                    return line;
+                }
+            } else if (node instanceof Text) {
+                Text texto = (Text) node;
+                if (texto.getBoundsInParent().contains(x, y)) {
+                    return texto;
+                }
+            }
+        }
+        return null;
+    }
+
+    private boolean isPointNearLine(double x, double y, Line line) {
+        double x1 = line.getStartX();
+        double y1 = line.getStartY();
+        double x2 = line.getEndX();
+        double y2 = line.getEndY();
+
+        double A = x - x1;
+        double B = y - y1;
+        double C = x2 - x1;
+        double D = y2 - y1;
+
+        double dot = A * C + B * D;
+        double len_sq = C * C + D * D;
+        double param = (len_sq != 0) ? dot / len_sq : -1;
+
+        double xx, yy;
+
+        if (param < 0) {
+            xx = x1;
+            yy = y1;
+        } else if (param > 1) {
+            xx = x2;
+            yy = y2;
+        } else {
+            xx = x1 + param * C;
+            yy = y1 + param * D;
+        }
+
+        double dx = x - xx;
+        double dy = y - yy;
+        double dist = Math.sqrt(dx * dx + dy * dy);
+        
+        return dist < 5;
     }
 }
