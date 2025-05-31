@@ -11,3 +11,5 @@
 - Clickando en el cuadrado, 1 click = 1 uso.
 - Para la recta, si no se clica en los puntos, se crean otros
 - Para el arco, si no se clica en punto, se crea otro. 1 click 
+- Marcar extremos (latitud y longitud) solo funciona para un PUNTO seleccionado,
+    como ha si se solicita en el caso.

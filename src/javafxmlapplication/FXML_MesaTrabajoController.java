@@ -86,7 +86,7 @@ public class FXML_MesaTrabajoController implements Initializable {
 
     private enum HerramientaActiva {
         NINGUNA, PUNTO, LINEA_ESPERANDO_PUNTO_FINAL, ARCO_ESPERANDO_RADIO,
-        ESPERANDO_POSICION_TEXTO, ELIMINAR, COLOR
+        ESPERANDO_POSICION_TEXTO, ELIMINAR, COLOR, EXTREMOS_CARTA
     }
     
     public void setMainApp(JavaFXMLApplication mainApp) {
@@ -245,6 +245,29 @@ public class FXML_MesaTrabajoController implements Initializable {
                     System.out.println("No hay elemento en esa posición para cambiar el color.");
                 }
                 herramientaActiva = HerramientaActiva.NINGUNA;
+            } else if (herramientaActiva == HerramientaActiva.EXTREMOS_CARTA) {
+                Circle punto = getPuntoEn(x, y);
+                if (punto != null) {
+                    double px = punto.getCenterX();
+                    double py = punto.getCenterY();
+
+                    Line lineaVertical = new Line(px, 0, px, drawPane.getHeight());
+                    lineaVertical.setStroke(Color.ORANGE);
+                    lineaVertical.setStrokeWidth(1);
+                    lineaVertical.getStrokeDashArray().addAll(10.0, 5.0);
+
+                    Line lineaHorizontal = new Line(0, py, drawPane.getWidth(), py);
+                    lineaHorizontal.setStroke(Color.ORANGE);
+                    lineaHorizontal.setStrokeWidth(1);
+                    lineaHorizontal.getStrokeDashArray().addAll(10.0, 5.0);
+
+                    drawPane.getChildren().addAll(lineaVertical, lineaHorizontal);
+
+                    System.out.println("Latitud: y = " + py + ", Longitud: x = " + px);
+                } else {
+                    System.out.println("Debe seleccionar un punto existente.");
+                }
+                herramientaActiva = HerramientaActiva.NINGUNA;
             }
         });
     }    
@@ -298,6 +321,7 @@ public class FXML_MesaTrabajoController implements Initializable {
 
     @FXML
     private void handleExtremos(ActionEvent event) {
+        herramientaActiva = HerramientaActiva.EXTREMOS_CARTA;
     }
 
     @FXML
